@@ -30,7 +30,7 @@ body {
 
     /* Secondary and Muted */
     --secondary: 0 0% 85%; /* Light Gray */
-    --secondary-foreground: 0 0% 0%; /* Black for contrast */
+    --secondary-foreground: 0 0% 10%; /* Black for contrast */
     --muted: 0 0% 85%; /* Light Gray */
     --muted-foreground: 0 0% 30%; /* Darker Gray for readability */
 
@@ -61,7 +61,7 @@ body {
   .dark {
     /* Background and Foreground */
     --background: 0 0% 10%; /* Near black */
-    --foreground: 0 0% 90%; /* Light gray for text */
+    --foreground: 0 0% 100%; /* white */
 
     /* Card and Popover */
     --card: 0 0% 10%; /* Near black for cards */
@@ -112,3 +112,14 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/*
+
+sm	450px	@media (min-width: 450px) { ... }
+sm	640px	@media (min-width: 640px) { ... }
+md	768px	@media (min-width: 768px) { ... }
+lg	1024px	@media (min-width: 1024px) { ... }
+xl	1280px	@media (min-width: 1280px) { ... }
+2xl	1536px	@media (min-width: 1536px) { ... }
+
+*/

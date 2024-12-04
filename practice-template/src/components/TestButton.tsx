@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function TestButton() {
   return (
-    <div className="flex justify-between items-center gap-6 p-12">
+    <div className="flex justify-between items-center flex-wrap gap-6 p-12">
       <Button variant="default">default</Button>
       <Button variant="default">
         <MailOpen />
