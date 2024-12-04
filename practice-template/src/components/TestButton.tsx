@@ -27,6 +27,17 @@ export default function TestButton() {
       <Button asChild>
         <Link href="/login">Login</Link>
       </Button>
+      <div>
+        <div className="bg-background text-foreground border-2 p-2">
+          BackFore
+        </div>
+        <div className="bg-primary text-primary-foreground border-2 p-2">
+          Primary
+        </div>
+        <div className="bg-secondary text-secondary-foreground border-2 p-2">
+          secondary
+        </div>
+      </div>
     </div>
   );
 }
