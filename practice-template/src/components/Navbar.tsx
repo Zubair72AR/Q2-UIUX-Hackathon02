@@ -20,6 +20,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const pathName = usePathname();
   const isActive = (path: string) => path == pathName;
@@ -28,6 +29,10 @@ export default function Navbar() {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setIsSearchVisible(false);
+      }
+
+      if (window.innerWidth >= 640) {
+        setIsMenuVisible(false);
       }
     };
     window.addEventListener("resize", handleResize);
@@ -54,7 +59,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="relative flex justify-between items-center px-4 sm:px-8 lg:px-20 xl:px-24 py-2 md:py-3 mt-3 md:mt-5">
+      <div className="relative flex justify-between items-center px-4 sm:px-8 lg:px-20 xl:px-24 py-2 md:py-3 mt-3 md:mt-4">
         {" "}
         <Link href="/" className="font-bold text-xl">
           Exclusive
@@ -63,7 +68,7 @@ export default function Navbar() {
           {navLinks.map((link, i) => (
             <li
               key={i}
-              className={`text-foreground text-sm font-medium ${
+              className={`text-foreground text-sm font-medium hover:text-chart-1 ${
                 isActive(link.path)
                   ? "border-b-2 border-secondary"
                   : "border-b-2 border-transparent"
@@ -92,7 +97,13 @@ export default function Navbar() {
           />
           <RiHeart3Line className="text-foreground text-lg sm:text-xl transition-all" />
           <PiShoppingCart className="text-foreground text-lg sm:text-xl transition-all" />
-          <CgMenuRightAlt className="text-foreground text-lg sm:text-xl  transition-all sm:hidden" />
+          <CgMenuRightAlt
+            className="text-foreground text-lg sm:text-xl  transition-all sm:hidden"
+            onClick={() => {
+              setIsMenuVisible(true);
+              setIsSearchVisible(false);
+            }}
+          />
 
           <ToggleButton />
         </div>
@@ -114,25 +125,38 @@ export default function Navbar() {
                 setIsSearchVisible(false);
               }}
             >
-              <RxCross2 className="text-[22px]" />
+              <RxCross2 />
             </Button>
           </div>
         </div>
-        <ul className="absolute top-10 right-0 w-1/2 bg-green-500 hidden">
-          {navLinks.map((link, i) => (
-            <li
-              key={i}
-              className={`text-foreground text-sm font-medium ${
-                isActive(link.path)
-                  ? "border-b-2 border-secondary"
-                  : "border-b-2 border-transparent"
-              }`}
-            >
-              <Link href={link.path}>{link.name}</Link>
-            </li>
-          ))}
-        </ul>
       </div>
+      <ul
+        className={`absolute top-0 right-0 h-screen w-full xs:w-1/2 bg-background	py-12 flex-col border-[1px] ${
+          isMenuVisible ? "flex" : "hidden"
+        }`}
+      >
+        <Button
+          size={"icon"}
+          onClick={() => {
+            setIsMenuVisible(false);
+          }}
+          className="ml-8 mb-8"
+        >
+          <RxCross2 />
+        </Button>
+        {navLinks.map((link, i) => (
+          <li
+            key={i}
+            className={`text-foreground text-sm font-medium px-8 py-3 hover:text-background hover:bg-foreground ${
+              isActive(link.path)
+                ? "border-b-2 border-secondary"
+                : "border-b-2 border-transparent"
+            } `}
+          >
+            <Link href={link.path}>{link.name}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
