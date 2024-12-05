@@ -18,15 +18,15 @@ export default function Navbar() {
   const isActive = (path: string) => path == pathName;
 
   return (
-    <div className="flex justify-between items-center px-8 lg:px-20 2xl:px-24 py-6 border-b-2">
-      <Link href="/" className="font-bold text-2xl">
+    <div className="flex justify-between items-center px-8 lg:px-20 xl:px-24 py-6 border-b-2">
+      <Link href="/" className="font-bold text-xl">
         Exclusive
       </Link>
-      <ul className="flex justify-center items-center gap-8">
+      <ul className="hidden sm:flex justify-center items-center gap-6 md:gap-8">
         {navLinks.map((link, i) => (
           <li
             key={i}
-            className={`text-sm font-medium ${
+            className={`text-foreground text-sm font-medium ${
               isActive(link.path)
                 ? "border-b-2"
                 : "border-b-2 border-transparent"
@@ -36,19 +36,18 @@ export default function Navbar() {
           </li>
         ))}
       </ul>
-      <div className="flex justify-center items-center gap-4">
-        <div className="flex justify-between items-center h-9 px-[10px] rounded-sm w-auto bg-muted">
+      <div className="flex justify-center items-center gap-4 md:gap-5">
+        <div className="hidden lg:flex justify-between items-center h-9 px-[10px] rounded-sm w-60 bg-muted">
           <input
             type="text"
             placeholder="What are you looking for?"
             className="text-xs text-foreground bg-transparent placeholder:text-muted-foreground outline-none w-[80%]"
           />
-          <LuSearch className="text-foreground size-5" />
+          <LuSearch className="text-foreground text-lg" />
         </div>
-
-        <RiHeart3Line />
-
-        <PiShoppingCart />
+        <LuSearch className="text-foreground text-xl lg:hidden" />
+        <RiHeart3Line className="text-foreground text-xl" />
+        <PiShoppingCart className="text-foreground text-xl" />
         <ToggleButton />
       </div>
     </div>
