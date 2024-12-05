@@ -11,7 +11,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <div>
-      <div className="flex flex-col md:flex-row flex-wrap justify-between items-start gap-9 md:gap-4 bg-foreground px-8 lg:px-20 2xl:px-24 py-14">
+      <div className="flex flex-col md:flex-row flex-wrap justify-between items-start gap-9 md:gap-4 bg-foreground px-4 sm:px-8 lg:px-20 xl:px-24 py-14">
         <div className="space-y-4">
           <h3 className="text-lg font-bold text-background">Exclusive</h3>
           <div className="space-y-3">

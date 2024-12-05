@@ -152,6 +152,9 @@ export default function Navbar() {
                 ? "border-b-2 border-secondary"
                 : "border-b-2 border-transparent"
             } `}
+            onClick={() => {
+              setIsMenuVisible(false);
+            }}
           >
             <Link href={link.path}>{link.name}</Link>
           </li>
