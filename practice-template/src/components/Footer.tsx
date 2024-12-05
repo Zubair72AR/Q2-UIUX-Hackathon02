@@ -11,10 +11,10 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <div>
-      <div className="flex flex-col md:flex-row flex-wrap justify-between items-start gap-9 md:gap-4 bg-foreground px-4 sm:px-8 lg:px-20 xl:px-24 py-14">
+      <div className="flex flex-col md:flex-row flex-wrap justify-between items-start gap-6 md:gap-4 bg-foreground px-7 sm:px-8 lg:px-20 xl:px-24 py-10 md:py-14">
         <div className="space-y-4">
           <h3 className="text-lg font-bold text-background">Exclusive</h3>
-          <div className="space-y-3">
+          <div className="space-y-[6px] md:space-y-3">
             <h4 className="font-semibold text-background">Subscribe</h4>
             <div className="space-y-[6px]">
               <p className="text-sm text-background">
@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-[6px] md:space-y-3">
           <h4 className="font-semibold text-background">Support</h4>
           <p className="text-sm text-background">
             111 Bijoy sarani, Dhaka,
@@ -43,7 +43,7 @@ export default function Footer() {
           <p className="text-sm text-background">+88015-88888-9999</p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-[6px] md:space-y-3">
           <h4 className="font-semibold text-background">Account</h4>
           <p className="text-sm text-background">My Account</p>
           <p className="text-sm text-background">Login / Register</p>
@@ -51,14 +51,14 @@ export default function Footer() {
           <p className="text-sm text-background">Wishlist</p>
           <p className="text-sm text-background">Shop</p>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-[6px] md:space-y-3">
           <h4 className="font-semibold text-background">Quick Link</h4>
           <p className="text-sm text-background">Privacy Policy</p>
           <p className="text-sm text-background">Terms Of Use</p>
           <p className="text-sm text-background">FAQ</p>
           <p className="text-sm text-background">Contact</p>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-[6px] md:space-y-3">
           <h4 className="font-semibold text-background">Download App</h4>
           <div>
             <p className="text-[13px] text-zinc-500">
@@ -90,7 +90,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <hr className="border-secondary-foreground" />
+      <hr className="border-secondary-foreground " />
       <div className="flex justify-center items-center gap-2 py-5 bg-foreground text-xs md:text-sm text-zinc-700">
         <FaRegCopyright />
         <p>Copyright Zubair Ahmed 2024. All right reserved.</p>

@@ -44,7 +44,7 @@ export default function Navbar() {
 
   return (
     <div className="border-b-[1px]">
-      <div className="flex justify-between gap-5 bg-foreground dark:bg-chart-1 text-background dark:text-foreground px-4 sm:px-8 lg:px-20 xl:px-24 py-3 md:items-center">
+      <div className="flex justify-between gap-5 bg-foreground dark:bg-chart-1 text-background dark:text-foreground px-7 sm:px-8 lg:px-20 xl:px-24 py-3 md:items-center">
         <div className="md:flex-1 md:text-center text-xs">
           <p>
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
@@ -59,7 +59,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="relative flex justify-between items-center px-4 sm:px-8 lg:px-20 xl:px-24 py-2 md:py-3 mt-3 md:mt-4">
+      <div className="relative flex justify-between items-center px-7 sm:px-8 lg:px-20 xl:px-24 py-2 md:py-3 mt-3 md:mt-4">
         {" "}
         <Link href="/" className="font-bold text-xl">
           Exclusive
