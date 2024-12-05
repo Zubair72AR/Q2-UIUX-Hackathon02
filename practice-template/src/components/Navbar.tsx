@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { LuSearch } from "react-icons/lu";
 import { RiHeart3Line } from "react-icons/ri";
 import { PiShoppingCart } from "react-icons/pi";
+import { ToggleButton } from "@components/ToggleButton";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -18,7 +18,7 @@ export default function Navbar() {
   const isActive = (path: string) => path == pathName;
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center px-8 lg:px-20 2xl:px-24">
       <h1 className="font-bold text-2xl">Exclusive</h1>
       <ul className="flex justify-center items-center gap-8">
         {navLinks.map((link, i) => (
@@ -47,7 +47,7 @@ export default function Navbar() {
         <RiHeart3Line />
 
         <PiShoppingCart />
-        <ThemeToggle />
+        <ToggleButton />
       </div>
     </div>
   );
