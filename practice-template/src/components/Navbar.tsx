@@ -131,8 +131,8 @@ export default function Navbar() {
         </div>
       </div>
       <ul
-        className={`overflow-hidden absolute top-0 right-0 h-screen w-full xs:w-1/2 bg-background py-12 flex-col border-[1px] transition-all duration-1000 ${
-          isMenuVisible ? "translate-x-0" : "translate-x-full"
+        className={`absolute top-0 right-0 h-screen w-full xs:w-1/2 bg-background	py-12 flex-col border-[1px] transition-all duration-1000 ${
+          isMenuVisible ? "flex" : "hidden"
         }`}
       >
         <Button
