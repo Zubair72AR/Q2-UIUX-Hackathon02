@@ -39,7 +39,7 @@ export default function Navbar() {
 
   return (
     <div className="border-b-[1px]">
-      <div className="flex justify-between gap-5 bg-green-600 text-semi-text px-4 sm:px-8 lg:px-20 xl:px-24 py-3 md:items-center">
+      <div className="flex justify-between gap-5 bg-foreground dark:bg-chart-1 text-background dark:text-foreground px-4 sm:px-8 lg:px-20 xl:px-24 py-3 md:items-center">
         <div className="md:flex-1 md:text-center text-xs">
           <p>
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!

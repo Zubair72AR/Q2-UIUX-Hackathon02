@@ -42,7 +42,7 @@ body {
     --destructive: 0 72.2% 50.6%; /* Red */
     --destructive-foreground: 0 0% 100%; /* White text for destructive actions */
 
-    --semi-black: 300 0% 0%;
+    --semi-black: 0 0% 50%;
     --semi-text: 0 0% 90%;
 
     /* Borders and Inputs */
@@ -90,7 +90,7 @@ body {
     --destructive: 0 72.2% 50.6%; /* Red */
     --destructive-foreground: 0 0% 100%; /* White text for destructive actions */
 
-    --semi-black: 0 0% 15%;
+    --semi-black: 0 0% 60%;
     --semi-text: 0 0% 90%;
 
     /* Borders and Inputs */
