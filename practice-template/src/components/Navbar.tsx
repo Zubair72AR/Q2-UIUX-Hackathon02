@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { LuSearch } from "react-icons/lu";
 import { RiHeart3Line } from "react-icons/ri";
 import { PiShoppingCart } from "react-icons/pi";
-import { ToggleButton } from "@components/ToggleButton";
+import { ToggleButton } from "@/components/ToggleButton";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -18,8 +18,10 @@ export default function Navbar() {
   const isActive = (path: string) => path == pathName;
 
   return (
-    <div className="flex justify-between items-center px-8 lg:px-20 2xl:px-24">
-      <h1 className="font-bold text-2xl">Exclusive</h1>
+    <div className="flex justify-between items-center px-8 lg:px-20 2xl:px-24 py-6 border-b-2">
+      <Link href="/" className="font-bold text-2xl">
+        Exclusive
+      </Link>
       <ul className="flex justify-center items-center gap-8">
         {navLinks.map((link, i) => (
           <li
@@ -27,7 +29,7 @@ export default function Navbar() {
             className={`text-sm font-medium ${
               isActive(link.path)
                 ? "border-b-2"
-                : "border-b-2 border-background"
+                : "border-b-2 border-transparent"
             }`}
           >
             <Link href={link.path}>{link.name}</Link>
@@ -35,11 +37,11 @@ export default function Navbar() {
         ))}
       </ul>
       <div className="flex justify-center items-center gap-4">
-        <div className="flex justify-between items-center py-2 px-[10px] rounded-sm w-auto bg-muted">
+        <div className="flex justify-between items-center h-9 px-[10px] rounded-sm w-auto bg-muted">
           <input
             type="text"
             placeholder="What are you looking for?"
-            className="text-sm text-foreground bg-transparent placeholder:text-muted-foreground outline-none w-[80%]"
+            className="text-xs text-foreground bg-transparent placeholder:text-muted-foreground outline-none w-[80%]"
           />
           <LuSearch className="text-foreground size-5" />
         </div>

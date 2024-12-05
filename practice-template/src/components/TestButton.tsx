@@ -1,7 +1,5 @@
 import { ChevronRight, MailOpen } from "lucide-react";
 import { Button } from "./ui/button";
-
-import React from "react";
 import Link from "next/link";
 
 export default function TestButton() {

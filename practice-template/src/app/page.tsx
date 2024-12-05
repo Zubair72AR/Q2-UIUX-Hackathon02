@@ -1,5 +1,5 @@
 import TestButton from "@/components/TestButton";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { ToggleButton } from "@/components/ToggleButton";
 
 export default function Home() {
   return (
