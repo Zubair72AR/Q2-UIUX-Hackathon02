@@ -4,7 +4,9 @@ import { usePathname } from "next/navigation";
 import { LuSearch } from "react-icons/lu";
 import { RiHeart3Line } from "react-icons/ri";
 import { PiShoppingCart } from "react-icons/pi";
+import { RxCross2 } from "react-icons/rx";
 import { ToggleButton } from "@/components/ToggleButton";
+import { Button } from "./ui/button";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -18,7 +20,7 @@ export default function Navbar() {
   const isActive = (path: string) => path == pathName;
 
   return (
-    <div className="flex justify-between items-center px-8 lg:px-20 xl:px-24 py-6 border-b-2">
+    <div className="relative flex justify-between items-center px-8 lg:px-20 xl:px-24 py-3 mt-5 border-b-[1px]">
       <Link href="/" className="font-bold text-xl">
         Exclusive
       </Link>
@@ -28,7 +30,7 @@ export default function Navbar() {
             key={i}
             className={`text-foreground text-sm font-medium ${
               isActive(link.path)
-                ? "border-b-2"
+                ? "border-b-2 border-secondary"
                 : "border-b-2 border-transparent"
             }`}
           >
@@ -41,7 +43,7 @@ export default function Navbar() {
           <input
             type="text"
             placeholder="What are you looking for?"
-            className="text-xs text-foreground bg-transparent placeholder:text-muted-foreground outline-none w-[80%]"
+            className="placeholder:text-xs text-sm text-foreground bg-transparent placeholder:text-muted-foreground outline-none w-[80%]"
           />
           <LuSearch className="text-foreground text-lg" />
         </div>
@@ -49,6 +51,19 @@ export default function Navbar() {
         <RiHeart3Line className="text-foreground text-xl" />
         <PiShoppingCart className="text-foreground text-xl" />
         <ToggleButton />
+      </div>
+      <div className="absolute bottom-0 left-1/2 translate-y-10 -translate-x-1/2 flex justify-between items-center h-9 pl-[10px] rounded-md w-[75%] bg-muted ">
+        <input
+          type="text"
+          placeholder="What are you looking for?"
+          className="placeholder:text-xs text-sm text-foreground bg-transparent placeholder:text-muted-foreground outline-none w-[80%]"
+        />
+        <div className="flex justify-between items-center gap-2">
+          <LuSearch className="text-foreground text-lg" />
+          <Button size={"icon"}>
+            <RxCross2 className="text-[22px]" />
+          </Button>
+        </div>
       </div>
     </div>
   );

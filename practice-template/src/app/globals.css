@@ -43,7 +43,7 @@ body {
     --destructive-foreground: 0 0% 100%; /* White text for destructive actions */
 
     /* Borders and Inputs */
-    --border: 0 0% 75%; /* Light Gray */
+    --border: 0 0% 90%; /* Light Gray */
     --input: 0 0% 85%; /* Light Gray */
 
     /* Ring and Radius */
@@ -88,7 +88,7 @@ body {
     --destructive-foreground: 0 0% 100%; /* White text for destructive actions */
 
     /* Borders and Inputs */
-    --border: 0 0% 20%; /* Dark gray */
+    --border: 0 0% 15%; /* Dark gray */
     --input: 0 0% 20%; /* Dark gray */
 
     /* Ring and Radius */
