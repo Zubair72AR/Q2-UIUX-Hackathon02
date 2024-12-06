@@ -91,100 +91,103 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="flex justify-between items-end h-full px-7 sm:px-8 lg:px-20 xl:px-24">
+    <div className="h-full px-7 sm:px-8 lg:px-20 xl:px-24">
       {/* Side Menu */}
-      <div className="w-52 space-y-3 pt-10 border-r-[1px] pr-4 relative">
-        {sideMenuList.map((e, i) => (
-          <div key={i}>
-            <div
-              className="flex justify-between items-center cursor-pointer"
-              onClick={() => sideMenuCollapse(i)}
-            >
-              <p className="text-foreground text-sm font-medium hover:text-chart-1">
-                {e.title}
-              </p>
+      <div className="flex justify-between items-start lg:items-end">
+        <div className="w-52 space-y-3 pt-10 border-r-[1px] pr-4">
+          {sideMenuList.map((e, i) => (
+            <div key={i}>
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => sideMenuCollapse(i)}
+              >
+                <p className="text-foreground text-sm font-medium hover:text-chart-1">
+                  {e.title}
+                </p>
 
-              {/* Arrow Icon and Rotate Icon */}
-              {e.icon && (
-                <FaAngleRight
-                  className={`text-sm transition-all duration-300 ${
-                    openIndex === i ? "rotate-90" : ""
-                  }`}
-                />
+                {/* Arrow Icon and Rotate Icon */}
+                {e.icon && (
+                  <FaAngleRight
+                    className={`text-sm transition-all duration-300 ${
+                      openIndex === i ? "rotate-90" : ""
+                    }`}
+                  />
+                )}
+              </div>
+
+              {/* Show Sub Menu */}
+              {openIndex === i && e.subMenu.length > 0 && (
+                <div className="space-y-1">
+                  {e.subMenu.map((subItem, index) => (
+                    <p
+                      key={index}
+                      className="text-secondary-foreground bg-secondary text-xs hover:bg-muted hover:text-chart-1 px-1 py-[2px]"
+                    >
+                      {subItem}
+                    </p>
+                  ))}
+                </div>
               )}
             </div>
-
-            {/* Show Sub Menu */}
-            {openIndex === i && e.subMenu.length > 0 && (
-              <div className="space-y-1">
-                {e.subMenu.map((subItem, index) => (
-                  <p
-                    key={index}
-                    className="text-secondary-foreground bg-secondary text-xs hover:bg-muted hover:text-chart-1 px-1 py-[2px]"
-                  >
-                    {subItem}
-                  </p>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-
-      {/* Hero Image */}
-
-      <Carousel setApi={setApi} className="w-[calc(100%-228px)]">
-        <CarouselContent>
-          {heroIMages.map((e, i) => (
-            <CarouselItem>
-              <div className="flex justify-between items-center bg-foreground w-full h-[100%] pl-16">
-                <div className="space-y-2">
-                  <div className="flex justify-start items-center gap-3">
-                    <FaApple className="text-background w-12 h-12" />
-                    <p className="text-background text-xs">{e.title}</p>
-                  </div>
-                  <div>
-                    <h1 className="text-background text-4xl leading-tight">
-                      {e.heading}
-                    </h1>
-                    <h1 className="text-background text-4xl leading-tight">
-                      off Voucher
-                    </h1>
-                  </div>
-                  <div className="flex justify-start items-center gap-2">
-                    <Link
-                      href=""
-                      className="text-background text-xs font-light border-b-[1px]"
-                    >
-                      Shop Now
-                    </Link>
-                    <FaArrowRight className="text-background text-xs" />
-                  </div>
-                </div>
-                <Image
-                  src={e.src}
-                  alt={"Hero Image"}
-                  className="h-full w-1/2"
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute left-3 top-1/2" />
-        <CarouselNext className="absolute right-3 top-1/2" />
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex justify-center items-center gap-2">
-          {heroIMages.map((e, i) => (
-            <span
-              className={`inline-block rounded-full ${
-                i === current
-                  ? "w-3 h-3 bg-secondary border-[1px] border-background"
-                  : "w-2 h-2 bg-secondary-foreground"
-              }`}
-              onClick={() => api && api.scrollTo(i)}
-            ></span>
           ))}
         </div>
-      </Carousel>
+        {/* Hero Image */}
+        <Carousel setApi={setApi} className="w-[calc(100%-228px)]">
+          <CarouselContent>
+            {heroIMages.map((e, i) => (
+              <CarouselItem>
+                <div className="flex flex-col lg:flex-row justify-between items-center gap-6 bg-foreground px-12 pt-4 ">
+                  <div className="space-y-2">
+                    <div className="flex justify-start items-center gap-3">
+                      <FaApple className="text-background w-12 h-12" />
+                      <p className="text-background text-xs">{e.title}</p>
+                    </div>
+                    <div>
+                      <h1 className="text-background text-4xl font-semibold leading-tight">
+                        {e.heading}
+                      </h1>
+                      <h1 className="text-background text-4xl font-semibold leading-tight">
+                        off Voucher
+                      </h1>
+                    </div>
+                    <div className="flex justify-start items-center gap-2">
+                      <Link
+                        href=""
+                        className="text-background text-xs font-medium border-b-[1px]"
+                      >
+                        Shop Now
+                      </Link>
+                      <FaArrowRight className="text-background text-xs" />
+                    </div>
+                  </div>
+                  <Image
+                    src={e.src}
+                    alt={"Hero Image"}
+                    width={400}
+                    height={400}
+                    className="h-72 w-auto object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-2 top-1/2" />
+          <CarouselNext className="absolute right-2 top-1/2" />
+          {/* Bullet of The Carousel */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex justify-center items-center gap-2">
+            {heroIMages.map((e, i) => (
+              <span
+                className={`inline-block rounded-full ${
+                  i === current
+                    ? "w-3 h-3 bg-primary border-[1px] border-background"
+                    : "w-2 h-2 bg-chart-2"
+                }`}
+                onClick={() => api && api.scrollTo(i)}
+              ></span>
+            ))}
+          </div>
+        </Carousel>
+      </div>
     </div>
   );
 }
