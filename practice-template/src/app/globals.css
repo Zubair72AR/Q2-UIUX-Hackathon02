@@ -105,7 +105,7 @@ body {
     --chart-1: 0 72.2% 50.6%; /* Red */
     --chart-2: 0 0% 20%; /* Dark gray */
     --chart-3: 0 0% 90%; /* Light gray */
-    --chart-4: 0 0% 0%; /* Black */
+    --chart-4: 0 0% 10%; /* Black */
     --chart-5: 0 0% 70%; /* Medium gray */
   }
 }

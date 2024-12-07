@@ -1,9 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaAngleRight } from "react-icons/fa6";
 import React from "react";
 import { FaApple } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import {
+  TbLayoutSidebarRightCollapseFilled,
+  TbLayoutSidebarRightExpandFilled,
+} from "react-icons/tb";
+
 import Image01 from "../../public/phone01.png";
 import Image02 from "../../public/phone02.png";
 import Image03 from "../../public/phone03.png";
@@ -72,6 +77,20 @@ export default function HeroSection() {
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
+  // Side Bar Setting
+  const [sideBar, setSideBar] = useState(true);
+  // Side Bar Settings as Per Media Query
+  useEffect(() => {
+    const sideBarSettings = () => {
+      if (window.innerWidth >= 1024) {
+        setSideBar(true);
+      }
+      window.addEventListener("resize", sideBarSettings);
+      sideBarSettings();
+      return () => window.removeEventListener("resize", sideBarSettings);
+    };
+  });
+
   React.useEffect(() => {
     if (!api) {
       return;
@@ -86,20 +105,33 @@ export default function HeroSection() {
   }, [api]);
 
   // Side Mene Sub Menu
-  const sideMenuCollapse = (index: number) => {
+  const sideSubMenu = (index: number) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   return (
     <div className="h-full px-7 sm:px-8 lg:px-20 xl:px-24">
       {/* Side Menu */}
-      <div className="flex justify-between items-start lg:items-end">
-        <div className="w-52 space-y-3 pt-10 border-r-[1px] pr-4">
+      <div className="relative flex justify-between items-start lg:items-end overflow-hidden">
+        <div
+          className={`w-64 lg:w-52 h-full lg:h-[360px] space-y-3 pl-8 lg:pl-0 pt-6 border-r-[1px] pr-4 absolute lg:static top-0 z-10 bg-background transition-all duration-500 lg:shadow-none dark:lg:shadow-none ${
+            sideBar
+              ? "-left-64 shadow-none"
+              : "left-0 shadow-[10px_0px_10px_rgba(0,0,0,0.9)] dark:shadow-[10px_0px_10px_rgba(0,0,0,0.4)] "
+          }`}
+        >
+          <TbLayoutSidebarRightCollapseFilled
+            className={`block lg:hidden absolute left-full ml-4 mt-2 rounded-sm w-8 h-8 text-foreground bg-background animate-pulse transition-all duration-1000 ease-out ${
+              sideBar ? "rotate-0" : "rotate-180"
+            }`}
+            onClick={() => setSideBar((prev) => !prev)}
+          />
+
           {sideMenuList.map((e, i) => (
             <div key={i}>
               <div
                 className="flex justify-between items-center cursor-pointer"
-                onClick={() => sideMenuCollapse(i)}
+                onClick={() => sideSubMenu(i)}
               >
                 <p className="text-foreground text-sm font-medium hover:text-chart-1">
                   {e.title}
@@ -132,21 +164,24 @@ export default function HeroSection() {
           ))}
         </div>
         {/* Hero Image */}
-        <Carousel setApi={setApi} className="w-[calc(100%-228px)]">
+        <Carousel
+          setApi={setApi}
+          className="w-full lg:w-[calc(100%-228px)] h-full"
+        >
           <CarouselContent>
             {heroIMages.map((e, i) => (
               <CarouselItem>
-                <div className="flex flex-col lg:flex-row justify-between items-center gap-6 bg-foreground px-12 pt-4 ">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-foreground px-2 sm:px-11 pt-4 mt-4">
                   <div className="space-y-2">
-                    <div className="flex justify-start items-center gap-3">
+                    <div className="flex justify-start items-center gap-2">
                       <FaApple className="text-background w-12 h-12" />
                       <p className="text-background text-xs">{e.title}</p>
                     </div>
                     <div>
-                      <h1 className="text-background text-4xl font-semibold leading-tight">
+                      <h1 className="text-background text-3xl sm:text-4xl font-semibold leading-tight">
                         {e.heading}
                       </h1>
-                      <h1 className="text-background text-4xl font-semibold leading-tight">
+                      <h1 className="text-background text-3xl sm:text-4xl font-semibold leading-tight">
                         off Voucher
                       </h1>
                     </div>
@@ -163,9 +198,9 @@ export default function HeroSection() {
                   <Image
                     src={e.src}
                     alt={"Hero Image"}
-                    width={400}
-                    height={400}
-                    className="h-72 w-auto object-cover"
+                    width={300}
+                    height={300}
+                    className="h-auto sm:h-80 w-auto object-contain"
                   />
                 </div>
               </CarouselItem>
