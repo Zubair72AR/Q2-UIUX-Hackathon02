@@ -87,7 +87,9 @@ export default function HeroSection() {
       }
       window.addEventListener("resize", sideBarSettings);
       sideBarSettings();
-      return () => window.removeEventListener("resize", sideBarSettings);
+      return () => {
+        window.removeEventListener("resize", sideBarSettings);
+      };
     };
   });
 
