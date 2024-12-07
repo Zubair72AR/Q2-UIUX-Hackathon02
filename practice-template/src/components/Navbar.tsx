@@ -196,7 +196,7 @@ export default function Navbar() {
 
       {/* Nav Links for Mobile Devices */}
       <ul
-        className={`fixed top-0 h-screen w-full xs:w-2/3 bg-[rgba(225,225,225,0.4)] dark:bg-[rgba(0,0,0,0.4)]  backdrop-blur-sm	py-12 flex flex-col border-r-2 transition-all duration-1000 ${
+        className={`z-50 fixed top-0 h-screen w-full xs:w-2/3 bg-[rgba(225,225,225,0.6)] dark:bg-[rgba(0,0,0,0.6)]  backdrop-blur-lg	py-12 flex flex-col border-r-2 transition-all duration-1000 ${
           isMenuVisible ? "left-0 shadow-lg" : "-left-full"
         }`}
       >
