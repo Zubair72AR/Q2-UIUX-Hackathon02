@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 
 export default function Footer() {
   return (
-    <footer className="bg-foreground  text-background dark:bg-secondary  dark:text-secondary-foreground px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div className="bg-foreground  text-background dark:bg-secondary  dark:text-secondary-foreground px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 pb-4 sm:pb-10 pt-10 sm:pt-12">
         {/* Company Footer Info and Useful Links */}
         <div className="grid grid-cols-2 xs:grid-cols-3 gap-8 ">
@@ -135,6 +135,6 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-    </footer>
+    </div>
   );
 }

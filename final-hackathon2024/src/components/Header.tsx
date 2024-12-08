@@ -68,18 +68,16 @@ export default function Header() {
   });
 
   return (
-    <header className="relative bg-background text-foreground dark:bg-primary-foreground dark:text-primary py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div className="relative bg-background text-foreground dark:bg-primary-foreground dark:text-primary py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       {/* Top Navbar */}
       <div className="flex justify-between items-center">
         {/* Search Icon for Large Media Size */}
         <LuSearch className="text-lg hidden md:block cursor-pointer" />
 
         {/* Logo */}
-        <h2 className="text-xl ">
-          <Link href="/" className="text-xl font-medium">
-            Avion
-          </Link>
-        </h2>
+        <Link href="/" className="text-xl font-medium">
+          Avion
+        </Link>
 
         {/* NavBar Right Side Icons */}
         <div className="flex justify-between items-center gap-3">
@@ -108,22 +106,21 @@ export default function Header() {
       <hr className="border-chart-4 my-4" />
 
       {/* NavLinks for Large Screen */}
-      <ul className="hidden md:flex justify-center items-center gap-6 ">
+      <div className="hidden md:flex justify-center items-center gap-6 ">
         {navLinks.map((e, i) => (
-          <li key={i}>
-            <Link
-              href={e.path}
-              className={`list-none text-sm font-medium hover:text-chart-1 transition-all duration-200 ${
-                isActive(e.path) ? "text-chart-1" : "text-chart-5"
-              }`}
-            >
-              {e.label}
-            </Link>
-          </li>
+          <Link
+            key={i}
+            href={e.path}
+            className={`list-none text-sm font-medium hover:text-chart-1 transition-all duration-200 ${
+              isActive(e.path) ? "text-chart-1" : "text-chart-5"
+            }`}
+          >
+            {e.label}
+          </Link>
         ))}
-      </ul>
+      </div>
       <div
-        className={`absolute top-0 left-0 h-screen pt-16 w-full xs:w-2/3 bg-[rgb(255,255,255,0.8)] dark:bg-[rgb(42,37,75,0.8)]  backdrop-blur-lg border-r-2 transition-all duration-1000 ${
+        className={`absolute top-0 left-0 h-screen pt-16 w-full xs:w-10 bg-[rgb(255,255,255,0.8)] dark:bg-[rgb(42,37,75,0.8)] backdrop-blur-lg border-r-2 transition-all duration-1000 ${
           isMenuVisible ? "left-0 shadow-lg" : "-left-full"
         }`}
       >
@@ -139,23 +136,22 @@ export default function Header() {
         </Button>
 
         {/* NavLinks for Mobile Devices */}
-        <ul className="space-y-1">
+        <div className="space-y-1">
           {navLinks.map((e, i) => (
-            <li key={i}>
-              <Link
-                href={e.path}
-                className={`list-none text-sm font-medium  text-foreground pl-8 w-full hover:bg-foreground hover:text-background inline-block py-1 ${
-                  isActive(e.path) ? "border-b-2" : ""
-                }`}
-                onClick={() => {
-                  setIsMenuVisible(false);
-                }}
-              >
-                {e.label}
-              </Link>
-            </li>
+            <Link
+              key={i}
+              href={e.path}
+              className={`list-none text-sm font-medium  text-foreground pl-8 w-full hover:bg-foreground hover:text-background inline-block py-1 ${
+                isActive(e.path) ? "border-b-2" : ""
+              }`}
+              onClick={() => {
+                setIsMenuVisible(false);
+              }}
+            >
+              {e.label}
+            </Link>
           ))}
-        </ul>
+        </div>
 
         {/* Cart Icon, Profile Icon, Social Media Info */}
         <div className="flex justify-start items-center text-foreground gap-5 mt-4 pl-8">
@@ -208,6 +204,6 @@ export default function Header() {
           </Link>
         </div>
       </div>
-    </header>
+    </div>
   );
 }
