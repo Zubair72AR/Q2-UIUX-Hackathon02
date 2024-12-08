@@ -34,13 +34,44 @@ const clashDisplay = localFont({
       weight: "700",
       style: "normal",
     },
-    {
-      path: "../../public/fonts/ClashDisplay-Variable.woff",
-      weight: "100 900", // Variable font range
-      style: "normal",
-    },
   ],
   variable: "--font-clash-display",
+});
+
+const satoshi = localFont({
+  src: [
+    { path: "../../public/fonts/Satoshi-Regular.woff", weight: "400" },
+    { path: "../../public/fonts/Satoshi-Bold.woff", weight: "700" },
+    {
+      path: "../../public/fonts/Satoshi-Italic.woff",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/Satoshi-BoldItalic.woff",
+      weight: "700",
+      style: "italic",
+    },
+    { path: "../../public/fonts/Satoshi-Light.woff", weight: "300" },
+    {
+      path: "../../public/fonts/Satoshi-LightItalic.woff",
+      weight: "300",
+      style: "italic",
+    },
+    { path: "../../public/fonts/Satoshi-Medium.woff", weight: "500" },
+    {
+      path: "../../public/fonts/Satoshi-MediumItalic.woff",
+      weight: "500",
+      style: "italic",
+    },
+    { path: "../../public/fonts/Satoshi-Black.woff", weight: "900" },
+    {
+      path: "../../public/fonts/Satoshi-BlackItalic.woff",
+      weight: "900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-satoshi",
 });
 
 export const metadata: Metadata = {
@@ -55,7 +86,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${clashDisplay.variable} antialiased`}>{children}</body>
+      <body
+        className={`${clashDisplay.variable} ${satoshi.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
