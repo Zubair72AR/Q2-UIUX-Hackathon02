@@ -68,7 +68,7 @@ export default function Header() {
   });
 
   return (
-    <div className="relative bg-background text-foreground dark:bg-primary-foreground dark:text-primary py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 ">
+    <header className="relative bg-background text-foreground dark:bg-primary-foreground dark:text-primary py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       {/* Top Navbar */}
       <div className="flex justify-between items-center">
         {/* Search Icon for Large Media Size */}
@@ -144,7 +144,7 @@ export default function Header() {
             <li key={i}>
               <Link
                 href={e.path}
-                className={`list-none text-sm text-foreground pl-8 w-full hover:bg-foreground hover:text-background inline-block py-1 ${
+                className={`list-none text-sm font-medium  text-foreground pl-8 w-full hover:bg-foreground hover:text-background inline-block py-1 ${
                   isActive(e.path) ? "border-b-2" : ""
                 }`}
                 onClick={() => {
@@ -163,7 +163,7 @@ export default function Header() {
           <CgProfile className="text-xl cursor-pointer" />
         </div>
         {/* Social Icons */}
-        <div className="flex justify-start items-center gap-4 mt-4 pl-8">
+        <div className="flex justify-start items-center gap-4 mt-4 pl-8 text-foreground">
           <Link
             href="https://www.linkedin.com/"
             target="_blank"
@@ -208,6 +208,6 @@ export default function Header() {
           </Link>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
