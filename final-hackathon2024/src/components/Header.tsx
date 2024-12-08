@@ -72,11 +72,11 @@ export default function Header() {
       {/* Top Navbar */}
       <div className="flex justify-between items-center">
         {/* Search Icon for Large Media Size */}
-        <LuSearch className="text-lg hidden md:block" />
+        <LuSearch className="text-lg hidden md:block cursor-pointer" />
 
         {/* Logo */}
         <h2 className="text-xl ">
-          <Link href="/" className="text-xl ">
+          <Link href="/" className="text-xl font-medium">
             Avion
           </Link>
         </h2>
@@ -84,11 +84,11 @@ export default function Header() {
         {/* NavBar Right Side Icons */}
         <div className="flex justify-between items-center gap-3">
           {/* Search Icon for Mobile Devices */}
-          <LuSearch className="text-lg block md:hidden" />
+          <LuSearch className="text-lg block md:hidden cursor-pointer" />
 
           {/* Menu Icon for Mobile Devices */}
           <div
-            className="text-lg block md:hidden"
+            className="text-lg block md:hidden cursor-pointer"
             onClick={() => {
               setIsMenuVisible((prev) => !prev);
             }}
@@ -97,8 +97,8 @@ export default function Header() {
           </div>
 
           {/* Shopping Cart, Profile Icon, Light and Dark Toggle Button */}
-          <MdOutlineShoppingCart className="text-lg hidden md:block" />
-          <CgProfile className="text-lg hidden md:block" />
+          <MdOutlineShoppingCart className="text-lg hidden md:block cursor-pointer" />
+          <CgProfile className="text-lg hidden md:block cursor-pointer" />
           <RxDividerVertical className="text-chart-3 " />
           <ToggleButton />
         </div>
@@ -108,12 +108,12 @@ export default function Header() {
       <hr className="border-chart-4 my-4" />
 
       {/* NavLinks for Large Screen */}
-      <ul className="hidden md:flex justify-center items-center gap-6">
+      <ul className="hidden md:flex justify-center items-center gap-6 ">
         {navLinks.map((e, i) => (
           <li key={i}>
             <Link
               href={e.path}
-              className={`list-none text-sm ${
+              className={`list-none text-sm font-medium hover:text-chart-1 transition-all duration-200 ${
                 isActive(e.path) ? "text-chart-1" : "text-chart-5"
               }`}
             >
@@ -159,11 +159,11 @@ export default function Header() {
 
         {/* Cart Icon, Profile Icon, Social Media Info */}
         <div className="flex justify-start items-center text-foreground gap-5 mt-4 pl-8">
-          <MdOutlineShoppingCart className="text-xl" />
-          <CgProfile className="text-xl" />
+          <MdOutlineShoppingCart className="text-xl cursor-pointer" />
+          <CgProfile className="text-xl cursor-pointer" />
         </div>
         {/* Social Icons */}
-        <div className="flex xs:hidden justify-start items-center gap-4 md:gap-6 mt-4 pl-8">
+        <div className="flex justify-start items-center gap-4 mt-4 pl-8">
           <Link
             href="https://www.linkedin.com/"
             target="_blank"
