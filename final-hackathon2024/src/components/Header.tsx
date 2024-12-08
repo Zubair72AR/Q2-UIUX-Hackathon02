@@ -4,6 +4,7 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { HiMenu } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
+import { RxDividerVertical } from "react-icons/rx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -51,7 +52,7 @@ export default function Header() {
   return (
     <div className="bg-background text-foreground dark:bg-primary-foreground dark:text-primary py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 ">
       <div className="flex justify-between items-center">
-        <LuSearch className="text-lg" />
+        <LuSearch className="text-lg hidden md:block" />
         <h2 className="text-2xl">
           {" "}
           <Link href="/" className="text-2xl">
@@ -59,19 +60,20 @@ export default function Header() {
           </Link>
         </h2>
         <div className="flex justify-between items-center gap-3">
-          <LuSearch className="text-lg" />
+          <LuSearch className="text-lg block md:hidden" />
           {isMenuVisible ? (
-            <AiOutlineClose className="text-lg" />
+            <AiOutlineClose className="text-lg block md:hidden" />
           ) : (
-            <HiMenu className="text-lg" />
+            <HiMenu className="text-lg block md:hidden" />
           )}
           <MdOutlineShoppingCart className="text-lg" />
           <CgProfile className="text-lg" />
+          <RxDividerVertical className="text-chart-3" />
           <ToggleButton />
         </div>
       </div>
       <hr className="border-chart-4 my-4" />
-      <ul className="flex justify-center items-center gap-6">
+      <ul className="hidden md:flex justify-center items-center gap-6">
         {navLinks.map((e, i) => (
           <li key={i}>
             <Link

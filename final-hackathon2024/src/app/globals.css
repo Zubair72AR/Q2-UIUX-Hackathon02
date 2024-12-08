@@ -54,8 +54,8 @@ h6 {
   }
 
   .dark {
-    --background: 224 71.4% 4.1%; /* Dark Background */
-    --foreground: 210 20% 98%; /* Light Foreground */
+    --background: 248, 34%, 22%; /* Dark Background */
+    --foreground: 0 0% 100%; /* Light Foreground */
     --card: 224 71.4% 4.1%; /* Dark Card */
     --card-foreground: 210 20% 98%; /* Light Card Foreground */
     --popover: 224 71.4% 4.1%; /* Dark Popover */
