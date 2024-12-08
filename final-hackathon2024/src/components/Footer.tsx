@@ -9,7 +9,7 @@ export default function Footer() {
     <div className="bg-foreground  text-background dark:bg-secondary  dark:text-secondary-foreground  px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 pb-4 sm:pb-10 pt-10 sm:pt-12">
         {/* Company Footer Info and Useful Links */}
-        <div className="flex flex-wrap justify-between items-start gap-8 xs:gap-10">
+        <div className="flex flex-wrap justify-between items-start gap-10 xs:gap-12">
           <div className="space-y-2">
             <h4>Menu</h4>
             <Link href="#" className="text-sm font-light block">
