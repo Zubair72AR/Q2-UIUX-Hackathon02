@@ -68,7 +68,7 @@ export default function Header() {
   });
 
   return (
-    <div className="relative bg-background text-foreground py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div className="relative bg-background text-foreground pt-5 md:py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       {/* Top Navbar */}
       <div className="flex justify-between items-center">
         {/* Search Icon for Large Media Size */}
@@ -103,7 +103,7 @@ export default function Header() {
       </div>
 
       {/* Horizontal Line for Large Screen Only */}
-      <hr className="border-chart-4 my-4" />
+      <hr className="border-chart-4 dark:border-chart-5 mb-0 mt-4 md:my-4" />
 
       {/* NavLinks for Large Screen */}
       <div className="hidden md:flex justify-center items-center gap-6 ">
@@ -122,7 +122,7 @@ export default function Header() {
         ))}
       </div>
       <div
-        className={`absolute top-0 h-screen pt-16 w-full xs:w-[65%] bg-[rgb(245,245,245,0.7)] dark:bg-[rgb(42,37,75,0.7)] backdrop-blur-md border-r-2 transition-all duration-1000 ${
+        className={`absolute top-0 h-screen pt-16 w-full xs:w-[65%] bg-[rgb(245,245,245,0.7)] dark:bg-[rgb(42,37,75,0.7)] backdrop-blur-xl border-r-2 transition-all duration-1000 ${
           isMenuVisible ? "left-0 shadow-lg" : "-left-full"
         }`}
       >
