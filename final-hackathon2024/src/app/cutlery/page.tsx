@@ -1,5 +1,11 @@
+import TestButton from "@/components/TestButton";
 import React from "react";
 
 export default function Cutlery() {
-  return <div>Cutlery</div>;
+  return (
+    <div>
+      Cutlery
+      <TestButton />
+    </div>
+  );
 }

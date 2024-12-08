@@ -1,11 +1,8 @@
 import HeroSection from "@/components/HeroSection";
+import JoinClub from "@/components/JoinClub";
 import MakesOurBrand from "@/components/MakesOurBrand";
 import NewCeramics from "@/components/NewCeramics";
 import PopularProducts from "@/components/PopularProducts";
-import TestButton from "@/components/TestButton";
-import Test from "@/components/Text";
-import { ToggleButton } from "@/components/ToggleButton";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -14,8 +11,7 @@ export default function Home() {
       <MakesOurBrand />
       <NewCeramics />
       <PopularProducts />
-      <Test />
-      <TestButton />
+      <JoinClub />
     </div>
   );
 }

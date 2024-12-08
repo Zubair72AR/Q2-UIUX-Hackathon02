@@ -1,16 +1,38 @@
+"use client";
+import { useTheme } from "next-themes";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function MakesOurBrand() {
+  const { theme } = useTheme();
+  const [img01, setImg01] = useState("/Delivery.svg");
+  const [img02, setImg02] = useState("/Checkmark.svg");
+  const [img03, setImg03] = useState("/Purchase.svg");
+  const [img04, setImg04] = useState("/Sprout.svg");
+
+  useEffect(() => {
+    // Update the image source based on theme
+    if (theme === "dark") {
+      setImg01("/DeliveryW.svg");
+      setImg02("/CheckmarkW.svg");
+      setImg03("/PurchaseW.svg");
+      setImg04("/SproutW.svg");
+    } else {
+      setImg01("/Delivery.svg");
+      setImg02("/Checkmark.svg");
+      setImg03("/Purchase.svg");
+      setImg04("/Sprout.svg");
+    }
+  }, [theme]);
   return (
     <div className="py-14 space-y-10 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       <h2 className="text-2xl md:text-center">
         What makes our brand different
       </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-        <div className="space-y-3">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="space-y-3 bg-[hsl(0,0%,98%)] p-8 dark:bg-chart-2">
           <Image
-            src="/Delivery.svg"
+            src={img01}
             alt="Delivery"
             width={50}
             height={50}
@@ -19,9 +41,9 @@ export default function MakesOurBrand() {
           <h3 className="text-xl">Next day as standard</h3>
           <p>Order before 3pm and get your order the next day as standard</p>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-3 bg-[hsl(0,0%,98%)] p-8 dark:bg-chart-2">
           <Image
-            src="/Checkmark.svg"
+            src={img02}
             alt="Checkmark"
             width={50}
             height={50}
@@ -30,9 +52,9 @@ export default function MakesOurBrand() {
           <h3 className="text-xl">Made by true artisans</h3>
           <p>Handmade crafted goods made with real passion and craftmanship</p>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-3 bg-[hsl(0,0%,98%)] p-8 dark:bg-chart-2">
           <Image
-            src="/Purchase.svg"
+            src={img03}
             alt="Purchase"
             width={50}
             height={50}
@@ -43,9 +65,9 @@ export default function MakesOurBrand() {
             For our materials and quality you won’t find better prices anywhere
           </p>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-3 bg-[hsl(0,0%,98%)] p-8 dark:bg-chart-2">
           <Image
-            src="/Sprout.svg"
+            src={img04}
             alt="Sprout"
             width={50}
             height={50}

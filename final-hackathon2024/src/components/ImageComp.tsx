@@ -22,8 +22,8 @@ export default function ImageComp({
         height={200}
         className={`object-contain ${className}`}
       />
-      <h3 className="text-base md:text-lg lg:text-xl mt-1 md:mt-3">{dec}</h3>
-      <p className="text-sm md:text-base lg:text-lg -mt-1 md:mt-1">{prices}</p>
+      <h3 className="text-base md:text-lg lg:text-xl mt-2 md:mt-3">{dec}</h3>
+      <p className="text-sm md:text-base lg:text-lg mt-0 md:mt-1">{prices}</p>
     </div>
   );
 }
