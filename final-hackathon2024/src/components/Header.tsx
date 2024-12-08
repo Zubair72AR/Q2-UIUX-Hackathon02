@@ -68,7 +68,7 @@ export default function Header() {
   });
 
   return (
-    <div className="relative bg-background text-foreground dark:bg-primary-foreground dark:text-primary py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div className="relative bg-background text-foreground py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       {/* Top Navbar */}
       <div className="flex justify-between items-center">
         {/* Search Icon for Large Media Size */}
@@ -112,7 +112,9 @@ export default function Header() {
             key={i}
             href={e.path}
             className={`list-none text-sm font-medium hover:text-chart-1 transition-all duration-200 ${
-              isActive(e.path) ? "text-chart-1" : "text-chart-5"
+              isActive(e.path)
+                ? "text-chart-1 dark:text-white"
+                : "text-chart-5 dark:text-chart-3"
             }`}
           >
             {e.label}
