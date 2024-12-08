@@ -94,42 +94,42 @@ export default function Footer() {
           <Link
             href="https://www.linkedin.com/"
             target="_blank"
-            className="text-2xl"
+            className="text-2xl hover:text-[#cbc7db] hover:scale-110 transition-all duration-500"
           >
             <FaLinkedin />
           </Link>
           <Link
             href="https://www.facebook.com/"
             target="_blank"
-            className="text-2xl"
+            className="text-2xl hover:text-[#cbc7db] hover:scale-110 transition-all duration-500"
           >
             <ImFacebook2 />
           </Link>
           <Link
             href="https://www.instagram.com/"
             target="_blank"
-            className="text-2xl"
+            className="text-2xl hover:text-[#cbc7db] hover:scale-110 transition-all duration-500"
           >
             <FaInstagram />
           </Link>
           <Link
             href="https://www.skype.com/"
             target="_blank"
-            className="text-2xl"
+            className="text-2xl hover:text-[#cbc7db] hover:scale-110 transition-all duration-500"
           >
             <FaSkype />
           </Link>
           <Link
             href="https://twitter.com/"
             target="_blank"
-            className="text-2xl"
+            className="text-2xl hover:text-[#cbc7db] hover:scale-110 transition-all duration-500"
           >
             <FaTwitter />
           </Link>
           <Link
             href="https://www.pinterest.com/"
             target="_blank"
-            className="text-2xl"
+            className="text-2xl hover:text-[#cbc7db] hover:scale-110 transition-all duration-500"
           >
             <FaPinterest />
           </Link>
