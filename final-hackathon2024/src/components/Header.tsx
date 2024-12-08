@@ -120,7 +120,7 @@ export default function Header() {
         ))}
       </div>
       <div
-        className={`absolute top-0 left-0 h-screen pt-16 w-full xs:w-10 bg-[rgb(255,255,255,0.8)] dark:bg-[rgb(42,37,75,0.8)] backdrop-blur-lg border-r-2 transition-all duration-1000 ${
+        className={`absolute top-0 h-screen pt-16 w-full xs:w-[65%] bg-[rgb(245,245,245,0.7)] dark:bg-[rgb(42,37,75,0.7)] backdrop-blur-md border-r-2 transition-all duration-1000 ${
           isMenuVisible ? "left-0 shadow-lg" : "-left-full"
         }`}
       >

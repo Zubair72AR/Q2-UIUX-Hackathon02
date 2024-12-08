@@ -38,8 +38,7 @@ h6 {
     --secondary-foreground: 248, 34%, 22%; /* Dark Primary */
     --muted: 220 14.3% 95.9%; /* Muted */
     --muted-foreground: 220 8.9% 46.1%; /* Muted Foreground */
-    --light: 0 0% 100%; /* White */
-    --light-foreground: 252, 21%, 82%; /* Dark Border */
+
     --accent: 220 14.3% 95.9%; /* Accent */
     --accent-foreground: 220.9 39.3% 11%; /* Accent Foreground */
     --destructive: 0 84.2% 60.2%; /* Destructive */
@@ -68,8 +67,7 @@ h6 {
     --secondary-foreground: 248, 34%, 22%; /* Dark Primary */
     --muted: 220 14.3% 95.9%; /* Muted */
     --muted-foreground: 220 8.9% 46.1%; /* Muted Foreground */
-    --light: 0 0% 100%; /* White */
-    --light-foreground: 0 84.2% 60.2%; /* Destructive */
+
     --accent: 220 14.3% 95.9%; /* Accent */
     --accent-foreground: 248, 34%, 22%; /* Dark Primary */
     --destructive: 0 84.2% 60.2%; /* Destructive */

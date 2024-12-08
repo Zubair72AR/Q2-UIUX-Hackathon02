@@ -1,6 +1,5 @@
-"use client";
-
-import { Moon, Sun } from "lucide-react";
+import { FiSun } from "react-icons/fi";
+import { FiMoon } from "react-icons/fi";
 import { useTheme } from "next-themes";
 
 export function ToggleButton() {
@@ -13,11 +12,10 @@ export function ToggleButton() {
   return (
     <button onClick={toggleTheme}>
       {theme === "dark" ? (
-        <Sun className="h-[1.2rem] w-[1.2rem]" />
+        <FiSun className="text-lg" />
       ) : (
-        <Moon className="h-[1.2rem] w-[1.2rem]" />
+        <FiMoon className="text-lg" />
       )}
-      <span className="sr-only">Toggle theme</span>
     </button>
   );
 }
