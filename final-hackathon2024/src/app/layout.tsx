@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { ThemeProvider } from "@/components/Theme-Provider";
 
 const clashDisplay = localFont({
   src: [
@@ -89,7 +92,16 @@ export default function RootLayout({
       <body
         className={`${clashDisplay.variable} ${satoshi.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

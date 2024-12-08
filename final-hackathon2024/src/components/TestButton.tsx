@@ -5,6 +5,37 @@ import Link from "next/link";
 export default function TestButton() {
   return (
     <div className="flex justify-between items-center flex-wrap gap-6 p-12">
+      <p className="font-extralight">Extralight</p>
+      <p className="font-light">Light</p>
+      <p className="font-regular ">Regular</p>
+      <p className="font-medium">Medium</p>
+      <p className="font-semibold">Semibold</p>
+      <p className="font-bold text-[hsl(248,19%,34%)]">Bold</p>
+
+      <span className="bg-[hsl(248,34%,22%)] h-10 w-auto rounded-sm text-white">
+        Dark Primary
+      </span>
+      <span className="bg-chart-1 h-10 w-10 rounded-sm text-white">aaa</span>
+      <span className="bg-[hsl(241,31%,44%)] h-10 w-auto rounded-sm text-white">
+        Primary
+      </span>
+      <span className="bg-chart-2 h-10 w-10 rounded-sm text-white">aaa</span>
+      <span className="bg-[hsl(0,0%,98%)] h-10 w-auto rounded-sm text-white">
+        Light Gray
+      </span>
+      <span className="bg-[hsl(252,21%,82%)] h-10 w-auto rounded-sm text-white">
+        Dark Border
+      </span>
+      <span className="bg-chart-3 h-10 w-10 rounded-sm text-white">aaa</span>
+      <span className="bg-[hsl(255,35%,93%)] h-10 w-auto rounded-sm text-white">
+        Border Gray
+      </span>
+      <span className="bg-chart-4 h-10 w-10 rounded-sm text-white">aaa</span>
+      <span className="bg-[hsl(0,0%,100%)] h-10 w-auto rounded-sm text-white">
+        White
+      </span>
+      <span className="bg-chart-5 h-10 w-10 rounded-sm text-white">aaa</span>
+
       <Button variant="default">default</Button>
       <Button variant="default">
         <MailOpen />

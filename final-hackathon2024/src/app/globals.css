@@ -24,60 +24,60 @@ h5,
 h6 {
   font-family: var(--font-clash-display), serif;
 }
-
 @layer base {
   :root {
-    --background: 0 0% 100%; /* Light Gray (F9F9F9) */
-    --foreground: 248, 34%, 22%; /* Dark Primary (2A254B) */
+    --background: 0 0% 100%; /* White */
+    --foreground: 248, 34%, 22%; /* Dark Primary */
     --card: 0 0% 100%; /* White */
-    --card-foreground: 248, 34%, 22%; /* Dark Primary */
+    --card-foreground: 224 71.4% 4.1%; /* Card Foreground */
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 248, 34%, 22%; /* Dark Primary */
-    --primary: 248, 19%, 34%; /* Primary (4E4D93) */
+    --popover-foreground: 224 71.4% 4.1%; /* Popover Foreground */
+    --primary: 248, 19%, 34%; /* Primary */
     --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 240 10% 94%; /* Border Gray (EBE8F4) */
+    --secondary: 255, 35%, 93%; /* Border Gray */
     --secondary-foreground: 248, 34%, 22%; /* Dark Primary */
-    --muted: 240 10% 94%; /* Border Gray (EBE8F4) */
-    --muted-foreground: 246 15% 45%; /* Medium Gray */
-    --accent: 0 0% 98%; /* Light Gray */
-    --accent-foreground: 248, 34%, 22%; /* Dark Primary */
-    --destructive: 0 62% 50%; /* Destructive Color (Example) */
-    --destructive-foreground: 0 0% 100%; /* White */
-    --border: 240 10% 80%; /* Dark Border (CAC6DA) */
-    --input: 240 10% 80%; /* Border Gray (EBE8F4) */
-    --ring: 248, 34%, 22%; /* Dark Primary */
-    --chart-1: 12 76% 60%; /* Chart Color */
-    --chart-2: 173 58% 40%; /* Chart Color */
-    --chart-3: 197 37% 25%; /* Chart Color */
-    --chart-4: 43 74% 65%; /* Chart Color */
-    --chart-5: 27 87% 70%; /* Chart Color */
-    --radius: 0.5rem;
-  }
-  .dark {
-    --background: 248, 34%, 22%; /* Dark Primary (2A254B) */
-    --foreground: 0 0% 98%; /* Light Gray */
-    --card: 248, 34%, 22%; /* Dark Primary (2A254B) */
-    --card-foreground: 0 0% 98%; /* Light Gray */
-    --popover: 248, 34%, 22%; /* Dark Primary (2A254B) */
-    --popover-foreground: 0 0% 98%; /* Light Gray */
-    --primary: 0 0% 98%; /* Light Gray */
-    --primary-foreground: 248, 34%, 22%; /* Dark Primary */
-    --secondary: 248, 19%, 34%; /* Primary (4E4D93) */
-    --secondary-foreground: 0 0% 98%; /* Light Gray */
-    --muted: 248, 19%, 34%; /* Primary (4E4D93) */
-    --muted-foreground: 0 0% 63%; /* Medium Gray */
-    --accent: 248, 34%, 22%; /* Dark Primary (2A254B) */
-    --accent-foreground: 0 0% 98%; /* Light Gray */
-    --destructive: 0 62% 50%; /* Destructive Color (Example) */
-    --destructive-foreground: 0 0% 100%; /* White */
-    --border: 248, 19%, 34%; /* Primary (4E4D93) */
-    --input: 248, 19%, 34%; /* Primary (4E4D93) */
-    --ring: 0 0% 98%; /* Light Gray */
+    --muted: 220 14.3% 95.9%; /* Muted */
+    --muted-foreground: 220 8.9% 46.1%; /* Muted Foreground */
+    --accent: 220 14.3% 95.9%; /* Accent */
+    --accent-foreground: 220.9 39.3% 11%; /* Accent Foreground */
+    --destructive: 0 84.2% 60.2%; /* Destructive */
+    --destructive-foreground: 210 20% 98%; /* White */
+    --border: 220 13% 91%; /* Border */
+    --input: 220 13% 91%; /* Input */
+    --ring: 262.1 83.3% 57.8%; /* Ring */
+    --radius: 0.5rem; /* Radius */
     --chart-1: 248, 34%, 22%; /* Dark Primary (2A254B) */
     --chart-2: 248, 19%, 34%; /* Primary (4E4D93) */
-    --chart-3: 0 0% 98%; /* Light Gray */
-    --chart-4: 248, 19%, 34%; /* Primary (4E4D93) */
-    --chart-5: 248, 34%, 22%; /* Dark Primary (2A254B) */
+    --chart-3: 252, 21%, 82%; /* Dark Border */
+    --chart-4: 255, 35%, 93%; /* Border Gray (EBE8F4) */
+    --chart-5: 241, 31%, 44%; /* 2nd Primary */
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%; /* Dark Background */
+    --foreground: 210 20% 98%; /* Light Foreground */
+    --card: 224 71.4% 4.1%; /* Dark Card */
+    --card-foreground: 210 20% 98%; /* Light Card Foreground */
+    --popover: 224 71.4% 4.1%; /* Dark Popover */
+    --popover-foreground: 210 20% 98%; /* Light Popover Foreground */
+    --primary: 248, 19%, 34%; /* Primary */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 255, 35%, 93%; /* Border Gray */
+    --secondary-foreground: 248, 34%, 22%; /* Dark Primary */
+    --muted: 220 14.3% 95.9%; /* Muted */
+    --muted-foreground: 220 8.9% 46.1%; /* Muted Foreground */
+    --accent: 220 14.3% 95.9%; /* Accent */
+    --accent-foreground: 248, 34%, 22%; /* Dark Primary */
+    --destructive: 0 84.2% 60.2%; /* Destructive */
+    --destructive-foreground: 210 20% 98%; /* White */
+    --border: 248, 34%, 22%; /* Dark Primary (Adjusted Border) */
+    --input: 248, 34%, 22%; /* Dark Primary (Adjusted Input) */
+    --ring: 262.1 83.3% 57.8%; /* Ring */
+    --chart-1: 248, 34%, 22%; /* Dark Primary (2A254B) */
+    --chart-2: 248, 19%, 34%; /* Primary (4E4D93) */
+    --chart-3: 252, 21%, 82%; /* Dark Border */
+    --chart-4: 255, 35%, 93%; /* Border Gray (EBE8F4) */
+    --chart-5: 241, 31%, 44%; /* 2nd Primary */
   }
 }
 
@@ -89,3 +89,14 @@ h6 {
     @apply bg-background text-foreground;
   }
 }
+
+/*
+
+sm	450px	@media (min-width: 480px) { ... }
+sm	640px	@media (min-width: 640px) { ... }
+md	768px	@media (min-width: 768px) { ... }
+lg	1024px	@media (min-width: 1024px) { ... }
+xl	1280px	@media (min-width: 1280px) { ... }
+2xl	1536px	@media (min-width: 1536px) { ... }
+
+*/
