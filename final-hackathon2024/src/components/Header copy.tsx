@@ -17,16 +17,32 @@ import { Button } from "./ui/button";
 
 const navLinks = [
   {
-    path: "/about-us",
-    label: "About us",
+    path: "/plant-pots",
+    label: "Plant pots",
   },
   {
-    path: "/contact",
-    label: "Contact",
+    path: "/ceramics",
+    label: "Ceramics",
   },
   {
-    path: "/blog",
-    label: "Blog",
+    path: "/tables",
+    label: "Tables",
+  },
+  {
+    path: "/chairs",
+    label: "Chairs",
+  },
+  {
+    path: "/crockery",
+    label: "Crockery",
+  },
+  {
+    path: "/tableware",
+    label: "Tableware",
+  },
+  {
+    path: "/cutlery",
+    label: "Cutlery",
   },
 ];
 
