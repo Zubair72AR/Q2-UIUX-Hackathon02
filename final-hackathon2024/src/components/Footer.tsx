@@ -12,58 +12,58 @@ export default function Footer() {
         <div className="grid grid-cols-2 xs:grid-cols-3 gap-8 ">
           <div className="space-y-2">
             <h4>Menu</h4>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               New arrivals
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Best sellers
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Recently viewed
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Popular this week
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               All products
             </Link>
           </div>
           <div className="space-y-2">
             <h4>Categories</h4>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Crockery
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Furniture
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Homeware
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Plant pots
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Chairs
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Crockery
             </Link>
           </div>
           <div className="space-y-2">
             <h4>Our company</h4>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/about" className="text-sm font-light block">
               About us
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Vacancies
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/contact" className="text-sm font-light block">
               Contact us
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Privacy
             </Link>
-            <Link href="#" className="text-sm font-light block">
+            <Link href="/all-products" className="text-sm font-light block">
               Returns policy
             </Link>
           </div>

@@ -15,7 +15,7 @@ export default function JoinClub() {
           Sign up for our newsletter and receive exclusive offers on new ranges,
           sales, pop up stores and more
         </p>
-        <div className="flex justify-between items-center h-12 mt-10 max-w-[450px] px-4">
+        <div className="flex justify-between items-center h-12 mt-10 min-w-[90%] px-4">
           <input
             type="text"
             placeholder="your@email.com"

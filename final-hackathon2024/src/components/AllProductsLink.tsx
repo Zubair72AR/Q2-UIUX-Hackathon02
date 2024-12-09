@@ -17,6 +17,10 @@ import { Button } from "./ui/button";
 
 const navLinks = [
   {
+    path: "/all-products",
+    label: "All products",
+  },
+  {
     path: "/plant-pots",
     label: "Plant pots",
   },
