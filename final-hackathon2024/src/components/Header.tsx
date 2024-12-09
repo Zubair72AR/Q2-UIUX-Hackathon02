@@ -63,21 +63,35 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="relative bg-background text-foreground pt-5 md:py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div className="relative bg-background text-foreground py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       {/* Top Navbar */}
       <div className="flex justify-between items-center">
-        {/* Search Icon for Large Media Size */}
-        <LuSearch className="text-lg hidden md:block cursor-pointer" />
-
         {/* Logo */}
-        <Link href="/" className="text-xl font-medium">
+        <Link href="/" className="text-xl">
           Avion
         </Link>
 
         {/* NavBar Right Side Icons */}
         <div className="flex justify-between items-center gap-3">
-          {/* Search Icon for Mobile Devices */}
-          <LuSearch className="text-lg block md:hidden cursor-pointer" />
+          {/* NavLinks for Large Screen */}
+          <div className="hidden md:flex justify-center items-center gap-7 mr-12">
+            {navLinks.map((e, i) => (
+              <Link
+                key={i}
+                href={e.path}
+                className={`list-none text-sm hover:text-chart-1 dark:hover:text-white transition-all duration-500 ${
+                  isActive(e.path)
+                    ? "active text-chart-1 dark:text-white"
+                    : "not_Active text-chart-5 dark:text-chart-3"
+                }`}
+              >
+                {e.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Search Icon */}
+          <LuSearch className="text-lg hidden md:block cursor-pointer" />
 
           {/* Menu Icon for Mobile Devices */}
           <div
@@ -97,43 +111,23 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Horizontal Line for Large Screen Only */}
-      <hr className="border-chart-4 dark:border-chart-5 mt-4" />
-
-      {/* NavLinks for Large Screen */}
-      <div className="hidden md:flex justify-center items-center gap-6 py-4 bg-red-500">
-        {navLinks.map((e, i) => (
-          <Link
-            key={i}
-            href={e.path}
-            className={`list-none text-sm font-medium hover:text-chart-1 dark:hover:text-white transition-all duration-500 ${
-              isActive(e.path)
-                ? "active text-chart-1 dark:text-white"
-                : "not_Active text-chart-5 dark:text-chart-3"
-            }`}
-          >
-            {e.label}
-          </Link>
-        ))}
-      </div>
       <div
-        className={`fixed top-0 h-screen pt-16 w-full xs:w-[300px] bg-[rgb(245,245,245,0.7)] dark:bg-[rgb(42,37,75,0.7)] backdrop-blur-xl border-r-2 transition-all duration-1000 ${
+        className={`fixed top-0 h-screen pt-24 w-full xs:w-[300px] bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] backdrop-blur-lg border-r-2 transition-all duration-1000 ${
           isMenuVisible ? "left-0 shadow-lg" : "-left-full"
         }`}
       >
         {/* Side NavBar Close Button */}
-        <Button
-          size={"icon"}
+        <button
           onClick={() => {
             setIsMenuVisible(false);
           }}
-          className="absolute bg-foreground text-background left-[75%] top-10 "
+          className="absolute bg-foreground text-background right-10 top-10 text-lg p-1 rounded-full shadow-md"
         >
           <RxCross2 />
-        </Button>
+        </button>
 
         {/* NavLinks for Mobile Devices */}
-        <div className="space-y-1">
+        <div className="space-y-2">
           {navLinks.map((e, i) => (
             <Link
               key={i}
@@ -151,12 +145,12 @@ export default function Header() {
         </div>
 
         {/* Cart Icon, Profile Icon, Social Media Info */}
-        <div className="flex justify-start items-center text-foreground gap-5 mt-4 pl-8">
+        <div className="flex justify-start items-center text-foreground gap-5 mt-7 pl-8">
           <MdOutlineShoppingCart className="text-xl cursor-pointer" />
           <CgProfile className="text-xl cursor-pointer" />
         </div>
         {/* Social Icons */}
-        <div className="flex justify-start items-center gap-4 mt-4 pl-8 text-foreground">
+        <div className="flex justify-start items-center gap-4 mt-7 pl-8 text-foreground">
           <Link
             href="https://www.linkedin.com/"
             target="_blank"

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/Theme-Provider";
 import CustomCursors from "@/components/CustomCursor";
+import OfferStrip from "@/components/OfferStrip";
 
 const clashDisplay = localFont({
   src: [
@@ -100,6 +101,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CustomCursors />
+          <OfferStrip />
           <Header />
           {children}
           <Footer />
