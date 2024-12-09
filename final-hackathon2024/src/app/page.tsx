@@ -1,3 +1,4 @@
+import AllProductsLink from "@/components/AllProductsLink";
 import CustomCursors from "@/components/CustomCursor";
 import GlobalBrand from "@/components/GlobalBrand";
 import HeroSection from "@/components/HeroSection";
@@ -9,6 +10,7 @@ import PopularProducts from "@/components/PopularProducts";
 export default function Home() {
   return (
     <div>
+      <AllProductsLink />
       <HeroSection />
       <MakesOurBrand />
       <NewCeramics />

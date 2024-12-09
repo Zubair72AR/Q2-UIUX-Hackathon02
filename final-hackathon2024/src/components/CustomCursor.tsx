@@ -13,7 +13,7 @@ const CustomCursors = () => {
 
   const cursorStyles: Record<string, string> = {
     default: "bg-zinc-300 opacity-40 h-8 w-8",
-    hover: "bg-transparent border-[1px] border-zinc-100 h-16 w-16",
+    hover: "bg-transparent border-[1px] border-zinc-200 h-16 w-16",
   };
   const cursor2Styles: Record<string, string> = {
     default: "bg-red-500 h-2 w-2",

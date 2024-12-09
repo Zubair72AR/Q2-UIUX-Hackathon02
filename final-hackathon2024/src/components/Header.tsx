@@ -104,8 +104,8 @@ export default function Header() {
           </div>
 
           {/* Shopping Cart, Profile Icon, Light and Dark Toggle Button */}
-          <MdOutlineShoppingCart className="text-lg hidden md:block cursor-pointer" />
-          <CgProfile className="text-lg hidden md:block cursor-pointer" />
+          <MdOutlineShoppingCart className="text-lg cursor-pointer" />
+          <CgProfile className="text-lg cursor-pointer" />
           <RxDividerVertical className="text-chart-3 " />
           <ToggleButton />
         </div>
@@ -132,7 +132,7 @@ export default function Header() {
             <Link
               key={i}
               href={e.path}
-              className={`list-none text-sm font-medium  text-foreground pl-8 w-full inline-block py-1 ${
+              className={`list-none text-sm text-foreground pl-8 w-full inline-block py-1 ${
                 isActive(e.path) ? "activeMob" : "not_ActiveMob"
               }`}
               onClick={() => {
@@ -144,13 +144,8 @@ export default function Header() {
           ))}
         </div>
 
-        {/* Cart Icon, Profile Icon, Social Media Info */}
-        <div className="flex justify-start items-center text-foreground gap-5 mt-7 pl-8">
-          <MdOutlineShoppingCart className="text-xl cursor-pointer" />
-          <CgProfile className="text-xl cursor-pointer" />
-        </div>
         {/* Social Icons */}
-        <div className="flex justify-start items-center gap-4 mt-7 pl-8 text-foreground">
+        <div className="absolute bottom-10 flex justify-start items-center gap-4 pl-8 text-foreground">
           <Link
             href="https://www.linkedin.com/"
             target="_blank"
