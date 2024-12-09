@@ -47,7 +47,7 @@ export default function ProductsPage() {
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="text-sm"
+          className="text-sm "
         >
           <option value="All">Category</option>
           <option value="Furniture">Furniture</option>

@@ -60,10 +60,10 @@ export default function Footer() {
             <Link href="/contact" className="text-sm font-light block">
               Contact us
             </Link>
-            <Link href="/all-products" className="text-sm font-light block">
+            <Link href="/about" className="text-sm font-light block">
               Privacy
             </Link>
-            <Link href="/all-products" className="text-sm font-light block">
+            <Link href="/about" className="text-sm font-light block">
               Returns policy
             </Link>
           </div>

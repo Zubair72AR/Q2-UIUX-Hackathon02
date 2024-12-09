@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 export default function GlobalBrand() {
   return (
@@ -20,6 +21,7 @@ export default function GlobalBrand() {
             for the London interior design community.
           </p>
         </div>
+        <Link href="/contact"></Link>
         <Button variant={"secondary"} className="w-full md:w-auto">
           Get in touch
         </Button>
