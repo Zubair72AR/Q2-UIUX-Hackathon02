@@ -1,4 +1,5 @@
 import CustomCursors from "@/components/CustomCursor";
+import GlobalBrand from "@/components/GlobalBrand";
 import HeroSection from "@/components/HeroSection";
 import JoinClub from "@/components/JoinClub";
 import MakesOurBrand from "@/components/MakesOurBrand";
@@ -13,6 +14,7 @@ export default function Home() {
       <NewCeramics />
       <PopularProducts />
       <JoinClub />
+      <GlobalBrand />
     </div>
   );
 }
