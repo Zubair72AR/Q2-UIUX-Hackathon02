@@ -67,6 +67,17 @@ export default function Header() {
     };
   });
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsMenuVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); // Cleanup event listener
+  }, []);
+
   return (
     <div className="relative bg-background text-foreground pt-5 md:py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       {/* Top Navbar */}
@@ -165,42 +176,42 @@ export default function Header() {
           <Link
             href="https://www.linkedin.com/"
             target="_blank"
-            className="text-xl hover:text-[#4f4d93] hover:scale-110 transition-all duration-500"
+            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
           >
             <FaLinkedin />
           </Link>
           <Link
             href="https://www.facebook.com/"
             target="_blank"
-            className="text-xl hover:text-[#4f4d93] hover:scale-110 transition-all duration-500"
+            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
           >
             <ImFacebook2 />
           </Link>
           <Link
             href="https://www.instagram.com/"
             target="_blank"
-            className="text-xl hover:text-[#4f4d93] hover:scale-110 transition-all duration-500"
+            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
           >
             <FaInstagram />
           </Link>
           <Link
             href="https://www.skype.com/"
             target="_blank"
-            className="text-xl hover:text-[#4f4d93] hover:scale-110 transition-all duration-500"
+            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
           >
             <FaSkype />
           </Link>
           <Link
             href="https://twitter.com/"
             target="_blank"
-            className="text-xl hover:text-[#4f4d93] hover:scale-110 transition-all duration-500 "
+            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500 "
           >
             <FaTwitter />
           </Link>
           <Link
             href="https://www.pinterest.com/"
             target="_blank"
-            className="text-xl hover:text-[#4f4d93] hover:scale-110 transition-all duration-500"
+            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
           >
             <FaPinterest />
           </Link>
