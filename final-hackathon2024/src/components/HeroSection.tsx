@@ -29,7 +29,7 @@ export default function HeroSection() {
         alt="Hero Image"
         width={500}
         height={200}
-        className="object-cover col-span-3 h-full w-full hidden md:block"
+        className="object-cover col-span-7 md:col-span-3 h-full w-full hidden md:block"
       />
     </div>
   );

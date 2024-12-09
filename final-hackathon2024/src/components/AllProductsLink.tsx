@@ -79,7 +79,10 @@ export default function AllProductsLink() {
   }, []);
 
   return (
-    <div className="relative bg-[hsl(0,0%,97%)] dark:bg-chart-2 text-foreground px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div className="relative bg-[hsl(0,0%,97%)] dark:bg-chart-1 text-foreground px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+      {/* Horizontal Line for Large Screen Only */}
+      <hr className="border-white dark:border-chart-5 hidden md:block" />
+
       {/* NavLinks for Large Screen */}
       <div className="hidden md:flex justify-center items-center gap-6 py-4 ">
         {navLinks.map((e, i) => (
