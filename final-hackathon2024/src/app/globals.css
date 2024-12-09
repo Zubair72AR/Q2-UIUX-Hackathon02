@@ -24,6 +24,79 @@ h5,
 h6 {
   font-family: var(--font-clash-display), serif;
 }
+
+.hoverable {
+  cursor: none; /* Hides the default browser cursor */
+}
+
+/*/////////////////////////////////////////*/
+/* Nav Links Setting */
+/*/////////////////////////////////////////*/
+.active,
+.not_Active {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  border-bottom: 2px solid #34d399;
+  transform: translateX(-50%);
+}
+
+.not_Active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  width: 0%;
+  border-bottom: 2px solid #ef4444;
+  transform: translateX(-50%);
+  transition: 0.5s ease-in;
+}
+
+.not_Active:hover:after {
+  left: 25%;
+  width: 50%;
+}
+/* Mobile Nav Links */
+.activeMob,
+.not_ActiveMob {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.activeMob::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  width: 80%;
+  border-bottom: 2px solid #34d399;
+  transform: translateX(-50%);
+}
+
+.not_ActiveMob::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  width: 0%;
+  border-bottom: 2px solid #ef4444;
+  transform: translateX(-50%);
+  transition: 0.5s ease-in;
+}
+
+.not_ActiveMob:hover:after {
+  width: 80%;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%; /* White */

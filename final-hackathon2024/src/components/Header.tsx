@@ -111,10 +111,10 @@ export default function Header() {
           <Link
             key={i}
             href={e.path}
-            className={`list-none text-sm font-medium hover:text-chart-1 transition-all duration-200 ${
+            className={`list-none text-sm font-medium hover:text-chart-1 dark:hover:text-white transition-all duration-500 ${
               isActive(e.path)
-                ? "text-chart-1 dark:text-white"
-                : "text-chart-5 dark:text-chart-3"
+                ? "active text-chart-1 dark:text-white"
+                : "not_Active text-chart-5 dark:text-chart-3"
             }`}
           >
             {e.label}
@@ -122,7 +122,7 @@ export default function Header() {
         ))}
       </div>
       <div
-        className={`absolute top-0 h-screen pt-16 w-full xs:w-[65%] bg-[rgb(245,245,245,0.7)] dark:bg-[rgb(42,37,75,0.7)] backdrop-blur-xl border-r-2 transition-all duration-1000 ${
+        className={`fixed top-0 h-screen pt-16 w-full xs:w-[300px] bg-[rgb(245,245,245,0.7)] dark:bg-[rgb(42,37,75,0.7)] backdrop-blur-xl border-r-2 transition-all duration-1000 ${
           isMenuVisible ? "left-0 shadow-lg" : "-left-full"
         }`}
       >
@@ -143,8 +143,8 @@ export default function Header() {
             <Link
               key={i}
               href={e.path}
-              className={`list-none text-sm font-medium  text-foreground pl-8 w-full hover:bg-foreground hover:text-background inline-block py-1 ${
-                isActive(e.path) ? "border-b-2" : ""
+              className={`list-none text-sm font-medium  text-foreground pl-8 w-full inline-block py-1 ${
+                isActive(e.path) ? "activeMob" : "not_ActiveMob"
               }`}
               onClick={() => {
                 setIsMenuVisible(false);

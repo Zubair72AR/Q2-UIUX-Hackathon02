@@ -1,3 +1,4 @@
+import CustomCursors from "@/components/CustomCursor";
 import HeroSection from "@/components/HeroSection";
 import JoinClub from "@/components/JoinClub";
 import MakesOurBrand from "@/components/MakesOurBrand";
