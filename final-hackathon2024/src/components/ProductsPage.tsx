@@ -67,6 +67,15 @@ export default function ProductsPage() {
           <option value="Shelf">Shelf</option>
           <option value="Clock">Clock</option>
         </select>
+        {/* Sort by Price */}
+        <select
+          value={priceSortOption}
+          onChange={(e) => setPriceSortOption(e.target.value)}
+        >
+          <option value="">Sort by Price</option>
+          <option value="lowToHigh">Price: Low to High</option>
+          <option value="highToLow">Price: High to Low</option>
+        </select>
 
         <select
           value={brandFilter}
@@ -89,16 +98,6 @@ export default function ProductsPage() {
         >
           <option value="dateAdded">Date Added</option>
           <option value="name">Name</option>
-        </select>
-
-        {/* Sort by Price */}
-        <select
-          value={priceSortOption}
-          onChange={(e) => setPriceSortOption(e.target.value)}
-        >
-          <option value="">Sort by Price</option>
-          <option value="lowToHigh">Price: Low to High</option>
-          <option value="highToLow">Price: High to Low</option>
         </select>
       </div>
 
