@@ -21,10 +21,11 @@ export default function GlobalBrand() {
             for the London interior design community.
           </p>
         </div>
-        <Link href="/contact"></Link>
-        <Button variant={"secondary"} className="w-full md:w-auto">
-          Get in touch
-        </Button>
+        <Link href="/contact">
+          <Button variant={"secondary"} className="w-full md:w-auto">
+            Get in touch
+          </Button>
+        </Link>
       </div>
       <Image
         src="/side.png"
