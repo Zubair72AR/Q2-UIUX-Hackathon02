@@ -58,12 +58,12 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
           <div className="flex justify-between items-center gap-2 pt-14">
             <div className="flex justify-center items-center gap-5">
               <p>Amount:</p>
-              <div className="flex justify-between items-center bg-chart-4 text-chart-1">
+              <div className="flex justify-between items-center bg-chart-4 text-chart-1 w-36">
                 <button
                   onClick={() => {
                     number >= 2 && setNumber(number - 1);
                   }}
-                  className="px-6 py-2 text-chart-3"
+                  className="px-4 py-2 text-chart-3 text-lg"
                 >
                   -
                 </button>
@@ -72,7 +72,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
                   onClick={() => {
                     setNumber(number + 1);
                   }}
-                  className="px-6 py-2 text-chart-3"
+                  className="px-4 py-2 text-chart-3 text-lg"
                 >
                   +
                 </button>
