@@ -72,7 +72,7 @@ export default function Header() {
         </Link>
 
         {/* NavBar Right Side Icons */}
-        <div className="flex justify-between items-center gap-3">
+        <div className="flex justify-between items-center gap-[14px]">
           {/* NavLinks for Large Screen */}
           <div className="hidden md:flex justify-center items-center gap-7 mr-12">
             {navLinks.map((e, i) => (
@@ -104,7 +104,12 @@ export default function Header() {
           </div>
 
           {/* Shopping Cart, Profile Icon, Light and Dark Toggle Button */}
-          <MdOutlineShoppingCart className="text-lg cursor-pointer" />
+          <div className="relative">
+            <MdOutlineShoppingCart className="text-lg cursor-pointer" />
+            <span className="absolute -top-3 -right-3 flex justify-center items-center bg-red-600 text-[9px] font-medium w-[18px] h-[18px] rounded-full text-white">
+              22
+            </span>
+          </div>
           <CgProfile className="text-lg cursor-pointer" />
           <RxDividerVertical className="text-chart-3 " />
           <ToggleButton />
