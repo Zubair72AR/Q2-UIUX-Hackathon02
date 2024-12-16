@@ -49,11 +49,12 @@ export default function ProductsPage() {
   return (
     <div className="px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       <div className="flex justify-between items-center py-5">
-        <div>
+        <div className="flex justify-between items-center gap-8">
           {/* Filter by Category */}
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
+            className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="All">Category</option>
             <option value="Furniture">Furniture</option>
@@ -64,6 +65,7 @@ export default function ProductsPage() {
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
+            className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="All">Product type</option>
             <option value="Chair">Chair</option>
@@ -77,21 +79,23 @@ export default function ProductsPage() {
           <select
             value={priceSortOption}
             onChange={(e) => setPriceSortOption(e.target.value)}
+            className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="">Price</option>
-            <option value="lowToHigh">Low to High</option>
-            <option value="highToLow">High to Low</option>
+            <option value="lowToHigh">High</option>
+            <option value="highToLow">Low</option>
           </select>
           {/* Filter by Brand */}
           <select
             value={brandFilter}
             onChange={(e) => setBrandFilter(e.target.value)}
+            className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="All">Brand</option>
-            <option value="Brand A">Brand A</option>
-            <option value="Brand B">Brand B</option>
-            <option value="Brand C">Brand C</option>
-            <option value="Brand D">Brand D</option>
+            <option value="Brand A">A</option>
+            <option value="Brand B">B</option>
+            <option value="Brand C">C</option>
+            <option value="Brand D">D</option>
           </select>
         </div>
         {/* Sort by Date/Name */}
@@ -100,6 +104,7 @@ export default function ProductsPage() {
           <select
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
+            className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="dateAdded">Date added</option>
             <option value="name">Name</option>
@@ -108,7 +113,7 @@ export default function ProductsPage() {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 md:gap-x-3 gap-y-8  cursor-pointer px-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 md:gap-x-3 gap-y-8  cursor-pointer p-4">
         {sortedProducts.slice(0, visibleCount).map((p) => (
           <Link href={`/all-products/${p.path}`}>
             <div className="overflow-hidden hover:rounded-xl transition-all duration-1000">
@@ -132,7 +137,7 @@ export default function ProductsPage() {
       <Button
         variant={"secondary"}
         onClick={showMoreItems}
-        className="mx-auto block w-full md:w-auto"
+        className="mx-auto block w-full md:w-auto my-10"
       >
         View collection
       </Button>

@@ -107,7 +107,7 @@ export default function Header() {
           <div className="relative">
             <MdOutlineShoppingCart className="text-lg cursor-pointer" />
             <span className="absolute -top-3 -right-3 flex justify-center items-center bg-red-600 text-[9px] font-medium w-[18px] h-[18px] rounded-full text-white">
-              22
+              0
             </span>
           </div>
           <CgProfile className="text-lg cursor-pointer" />
