@@ -4,6 +4,7 @@ import products from "@/components/ArrayData";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Link from "next/link";
+import { TbArrowBackUp } from "react-icons/tb";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
@@ -27,43 +28,44 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
   }
 
   return (
-    <div className="py-12 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
-      <div className="flex justify-between items-center gap-12">
+    <div className="">
+      <div className="flex flex-col md:flex-row justify-start md:justify-between items-center gap-12">
         <Image
           src={myProd.image}
           alt={myProd.name || "Product Image"}
           width={500}
           height={200}
-          className="object-contain hover:bg-cover rounded-3xl shadow-md"
+          className="object-contain hover:bg-cover shadow-md w-full md:w-1/2"
         />
-        <div className="space-y-5 w-1/2">
+        <div className="space-y-6 w-full md:w-1/2 pr-6 sm:pr-8 md:pr-12 lg:pr-20 2xl:pr-36 pl-6 sm:pl-8 md:pl-0">
           <div className="space-y-1">
             <p className="text-[10px]">Date Added: {myProd.dateAdded}</p>
-            <h3 className="text-3xl">
-              <span className="text-xs">{myProd.id} .</span>
-              {myProd.name}
-            </h3>
+            <h3 className="text-3xl">{myProd.name}</h3>
             <p className="text-xl">£{myProd.price}</p>
           </div>
 
           <div className="space-y-1">
-            <p className="text-sm ">Category: {myProd.category}</p>
-            <p className="text-sm ">Brand: {myProd.brand}</p>
-            <p className="text-sm ">Product Type: {myProd.type}</p>
-          </div>
-          <div className="space-y-1">
             <p className="text-sm ">Description</p>
             <p className="text-sm ">{myProd.description}</p>
           </div>
-          <div className="flex justify-between items-center gap-2 pt-14">
-            <div className="flex justify-center items-center gap-5">
+          <ul className="space-y-1">
+            <li className="text-sm list-disc ml-6">
+              Category: {myProd.category}
+            </li>
+            <li className="text-sm list-disc ml-6">Brand: {myProd.brand}</li>
+            <li className="text-sm list-disc ml-6">
+              Product Type: {myProd.type}
+            </li>
+          </ul>
+          <div className="flex flex-wrap justify-between items-center gap-4 pt-10">
+            <div className="flex justify-center items-center gap-4">
               <p>Amount:</p>
-              <div className="flex justify-between items-center bg-chart-4 text-chart-1 w-36">
+              <div className="flex justify-between items-center bg-chart-4 text-chart-1 w-28">
                 <button
                   onClick={() => {
                     number >= 2 && setNumber(number - 1);
                   }}
-                  className="px-4 py-2 text-chart-3 text-lg"
+                  className="px-3 py-[6px] text-chart-3 text-lg"
                 >
                   -
                 </button>
@@ -72,7 +74,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
                   onClick={() => {
                     setNumber(number + 1);
                   }}
-                  className="px-4 py-2 text-chart-3 text-lg"
+                  className="px-3 py-[6px] text-chart-3 text-lg"
                 >
                   +
                 </button>
@@ -91,7 +93,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
                   variant={"secondary"}
                   className="bg-red-500 text-white hover:bg-red-700"
                 >
-                  Back
+                  Back <TbArrowBackUp />
                 </Button>
               </Link>
             </div>

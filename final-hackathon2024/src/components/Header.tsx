@@ -44,8 +44,14 @@ export default function Header() {
         setIsMenuVisible(false);
       }
     };
+
+    // Add Event Listener on Window Resize
     window.addEventListener("resize", handleResize);
+
+    // Call HandleResize on Initial Render
     handleResize();
+
+    // Remove Event Listener on Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -106,7 +112,7 @@ export default function Header() {
           {/* Shopping Cart, Profile Icon, Light and Dark Toggle Button */}
           <div className="relative">
             <MdOutlineShoppingCart className="text-lg cursor-pointer" />
-            <span className="absolute -top-3 -right-3 flex justify-center items-center bg-red-600 text-[9px] font-medium w-[18px] h-[18px] rounded-full text-white">
+            <span className="absolute -top-[11px] -right-[11px] flex justify-center items-center bg-red-500 text-[9px] font-medium w-[18px] h-[18px] rounded-full text-white">
               0
             </span>
           </div>

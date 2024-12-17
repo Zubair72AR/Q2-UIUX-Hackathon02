@@ -9,13 +9,15 @@ export default function PopularProducts() {
       <h2 className="text-3xl md:text-4xl">Our popular products</h2>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 justify-between">
         <div className="col-span-2">
-          <Image
-            src="/Large.png"
-            alt="Large Sofa"
-            width={1000}
-            height={200}
-            className="object-contain"
-          />
+          <div className="overflow-hidden hover:rounded-xl transition-all duration-1000">
+            <Image
+              src="/Large.png"
+              alt="Large Sofa"
+              width={1000}
+              height={200}
+              className="object-contain bg-cover transition-all duration-500 hover:scale-110"
+            />
+          </div>
           <h3 className="text-base md:text-lg lg:text-xl mt-1 md:mt-3">
             The Poplar suede sofa
           </h3>
