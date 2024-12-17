@@ -10,7 +10,10 @@ type Product = {
   image: string;
   className?: string;
   description: string;
+  specification: string[];
+  Dimensions: string[];
 };
+
 const products: Product[] = [
   {
     path: "dandy",
@@ -24,6 +27,12 @@ const products: Product[] = [
     image: "/Photo01.png",
     description:
       "The Dandy Chair is crafted with a combination of modern aesthetics and comfort, perfect for any living room or office space. It offers great style, durability, and cozy seating.",
+    specification: [
+      "Premium material",
+      "Handmade upholstery",
+      "Quality timeless classic",
+    ],
+    Dimensions: ["110cm", "75cm", "50cm"],
   },
   {
     path: "rustic",
@@ -37,6 +46,8 @@ const products: Product[] = [
     image: "/Photo02.png",
     description:
       "This Rustic Vase Set adds a charming, earthy touch to your home. The handcrafted design and natural textures make it a beautiful statement piece for your living room or hallway.",
+    specification: ["Eco-friendly materials", "Handcrafted", "Natural finish"],
+    Dimensions: ["30cm", "15cm", "15cm"],
   },
   {
     path: "silky",
@@ -50,6 +61,8 @@ const products: Product[] = [
     image: "/Photo03.png",
     description:
       "The Silky Vase brings a touch of elegance and refinement to your decor. Its smooth surface and graceful design make it perfect for displaying flowers or simply enhancing your space.",
+    specification: ["Smooth finish", "Elegant design", "Durable ceramic"],
+    Dimensions: ["35cm", "18cm", "18cm"],
   },
   {
     path: "lucy",
@@ -63,6 +76,8 @@ const products: Product[] = [
     image: "/Photo04.png",
     description:
       "The Lucy Lamp combines modern design with ambient lighting to create a warm, inviting atmosphere. Its versatile style complements a wide range of home decor, from minimalist to traditional.",
+    specification: ["Adjustable brightness", "Energy-efficient", "LED light"],
+    Dimensions: ["60cm", "25cm", "25cm"],
   },
   {
     path: "coffee-table",
@@ -76,6 +91,12 @@ const products: Product[] = [
     image: "/Photo05.png",
     description:
       "This Elegant Coffee Table blends modern sophistication with timeless style. Its sleek design and premium construction make it the perfect addition to any living room, offering both function and style.",
+    specification: [
+      "Tempered glass top",
+      "Solid wood frame",
+      "Easy to assemble",
+    ],
+    Dimensions: ["120cm", "60cm", "45cm"],
   },
   {
     path: "armchair",
@@ -89,6 +110,12 @@ const products: Product[] = [
     image: "/Photo06.png",
     description:
       "The Modern Armchair features clean lines and superior comfort. It is designed for ultimate relaxation and is a perfect fit for contemporary spaces, adding elegance and a cozy atmosphere to your home.",
+    specification: [
+      "Ergonomic design",
+      "Soft, durable fabric",
+      "Solid wood legs",
+    ],
+    Dimensions: ["90cm", "80cm", "85cm"],
   },
   {
     path: "bookshelf",
@@ -102,6 +129,8 @@ const products: Product[] = [
     image: "/Photo07.png",
     description:
       "The Classic Bookshelf is a perfect blend of functionality and style. Its sturdy frame and spacious shelves provide ample storage, making it ideal for organizing books and decorative items in your home.",
+    specification: ["Sturdy wooden frame", "Multiple shelves", "Smooth finish"],
+    Dimensions: ["180cm", "80cm", "30cm"],
   },
   {
     path: "wall-clock",
@@ -115,6 +144,8 @@ const products: Product[] = [
     image: "/Photo08.png",
     description:
       "The Artistic Wall Clock features a unique, eye-catching design that adds personality to any room. Its bold numbers and minimalist style make it a stylish and functional timepiece for your home.",
+    specification: ["Silent mechanism", "Durable build", "Bold, clear numbers"],
+    Dimensions: ["40cm", "40cm", "5cm"],
   },
   {
     path: "floor-lamp",
@@ -128,123 +159,237 @@ const products: Product[] = [
     image: "/Photo09.png",
     description:
       "The Stylish Floor Lamp offers both beauty and functionality. Its sleek, modern design and adjustable light make it perfect for creating the ideal ambiance in your living room or reading nook.",
+    specification: ["Adjustable height", "Energy-saving", "Metallic finish"],
+    Dimensions: ["160cm", "30cm", "30cm"],
   },
   {
-    path: "cozy-chair",
+    path: "sofa",
     id: 10,
-    name: "Cozy Chair",
+    name: "Luxury Sofa",
     category: "Furniture",
-    type: "Chair",
-    price: 140,
-    brand: "Brand B",
-    dateAdded: "2023-11-01",
-    image: "/Photo01.png",
+    type: "Sofa",
+    price: 350,
+    brand: "Brand C",
+    dateAdded: "2023-12-10",
+    image: "/Photo10.png",
     description:
-      "The Cozy Chair combines comfort and style, with soft cushions and a sturdy frame. Perfect for reading or lounging, it brings a warm and inviting feel to any living room or bedroom.",
+      "This Luxury Sofa offers unparalleled comfort and timeless elegance. It is the perfect addition to any living room, providing both style and coziness.",
+    specification: [
+      "Premium upholstery material",
+      "Durable hardwood frame",
+      "Ergonomic design for comfort",
+    ],
+    Dimensions: ["220cm", "85cm", "95cm"],
   },
   {
-    path: "elegant-vase",
+    path: "small-clock-table",
     id: 11,
-    name: "Elegant Vase Set",
+    name: "Small Clock and Table Set",
     category: "Decor",
-    type: "Vase",
-    price: 85,
-    brand: "Brand C",
-    dateAdded: "2023-11-02",
-    image: "/Photo02.png",
-    description:
-      "The Elegant Vase Set is a sophisticated addition to any decor. With its delicate design and beautiful finish, it enhances any space, making it perfect for displaying fresh flowers or decorative accents.",
-  },
-  {
-    path: "glossy-vase",
-    id: 12,
-    name: "The Glossy Vase",
-    category: "Decor",
-    type: "Vase",
-    price: 100,
-    brand: "Brand D",
-    dateAdded: "2023-11-03",
-    image: "/Photo03.png",
-    description:
-      "The Glossy Vase features a sleek, shiny finish that adds a touch of luxury to any space. Perfect for holding fresh flowers or as a standalone decor piece, it enhances the beauty of your home.",
-  },
-  {
-    path: "modern-lamp",
-    id: 13,
-    name: "The Modern Lamp",
-    category: "Lighting",
-    type: "Lamp",
-    price: 160,
-    brand: "Brand A",
-    dateAdded: "2023-11-04",
-    image: "/Photo04.png",
-    description:
-      "The Modern Lamp combines innovative design with practical lighting. Its clean lines and bright light make it an ideal addition to any contemporary living room, bedroom, or office space.",
-  },
-  {
-    path: "coffee-table-modern",
-    id: 14,
-    name: "Modern Coffee Table",
-    category: "Furniture",
-    type: "Table",
-    price: 220,
+    type: "Clock & Table",
+    price: 120,
     brand: "Brand B",
-    dateAdded: "2023-11-05",
-    image: "/Photo05.png",
+    dateAdded: "2023-12-11",
+    image: "/Photo11.png",
     description:
-      "The Modern Coffee Table brings a sleek, stylish look to any living room. Crafted from premium materials, its clean design offers ample surface space while complementing your modern interior decor.",
+      "This Small Clock and Table Set adds functionality and charm to compact spaces, perfect for minimalist decor enthusiasts.",
+    specification: [
+      "Handcrafted wooden table",
+      "Quartz clock mechanism",
+      "Rustic finish",
+    ],
+    Dimensions: ["75cm", "175cm", "100cm"],
   },
   {
-    path: "luxury-armchair",
+    path: "sofa-side-table",
+    id: 12,
+    name: "Sofa with Side Table",
+    category: "Furniture",
+    type: "Sofa & Table",
+    price: 400,
+    brand: "Brand A",
+    dateAdded: "2023-12-12",
+    image: "/Photo12.png",
+    description:
+      "This elegant sofa and side table combination is perfect for creating a stylish and functional seating area in your home.",
+    specification: [
+      "High-density foam cushioning",
+      "Tempered glass side table",
+      "Easy-to-clean upholstery",
+    ],
+    Dimensions: ["75cm", "175cm", "80cm"],
+  },
+  {
+    path: "sofa-set",
+    id: 13,
+    name: "Cozy Sofa Set",
+    category: "Furniture",
+    type: "Sofa Set",
+    price: 800,
+    brand: "Brand D",
+    dateAdded: "2023-12-13",
+    image: "/Photo13.png",
+    description:
+      "This Cozy Sofa Set includes a three-seater, loveseat, and armchair, offering luxurious comfort for the whole family.",
+    specification: [
+      "Soft-touch fabric",
+      "Sturdy wooden legs",
+      "Contemporary design",
+    ],
+    Dimensions: ["110cm", "75cm", "50cm"],
+  },
+  {
+    path: "office-table-chair",
+    id: 14,
+    name: "Office Table with Chair",
+    category: "Furniture",
+    type: "Office Furniture",
+    price: 450,
+    brand: "Brand A",
+    dateAdded: "2023-12-14",
+    image: "/Photo14.png",
+    description:
+      "This office table and chair set features an ergonomic design, perfect for enhancing productivity in a modern workspace.",
+    specification: [
+      "Ergonomic office chair",
+      "Scratch-resistant table finish",
+      "Adjustable chair height",
+    ],
+    Dimensions: ["110cm", "75cm", "50cm"],
+  },
+  {
+    path: "modern-chair",
     id: 15,
-    name: "Luxury Armchair",
+    name: "Modern Chair",
     category: "Furniture",
     type: "Chair",
-    price: 270,
-    brand: "Brand C",
-    dateAdded: "2023-11-06",
-    image: "/Photo06.png",
-    description:
-      "The Luxury Armchair features premium upholstery and a refined design. Its comfort and sophistication make it a perfect addition to any living room or study, offering relaxation and style.",
-  },
-  {
-    path: "urban-bookshelf",
-    id: 16,
-    name: "Urban Bookshelf",
-    category: "Furniture",
-    type: "Shelf",
-    price: 320,
-    brand: "Brand D",
-    dateAdded: "2023-11-07",
-    image: "/Photo07.png",
-    description:
-      "The Urban Bookshelf offers both style and practicality, providing ample storage space for books and decor. Its sleek, modern design makes it a standout piece in any urban-inspired home.",
-  },
-  {
-    path: "vintage-clock",
-    id: 17,
-    name: "Vintage Wall Clock",
-    category: "Decor",
-    type: "Clock",
-    price: 95,
-    brand: "Brand A",
-    dateAdded: "2023-11-08",
-    image: "/Photo08.png",
-    description:
-      "The Vintage Wall Clock exudes classic charm with its retro design and timeless appeal. Perfect for adding a touch of nostalgia to any space, this clock is both functional and decorative.",
-  },
-  {
-    path: "sleek-lamp",
-    id: 18,
-    name: "Sleek Floor Lamp",
-    category: "Lighting",
-    type: "Lamp",
-    price: 190,
+    price: 180,
     brand: "Brand B",
-    dateAdded: "2023-11-09",
-    image: "/Photo09.png",
+    dateAdded: "2023-12-15",
+    image: "/Photo15.png",
     description:
-      "The Sleek Floor Lamp offers a minimalist design with clean lines and a slim profile. Its adjustable lighting and modern aesthetic make it a great fit for any contemporary living space.",
+      "The Modern Chair combines sleek design with unmatched comfort, perfect for dining or accent seating.",
+    specification: [
+      "Lightweight yet durable",
+      "Smooth curved backrest",
+      "Anti-slip feet",
+    ],
+    Dimensions: ["50cm", "50cm", "100cm"],
+  },
+  {
+    path: "sofa-chair",
+    id: 16,
+    name: "Comfort Sofa Chair",
+    category: "Furniture",
+    type: "Chair",
+    price: 230,
+    brand: "Brand C",
+    dateAdded: "2023-12-16",
+    image: "/Photo16.png",
+    description:
+      "This Comfort Sofa Chair is designed for relaxing with extra-wide seating and plush cushions, ideal for your living space.",
+    specification: [
+      "High-resilience foam",
+      "Removable cushion covers",
+      "Solid wood frame",
+    ],
+    Dimensions: ["90cm", "90cm", "100cm"],
+  },
+  {
+    path: "restaurant-set",
+    id: 17,
+    name: "Restaurant Table and Chair Set",
+    category: "Furniture",
+    type: "Table & Chair Set",
+    price: 700,
+    brand: "Brand D",
+    dateAdded: "2023-12-17",
+    image: "/Photo17.png",
+    description:
+      "This Restaurant Table and Chair Set features a sleek and durable design, perfect for modern dining spaces.",
+    specification: [
+      "Weather-resistant materials",
+      "Comfortable seating",
+      "Compact design for small spaces",
+    ],
+    Dimensions: ["75", "180cm", "80cm"],
+  },
+  {
+    path: "room-setup",
+    id: 18,
+    name: "Room Setup with Sofa, Light, and Table",
+    category: "Decor",
+    type: "Room Setup",
+    price: 1500,
+    brand: "Brand A",
+    dateAdded: "2023-12-18",
+    image: "/Photo18.png",
+    description:
+      "Complete your living room with this all-in-one setup, featuring a cozy sofa, stylish table, and modern lighting.",
+    specification: [
+      "Coordinated design elements",
+      "Adjustable lighting options",
+      "Easy-to-maintain materials",
+    ],
+    Dimensions: ["110cm", "75cm", "50cm"],
+  },
+  {
+    path: "light-decoration",
+    id: 19,
+    name: "Light and Decoration Set",
+    category: "Lighting",
+    type: "Decor",
+    price: 250,
+    brand: "Brand B",
+    dateAdded: "2023-12-19",
+    image: "/Photo19.png",
+    description:
+      "This Light and Decoration Set adds a warm ambiance to your space, combining practical lighting with decorative elements.",
+    specification: [
+      "Energy-efficient LED lighting",
+      "Handcrafted decorative pieces",
+      "Versatile placement options",
+    ],
+    Dimensions: ["110cm", "75cm", "50cm"],
+  },
+  {
+    path: "dining-set",
+    id: 20,
+    name: "Dining Chair and Table Set",
+    category: "Furniture",
+    type: "Dining Set",
+    price: 1000,
+    brand: "Brand C",
+    dateAdded: "2023-12-20",
+    image: "/Photo20.png",
+    description:
+      "Upgrade your dining room with this elegant dining table and chair set, perfect for family meals and gatherings.",
+    specification: [
+      "Expandable table feature",
+      "Comfortable cushioned chairs",
+      "Scratch-resistant finish",
+    ],
+    Dimensions: ["110cm", "75cm", "50cm"],
+  },
+  {
+    path: "kitchen-set",
+    id: 21,
+    name: "Kitchen Table and Chair Set",
+    category: "Furniture",
+    type: "Kitchen Set",
+    price: 850,
+    brand: "Brand D",
+    dateAdded: "2023-12-21",
+    image: "/Photo21.png",
+    description:
+      "The Kitchen Table and Chair Set combines practicality with modern design, ideal for casual dining or meal prep.",
+    specification: [
+      "Compact, space-saving design",
+      "Durable and easy to clean",
+      "Minimalist aesthetic",
+    ],
+    Dimensions: ["110cm", "75cm", "50cm"],
   },
 ];
+
 export default products;
