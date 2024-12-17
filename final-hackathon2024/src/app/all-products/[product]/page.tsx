@@ -95,6 +95,10 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
           <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-4">
             <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-3 md:gap-4">
               <p>Quantity:</p>
+              <h1 className="text-red-500 text-5xl opacity-10">
+                reminder : button are not center in the mobile device need to
+                fix it
+              </h1>
               <div className="flex justify-center items-center gap-6 md:gap-3 px-3 bg-chart-4 text-chart-1 mx-auto w-full md:w-auto">
                 <button
                   onClick={() => {
