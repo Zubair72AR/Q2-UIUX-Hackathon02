@@ -9,7 +9,7 @@ import React from "react";
 export default function AboutUs() {
   return (
     <div>
-      <AllProductsLink />
+      <AllProductsLink bgColor="bg-[hsl(0,0,97%)]" lineColor="border-none" />
       <ABrand />
       <StartedSmallIdea />
       <OurService />

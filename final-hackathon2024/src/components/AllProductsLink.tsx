@@ -50,7 +50,15 @@ const navLinks = [
   },
 ];
 
-export default function AllProductsLink() {
+interface AllProductsProps {
+  bgColor: string;
+  lineColor: string;
+}
+
+export default function AllProductsLink({
+  bgColor,
+  lineColor,
+}: AllProductsProps) {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   // Show Active Nav Link
@@ -83,9 +91,12 @@ export default function AllProductsLink() {
   }, []);
 
   return (
-    <div className="relative bg-[hsl(0,0%,97%)] dark:bg-chart-1 text-foreground px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div
+      className={`relative dark:bg-chart-1 text-foreground px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 ${bgColor}`}
+    >
       {/* Horizontal Line for Large Screen Only */}
-      <hr className="border-white dark:border-chart-5 hidden md:block" />
+
+      <hr className={`dark:border-chart-5 hidden md:block ${lineColor}`} />
 
       {/* NavLinks for Large Screen */}
       <div className="hidden md:flex justify-center items-center gap-6 py-4 ">
