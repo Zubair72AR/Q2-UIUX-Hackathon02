@@ -92,14 +92,10 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-4">
-            <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-3 md:gap-4">
+          <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-3">
+            <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-3 md:gap-4 w-full md:w-auto">
               <p>Quantity:</p>
-              <h1 className="text-red-500 text-5xl opacity-10">
-                reminder : button are not center in the mobile device need to
-                fix it
-              </h1>
-              <div className="flex justify-center items-center gap-6 md:gap-3 px-3 bg-chart-4 text-chart-1 mx-auto w-full md:w-auto">
+              <div className="flex justify-center items-center gap-6 md:gap-3 px-3 bg-chart-4 text-chart-1 w-full md:w-auto">
                 <button
                   onClick={() => {
                     number >= 2 && setNumber(number - 1);
@@ -120,20 +116,20 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-center items-center gap-2">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-3 w-full md:w-auto">
               <Button
                 onClick={() => {
                   setNumber(number + 1);
                 }}
-                className="mx-auto block w-full md:w-auto"
+                className="mx-auto w-full md:w-auto"
               >
                 Add to cart
               </Button>
 
-              <Link href="/all-products">
+              <Link href="/all-products" className="mx-auto w-full md:w-auto">
                 <Button
                   variant={"secondary"}
-                  className="bg-red-500 text-white hover:bg-red-700 mx-auto block w-full md:w-auto"
+                  className="bg-red-500 text-white hover:bg-red-700 mx-auto w-full md:w-auto"
                 >
                   Back <TbArrowBackUp />
                 </Button>
