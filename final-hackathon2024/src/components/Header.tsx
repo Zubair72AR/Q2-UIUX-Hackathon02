@@ -32,6 +32,7 @@ const navLinks = [
 
 export default function Header() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   // Show Active Nav Link
   const pathName = usePathname();
@@ -69,7 +70,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="relative bg-background text-foreground py-5 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div className="relative bg-background text-foreground py-4 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       {/* Top Navbar */}
       <div className="flex justify-between items-center">
         {/* Logo */}
@@ -78,9 +79,9 @@ export default function Header() {
         </Link>
 
         {/* NavBar Right Side Icons */}
-        <div className="flex justify-between items-center gap-[14px]">
+        <div className="flex justify-between items-center gap-[12px]">
           {/* NavLinks for Large Screen */}
-          <div className="hidden md:flex justify-center items-center gap-7 mr-12">
+          <div className="hidden md:flex justify-center items-center gap-6 mr-4">
             {navLinks.map((e, i) => (
               <Link
                 key={i}
@@ -97,7 +98,65 @@ export default function Header() {
           </div>
 
           {/* Search Icon */}
-          <LuSearch className="text-lg hidden md:block cursor-pointer" />
+          {/* Icon for Large Screen */}
+          <div
+            className={`hidden md:flex justify-center items-center py-2 px-[10px] rounded-full transition-all duration-1000 ${
+              isSearchVisible
+                ? "border-[1px] dark:border-chart-5 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,28%)] mr-0"
+                : "border-[1px] border-transparent -mr-3"
+            }`}
+          >
+            <button
+              className={`transition-all duration-1000 block md:grid place-content-center h-6 w-6 rounded-full text-background bg-red-500 ${
+                isSearchVisible ? "scale-100" : "scale-0"
+              }`}
+              onClick={() => setIsSearchVisible(false)}
+            >
+              <AiOutlineClose />
+            </button>
+            <input
+              type="text"
+              placeholder="Search..."
+              className={`bg-transparent text-sm font-light outline-none transition-all duration-1000 ${
+                isSearchVisible
+                  ? "w-52 lg:w-64 px-2 text-chart-5 dark:text-chart-3"
+                  : "w-0 px-0"
+              }`}
+            />
+            <LuSearch
+              className="text-lg cursor-pointer"
+              onClick={() => setIsSearchVisible(true)}
+            />
+          </div>
+          {/* Icon for Mobile Devices */}
+          <LuSearch
+            className={`text-lg block cursor-pointer ${
+              isSearchVisible ? "hidden" : "md:hidden"
+            }`}
+            onClick={() => setIsSearchVisible((prev) => !prev)}
+          />
+          <div
+            className={`absolute top-full left-1/2 -translate-x-1/2 flex justify-center items-center gap-2 w-[90%] transition-all duration-1000 mt-2 ${
+              isSearchVisible ? "flex md:hidden" : "hidden"
+            }`}
+          >
+            <div
+              className={`py-2 px-3 border-2 dark:border-chart-5 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,28%)] w-[90%] flex justify-center items-center rounded-full`}
+            >
+              <input
+                type="text"
+                placeholder="Search..."
+                className="bg-transparent text-sm font-light outline-none transition-all duration-1000 w-full px-2 text-chart-5 dark:text-chart-3"
+              />
+              <LuSearch className="text-lg cursor-pointer" />
+            </div>
+            <button
+              className="grid place-content-center h-10 w-10 rounded-full text-background bg-red-500"
+              onClick={() => setIsSearchVisible((prev) => !prev)}
+            >
+              <AiOutlineClose />
+            </button>
+          </div>
 
           {/* Menu Icon for Mobile Devices */}
           <div
@@ -110,12 +169,12 @@ export default function Header() {
           </div>
 
           {/* Shopping Cart, Profile Icon, Light and Dark Toggle Button */}
-          <div className="relative">
+          <Link href="/cart" className="relative">
             <MdOutlineShoppingCart className="text-lg cursor-pointer" />
             <span className="absolute -top-[11px] -right-[11px] flex justify-center items-center bg-red-500 text-[9px] font-medium w-[18px] h-[18px] rounded-full text-white">
               0
             </span>
-          </div>
+          </Link>
           <CgProfile className="text-lg cursor-pointer" />
           <RxDividerVertical className="text-chart-3 " />
           <ToggleButton />

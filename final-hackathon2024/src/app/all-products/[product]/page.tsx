@@ -11,6 +11,7 @@ import JoinClub from "@/components/JoinClub";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
+  const [addCart, setAddCart] = useState(true);
   const { product } = params;
 
   const myProd = products.find(
@@ -119,11 +120,11 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
             <div className="flex flex-col md:flex-row justify-center items-center gap-3 w-full md:w-auto">
               <Button
                 onClick={() => {
-                  setNumber(number + 1);
+                  setAddCart((prev) => !prev);
                 }}
                 className="mx-auto w-full md:w-auto"
               >
-                Add to cart
+                {addCart ? "Add to cart" : "Remove to cart"}
               </Button>
 
               <Link href="/all-products" className="mx-auto w-full md:w-auto">
