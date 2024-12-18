@@ -9,8 +9,8 @@ import PopularProducts from "@/components/PopularProducts";
 
 export default function Home() {
   return (
-    <div>
-      <AllProductsLink />
+    <div className="mt-[75px]">
+      <AllProductsLink bgColor="bg-background" lineColor="" />
       <HeroSection />
       <MakesOurBrand />
       <NewCeramics />

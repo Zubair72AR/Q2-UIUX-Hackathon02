@@ -8,7 +8,7 @@ import React from "react";
 
 export default function AboutUs() {
   return (
-    <div>
+    <div className="mt-[40px]">
       <AllProductsLink bgColor="bg-[hsl(0,0,97%)]" lineColor="border-none" />
       <ABrand />
       <StartedSmallIdea />

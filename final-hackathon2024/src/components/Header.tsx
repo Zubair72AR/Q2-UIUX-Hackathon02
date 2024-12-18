@@ -30,9 +30,10 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [navbarVisible, setNavbarVisible] = useState(false);
+  const [navbarVisible, setNavbarVisible] = useState(true);
+  const [navbarBgColor, setNavbarBgColor] = useState(true);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [isSearchVisible, setIsSearchVisible] = useState(true);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   // Show Active Nav Link
   const pathName = usePathname();
@@ -60,14 +61,21 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 30) {
         setIsMenuVisible(false);
+        setIsSearchVisible(false);
       }
 
-      if (window.scrollY > 151 && window.scrollY < 350) {
+      if (window.scrollY > 151 && window.scrollY < 450) {
         setNavbarVisible(false);
-      } else if (window.scrollY < 150 || window.scrollY > 351) {
+      } else if (window.scrollY < 150 || window.scrollY > 451) {
         setNavbarVisible(true);
+      }
+
+      if (window.scrollY < 150) {
+        setNavbarBgColor(true);
+      } else if (window.scrollY > 151) {
+        setNavbarBgColor(false);
       }
     };
 
@@ -77,8 +85,12 @@ export default function Header() {
 
   return (
     <div
-      className={`z-[999] fixed w-full bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] backdrop-blur-lg border-b-2 py-4 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 transition-all duration-1000 ${
+      className={`z-[999] fixed w-full py-4 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 transition-all duration-1000 ${
         navbarVisible ? "top-0" : "-top-full"
+      } ${
+        navbarBgColor
+          ? "bg-background border-none"
+          : "bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] border-b-2 backdrop-blur-lg"
       }`}
     >
       {/* Top Navbar */}
@@ -147,7 +159,14 @@ export default function Header() {
             className={`text-lg block cursor-pointer ${
               isSearchVisible ? "hidden" : "md:hidden"
             }`}
-            onClick={() => setIsSearchVisible((prev) => !prev)}
+            onClick={() => {
+              setIsSearchVisible((prev) => {
+                if (!prev) {
+                  setIsMenuVisible(false);
+                }
+                return !prev;
+              });
+            }}
           />
           <div
             className={`absolute top-full left-1/2 -translate-x-1/2 flex justify-center items-center gap-1 w-[90%] transition-all duration-1000 mt-2 ${
@@ -174,7 +193,12 @@ export default function Header() {
           <div
             className="text-lg block md:hidden cursor-pointer"
             onClick={() => {
-              setIsMenuVisible((prev) => !prev);
+              setIsMenuVisible((prev) => {
+                if (!prev) {
+                  setIsSearchVisible(false);
+                }
+                return !prev;
+              });
             }}
           >
             {isMenuVisible ? <AiOutlineClose /> : <HiMenu />}
@@ -194,9 +218,14 @@ export default function Header() {
       </div>
 
       <div
-        className={`fixed top-0 h-screen pt-24 w-full xs:w-[300px] bg-background border-r-2 transition-all duration-1000 ${
+        className={`fixed top-0 h-screen pt-24 w-full xs:w-[300px] border-r-2 transition-all duration-1000 ${
           isMenuVisible ? "left-0 shadow-lg" : "-left-full"
-        }`}
+        }
+          ${
+            !navbarBgColor
+              ? "bg-background"
+              : "bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] backdrop-blur-lg"
+          }`}
       >
         {/* Side NavBar Close Button */}
         <button

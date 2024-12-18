@@ -8,6 +8,7 @@ import { TbArrowBackUp } from "react-icons/tb";
 import YouMightLike from "@/components/YouMightLike";
 import MakesOurBrand from "@/components/MakesOurBrand";
 import JoinClub from "@/components/JoinClub";
+import AllProductsLink from "@/components/AllProductsLink";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
@@ -32,7 +33,8 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
   }
 
   return (
-    <div className="">
+    <div className="mt-[40px]">
+      <AllProductsLink bgColor="bg-white" lineColor="" />
       <div className="flex flex-col md:flex-row justify-start md:justify-between items-center gap-12">
         <Image
           src={myProd.image}
