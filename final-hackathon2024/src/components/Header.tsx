@@ -13,7 +13,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ToggleButton } from "./ToggleButton";
-import { Button } from "./ui/button";
 
 const navLinks = [
   {
@@ -31,8 +30,9 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const [navbarVisible, setNavbarVisible] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(true);
 
   // Show Active Nav Link
   const pathName = usePathname();
@@ -63,14 +63,24 @@ export default function Header() {
       if (window.scrollY > 50) {
         setIsMenuVisible(false);
       }
+
+      if (window.scrollY > 151 && window.scrollY < 350) {
+        setNavbarVisible(false);
+      } else if (window.scrollY < 150 || window.scrollY > 351) {
+        setNavbarVisible(true);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll); // Cleanup event listener
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="relative bg-background text-foreground py-4 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div
+      className={`z-[999] fixed w-full bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] backdrop-blur-lg border-b-2 py-4 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 transition-all duration-1000 ${
+        navbarVisible ? "top-0" : "-top-full"
+      }`}
+    >
       {/* Top Navbar */}
       <div className="flex justify-between items-center">
         {/* Logo */}
@@ -81,7 +91,11 @@ export default function Header() {
         {/* NavBar Right Side Icons */}
         <div className="flex justify-between items-center gap-[12px]">
           {/* NavLinks for Large Screen */}
-          <div className="hidden md:flex justify-center items-center gap-6 mr-4">
+          <div
+            className={`hidden md:flex justify-center items-center gap-6 transition-all duration-1000 ${
+              isSearchVisible ? "mr-4" : "-mr-4"
+            }`}
+          >
             {navLinks.map((e, i) => (
               <Link
                 key={i}
@@ -107,7 +121,7 @@ export default function Header() {
             }`}
           >
             <button
-              className={`transition-all duration-1000 block md:grid place-content-center h-6 w-6 rounded-full text-background bg-red-500 ${
+              className={`block md:grid place-content-center h-6 w-6 rounded-full text-background bg-foreground hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 animate-pulse ${
                 isSearchVisible ? "scale-100" : "scale-0"
               }`}
               onClick={() => setIsSearchVisible(false)}
@@ -136,13 +150,11 @@ export default function Header() {
             onClick={() => setIsSearchVisible((prev) => !prev)}
           />
           <div
-            className={`absolute top-full left-1/2 -translate-x-1/2 flex justify-center items-center gap-2 w-[90%] transition-all duration-1000 mt-2 ${
+            className={`absolute top-full left-1/2 -translate-x-1/2 flex justify-center items-center gap-1 w-[90%] transition-all duration-1000 mt-2 ${
               isSearchVisible ? "flex md:hidden" : "hidden"
             }`}
           >
-            <div
-              className={`py-2 px-3 border-2 dark:border-chart-5 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,28%)] w-[90%] flex justify-center items-center rounded-full`}
-            >
+            <div className="py-2 px-3 border-2 dark:border-chart-5 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,28%)] w-[90%] flex justify-center items-center rounded-full shadow-lg">
               <input
                 type="text"
                 placeholder="Search..."
@@ -151,7 +163,7 @@ export default function Header() {
               <LuSearch className="text-lg cursor-pointer" />
             </div>
             <button
-              className="grid place-content-center h-10 w-10 rounded-full text-background bg-red-500"
+              className="grid place-content-center h-8 w-8 border-2 border-chart-2 dark:border-chart-4 rounded-full text-background bg-foreground hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 shadow-lg animate-pulse"
               onClick={() => setIsSearchVisible((prev) => !prev)}
             >
               <AiOutlineClose />
@@ -182,7 +194,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`fixed top-0 h-screen pt-24 w-full xs:w-[300px] bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] backdrop-blur-lg border-r-2 transition-all duration-1000 ${
+        className={`fixed top-0 h-screen pt-24 w-full xs:w-[300px] bg-background border-r-2 transition-all duration-1000 ${
           isMenuVisible ? "left-0 shadow-lg" : "-left-full"
         }`}
       >
@@ -191,7 +203,7 @@ export default function Header() {
           onClick={() => {
             setIsMenuVisible(false);
           }}
-          className="absolute bg-foreground text-background right-10 top-10 text-lg p-1 rounded-full shadow-md"
+          className="absolute bg-foreground text-background right-10 top-10 text-lg p-1 rounded-full hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 shadow-md"
         >
           <RxCross2 />
         </button>
