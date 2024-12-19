@@ -2,18 +2,22 @@
 import Image from "next/image";
 import products from "@/components/ArrayData";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Link from "next/link";
 import { TbArrowBackUp } from "react-icons/tb";
 import YouMightLike from "@/components/YouMightLike";
 import MakesOurBrand from "@/components/MakesOurBrand";
 import JoinClub from "@/components/JoinClub";
 import AllProductsLink from "@/components/AllProductsLink";
+import { cartContext } from "@/components/Context";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
   const [addCart, setAddCart] = useState(true);
+  const objCart = useContext(cartContext);
   const { product } = params;
+
+  console.log(objCart);
 
   const myProd = products.find(
     (c) => c.path.toLowerCase() === product.toLowerCase()
