@@ -9,15 +9,15 @@ import YouMightLike from "@/components/YouMightLike";
 import MakesOurBrand from "@/components/MakesOurBrand";
 import JoinClub from "@/components/JoinClub";
 import AllProductsLink from "@/components/AllProductsLink";
-import { cartContext } from "@/components/Context";
+import { CartContext } from "@/components/Context";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
   const [addCart, setAddCart] = useState(true);
-  const objCart = useContext(cartContext);
+  const cartData = useContext(CartContext);
   const { product } = params;
 
-  console.log(objCart);
+  console.log(cartData);
 
   const myProd = products.find(
     (c) => c.path.toLowerCase() === product.toLowerCase()
@@ -141,6 +141,18 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
                   Back <TbArrowBackUp />
                 </Button>
               </Link>
+              <button
+                onClick={() =>
+                  cartData.add(
+                    myProd.image,
+                    myProd.name,
+                    myProd.description,
+                    myProd.price
+                  )
+                }
+              >
+                aaa
+              </button>
             </div>
           </div>
         </div>
@@ -153,15 +165,3 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
 };
 
 export default ProductPage;
-
-/*
-path: "sleek-lamp",
-    id: 18,
-    name: "Sleek Floor Lamp",
-    category: "Lighting",
-    type: "Lamp",
-    price: 190,
-    brand: "Brand R",
-    dateAdded: "2023-11-09",
-    image: "/Photo09.png",
-    className: "",*/

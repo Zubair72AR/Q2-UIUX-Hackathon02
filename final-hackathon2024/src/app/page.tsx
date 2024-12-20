@@ -6,6 +6,7 @@ import JoinClub from "@/components/JoinClub";
 import MakesOurBrand from "@/components/MakesOurBrand";
 import NewCeramics from "@/components/NewCeramics";
 import PopularProducts from "@/components/PopularProducts";
+// import CartContext from "@/components/Context";
 
 export default function Home() {
   return (

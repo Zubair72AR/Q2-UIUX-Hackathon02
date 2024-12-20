@@ -2,14 +2,14 @@
 
 import { createContext } from "react";
 
-interface OfferBar {
-  [x: string]: any;
-}
+// interface OfferBar {
+//   [x: string]: any;
+// }
 
-export const offerContext = createContext({} as OfferBar);
+// export const OfferContext = createContext({} as OfferBar);
 
 interface Cart {
   [x: string]: any;
 }
 
-export const cartContext = createContext({} as Cart);
+export const CartContext = createContext({} as Cart);
