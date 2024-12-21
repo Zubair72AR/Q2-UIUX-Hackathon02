@@ -9,6 +9,7 @@ import StartedSmallIdea from "@/components/StartedSmallIdea";
 import React, { useContext } from "react";
 
 export default function AboutUs() {
+  // Offer Strip Setup for Navbar Scrolling
   const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
 
   return (
@@ -19,7 +20,6 @@ export default function AboutUs() {
       <OurService />
       <MakesOurBrand />
       <JoinClub />
-      <button onClick={() => setIsOfferVisible(false)}>aaaa</button>
     </div>
   );
 }

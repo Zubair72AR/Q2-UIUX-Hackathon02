@@ -10,6 +10,7 @@ export default function ABrand() {
         A brand built on the love of craftmanship, quality and outstanding
         customer service
       </h1>
+
       <Link href="/all-products">
         <Button variant={"secondary"} className="block w-full sm:w-auto">
           View our products

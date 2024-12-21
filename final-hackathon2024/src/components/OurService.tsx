@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 export default function OurService() {
   return (
@@ -28,9 +29,11 @@ export default function OurService() {
             for the London interior design community.
           </p>
         </div>
-        <Button variant={"outline"} className="w-full md:w-auto">
-          Get in touch
-        </Button>
+        <Link href="/contact">
+          <Button variant={"outline"} className="w-full md:w-auto">
+            Get in touch
+          </Button>
+        </Link>
       </div>
     </div>
   );
