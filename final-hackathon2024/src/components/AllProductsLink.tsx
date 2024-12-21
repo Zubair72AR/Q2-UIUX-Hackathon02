@@ -1,21 +1,10 @@
 "use client";
-import { LuSearch } from "react-icons/lu";
-import { CgProfile } from "react-icons/cg";
-import { MdOutlineShoppingCart } from "react-icons/md";
-import { HiMenu } from "react-icons/hi";
-import { AiOutlineClose } from "react-icons/ai";
-import { RxDividerVertical } from "react-icons/rx";
-import { RxCross2 } from "react-icons/rx";
-import { FaLinkedin, FaInstagram, FaSkype, FaTwitter } from "react-icons/fa";
-import { ImFacebook2 } from "react-icons/im";
-import { FaPinterest } from "react-icons/fa6";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ToggleButton } from "./ToggleButton";
-import { Button } from "./ui/button";
 
-const navLinks = [
+// Products Links for navigation
+const productsLinks = [
   {
     path: "/all-products",
     label: "All products",
@@ -50,45 +39,20 @@ const navLinks = [
   },
 ];
 
+// Type Interface for Products Navigation to Adjust Background and Horizontal Line
 interface AllProductsProps {
   bgColor: string;
   lineColor: string;
 }
 
+// All Products Navigation Component
 export default function AllProductsLink({
   bgColor,
   lineColor,
 }: AllProductsProps) {
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-
   // Show Active Nav Link
   const pathName = usePathname();
   const isActive = (path: string) => path == pathName;
-
-  // Show and hide Navbar According to Media Size
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMenuVisible(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsMenuVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll); // Cleanup event listener
-  }, []);
 
   return (
     <div
@@ -98,9 +62,9 @@ export default function AllProductsLink({
 
       <hr className={`dark:border-chart-5 hidden md:block ${lineColor}`} />
 
-      {/* NavLinks for Large Screen */}
+      {/* productsLinks for Large Screen */}
       <div className="hidden md:flex justify-center items-center gap-6 py-4 ">
-        {navLinks.map((e, i) => (
+        {productsLinks.map((e, i) => (
           <Link
             key={i}
             href={e.path}
