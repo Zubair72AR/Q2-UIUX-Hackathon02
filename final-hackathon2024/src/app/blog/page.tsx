@@ -4,6 +4,7 @@ import { OfferContext } from "@/components/Context";
 import React, { useContext } from "react";
 
 export default function Blog() {
+  // Offer Strip Setup for Navbar Scrolling
   const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
   return (
     <div className={` ${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
