@@ -13,6 +13,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ToggleButton } from "./ToggleButton";
+import OfferStrip from "./OfferStrip";
 
 const navLinks = [
   {
@@ -85,220 +86,225 @@ export default function Header() {
 
   return (
     <div
-      className={`z-[999] fixed w-full py-4 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 transition-all duration-1000 ${
+      className={`z-[999] fixed w-full transition-all duration-1000 ${
         navbarVisible ? "top-0" : "-top-full"
-      } ${
-        navbarBgColor
-          ? "bg-background border-none"
-          : "bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] border-b-2 backdrop-blur-lg"
-      }`}
+      } `}
     >
-      {/* Top Navbar */}
-      <div className="flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="text-xl">
-          Avion
-        </Link>
+      <OfferStrip />
+      <div
+        className={`py-4 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 ${
+          navbarBgColor
+            ? "bg-background border-none"
+            : "bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] border-b-2 backdrop-blur-lg"
+        }`}
+      >
+        {/* Top Navbar */}
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <Link href="/" className="text-xl">
+            Avion
+          </Link>
 
-        {/* NavBar Right Side Icons */}
-        <div className="flex justify-between items-center gap-[12px]">
-          {/* NavLinks for Large Screen */}
-          <div
-            className={`hidden md:flex justify-center items-center gap-6 transition-all duration-1000 ${
-              isSearchVisible ? "mr-4" : "-mr-4"
-            }`}
+          {/* NavBar Right Side Icons */}
+          <div className="flex justify-between items-center gap-[12px]">
+            {/* NavLinks for Large Screen */}
+            <div
+              className={`hidden md:flex justify-center items-center gap-6 transition-all duration-1000 ${
+                isSearchVisible ? "mr-4" : "-mr-4"
+              }`}
+            >
+              {navLinks.map((e, i) => (
+                <Link
+                  key={i}
+                  href={e.path}
+                  className={`list-none text-sm hover:text-chart-1 dark:hover:text-white transition-all duration-500 ${
+                    isActive(e.path)
+                      ? "active text-chart-1 dark:text-white"
+                      : "not_Active text-chart-5 dark:text-chart-3"
+                  }`}
+                >
+                  {e.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Search Icon */}
+            {/* Icon for Large Screen */}
+            <div
+              className={`hidden md:flex justify-center items-center py-2 px-[10px] rounded-full transition-all duration-1000 ${
+                isSearchVisible
+                  ? "border-[1px] dark:border-chart-5 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,28%)] mr-0"
+                  : "border-[1px] border-transparent -mr-3"
+              }`}
+            >
+              <button
+                className={`block md:grid place-content-center h-6 w-6 rounded-full text-background bg-foreground hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 animate-pulse ${
+                  isSearchVisible ? "scale-100" : "scale-0"
+                }`}
+                onClick={() => setIsSearchVisible(false)}
+              >
+                <AiOutlineClose />
+              </button>
+              <input
+                type="text"
+                placeholder="Search..."
+                className={`bg-transparent text-sm font-light outline-none transition-all duration-1000 ${
+                  isSearchVisible
+                    ? "w-52 lg:w-64 px-2 text-chart-5 dark:text-chart-3"
+                    : "w-0 px-0"
+                }`}
+              />
+              <LuSearch
+                className="text-lg cursor-pointer"
+                onClick={() => setIsSearchVisible(true)}
+              />
+            </div>
+            {/* Icon for Mobile Devices */}
+            <LuSearch
+              className={`text-lg block cursor-pointer ${
+                isSearchVisible ? "hidden" : "md:hidden"
+              }`}
+              onClick={() => {
+                setIsSearchVisible((prev) => {
+                  if (!prev) {
+                    setIsMenuVisible(false);
+                  }
+                  return !prev;
+                });
+              }}
+            />
+            <div
+              className={`absolute top-full left-1/2 -translate-x-1/2 flex justify-center items-center gap-1 w-[90%] transition-all duration-1000 mt-2 ${
+                isSearchVisible ? "flex md:hidden" : "hidden"
+              }`}
+            >
+              <div className="py-2 px-3 border-2 dark:border-chart-5 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,28%)] w-[90%] flex justify-center items-center rounded-full shadow-lg">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="bg-transparent text-sm font-light outline-none transition-all duration-1000 w-full px-2 text-chart-5 dark:text-chart-3"
+                />
+                <LuSearch className="text-lg cursor-pointer" />
+              </div>
+              <button
+                className="grid place-content-center h-8 w-8 border-2 border-chart-2 dark:border-chart-4 rounded-full text-background bg-foreground hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 shadow-lg animate-pulse"
+                onClick={() => setIsSearchVisible((prev) => !prev)}
+              >
+                <AiOutlineClose />
+              </button>
+            </div>
+
+            {/* Menu Icon for Mobile Devices */}
+            <div
+              className="text-lg block md:hidden cursor-pointer"
+              onClick={() => {
+                setIsMenuVisible((prev) => {
+                  if (!prev) {
+                    setIsSearchVisible(false);
+                  }
+                  return !prev;
+                });
+              }}
+            >
+              {isMenuVisible ? <AiOutlineClose /> : <HiMenu />}
+            </div>
+
+            {/* Shopping Cart, Profile Icon, Light and Dark Toggle Button */}
+            <Link href="/cart" className="relative">
+              <MdOutlineShoppingCart className="text-lg cursor-pointer" />
+              <span className="absolute -top-[11px] -right-[11px] flex justify-center items-center bg-red-500 text-[9px] font-medium w-[18px] h-[18px] rounded-full text-white">
+                0
+              </span>
+            </Link>
+            <CgProfile className="text-lg cursor-pointer" />
+            <RxDividerVertical className="text-chart-3 " />
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div
+          className={`fixed top-0 h-screen pt-24 w-full xs:w-[300px] border-r-2 transition-all duration-1000 ${
+            isMenuVisible ? "left-0 shadow-lg" : "-left-full"
+          }
+          ${
+            !navbarBgColor
+              ? "bg-background"
+              : "bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] backdrop-blur-lg"
+          }`}
+        >
+          {/* Side NavBar Close Button */}
+          <button
+            onClick={() => {
+              setIsMenuVisible(false);
+            }}
+            className="absolute bg-foreground text-background right-10 top-10 text-lg p-1 rounded-full hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 shadow-md"
           >
+            <RxCross2 />
+          </button>
+
+          {/* NavLinks for Mobile Devices */}
+          <div className="space-y-2">
             {navLinks.map((e, i) => (
               <Link
                 key={i}
                 href={e.path}
-                className={`list-none text-sm hover:text-chart-1 dark:hover:text-white transition-all duration-500 ${
-                  isActive(e.path)
-                    ? "active text-chart-1 dark:text-white"
-                    : "not_Active text-chart-5 dark:text-chart-3"
+                className={`list-none text-sm text-foreground pl-8 w-full inline-block py-1 ${
+                  isActive(e.path) ? "activeMob" : "not_ActiveMob"
                 }`}
+                onClick={() => {
+                  setIsMenuVisible(false);
+                }}
               >
                 {e.label}
               </Link>
             ))}
           </div>
 
-          {/* Search Icon */}
-          {/* Icon for Large Screen */}
-          <div
-            className={`hidden md:flex justify-center items-center py-2 px-[10px] rounded-full transition-all duration-1000 ${
-              isSearchVisible
-                ? "border-[1px] dark:border-chart-5 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,28%)] mr-0"
-                : "border-[1px] border-transparent -mr-3"
-            }`}
-          >
-            <button
-              className={`block md:grid place-content-center h-6 w-6 rounded-full text-background bg-foreground hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 animate-pulse ${
-                isSearchVisible ? "scale-100" : "scale-0"
-              }`}
-              onClick={() => setIsSearchVisible(false)}
-            >
-              <AiOutlineClose />
-            </button>
-            <input
-              type="text"
-              placeholder="Search..."
-              className={`bg-transparent text-sm font-light outline-none transition-all duration-1000 ${
-                isSearchVisible
-                  ? "w-52 lg:w-64 px-2 text-chart-5 dark:text-chart-3"
-                  : "w-0 px-0"
-              }`}
-            />
-            <LuSearch
-              className="text-lg cursor-pointer"
-              onClick={() => setIsSearchVisible(true)}
-            />
-          </div>
-          {/* Icon for Mobile Devices */}
-          <LuSearch
-            className={`text-lg block cursor-pointer ${
-              isSearchVisible ? "hidden" : "md:hidden"
-            }`}
-            onClick={() => {
-              setIsSearchVisible((prev) => {
-                if (!prev) {
-                  setIsMenuVisible(false);
-                }
-                return !prev;
-              });
-            }}
-          />
-          <div
-            className={`absolute top-full left-1/2 -translate-x-1/2 flex justify-center items-center gap-1 w-[90%] transition-all duration-1000 mt-2 ${
-              isSearchVisible ? "flex md:hidden" : "hidden"
-            }`}
-          >
-            <div className="py-2 px-3 border-2 dark:border-chart-5 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,28%)] w-[90%] flex justify-center items-center rounded-full shadow-lg">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="bg-transparent text-sm font-light outline-none transition-all duration-1000 w-full px-2 text-chart-5 dark:text-chart-3"
-              />
-              <LuSearch className="text-lg cursor-pointer" />
-            </div>
-            <button
-              className="grid place-content-center h-8 w-8 border-2 border-chart-2 dark:border-chart-4 rounded-full text-background bg-foreground hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 shadow-lg animate-pulse"
-              onClick={() => setIsSearchVisible((prev) => !prev)}
-            >
-              <AiOutlineClose />
-            </button>
-          </div>
-
-          {/* Menu Icon for Mobile Devices */}
-          <div
-            className="text-lg block md:hidden cursor-pointer"
-            onClick={() => {
-              setIsMenuVisible((prev) => {
-                if (!prev) {
-                  setIsSearchVisible(false);
-                }
-                return !prev;
-              });
-            }}
-          >
-            {isMenuVisible ? <AiOutlineClose /> : <HiMenu />}
-          </div>
-
-          {/* Shopping Cart, Profile Icon, Light and Dark Toggle Button */}
-          <Link href="/cart" className="relative">
-            <MdOutlineShoppingCart className="text-lg cursor-pointer" />
-            <span className="absolute -top-[11px] -right-[11px] flex justify-center items-center bg-red-500 text-[9px] font-medium w-[18px] h-[18px] rounded-full text-white">
-              0
-            </span>
-          </Link>
-          <CgProfile className="text-lg cursor-pointer" />
-          <RxDividerVertical className="text-chart-3 " />
-          <ToggleButton />
-        </div>
-      </div>
-
-      <div
-        className={`fixed top-0 h-screen pt-24 w-full xs:w-[300px] border-r-2 transition-all duration-1000 ${
-          isMenuVisible ? "left-0 shadow-lg" : "-left-full"
-        }
-          ${
-            !navbarBgColor
-              ? "bg-background"
-              : "bg-[rgb(245,245,245,0.8)] dark:bg-[rgb(42,37,75,0.8)] backdrop-blur-lg"
-          }`}
-      >
-        {/* Side NavBar Close Button */}
-        <button
-          onClick={() => {
-            setIsMenuVisible(false);
-          }}
-          className="absolute bg-foreground text-background right-10 top-10 text-lg p-1 rounded-full hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 shadow-md"
-        >
-          <RxCross2 />
-        </button>
-
-        {/* NavLinks for Mobile Devices */}
-        <div className="space-y-2">
-          {navLinks.map((e, i) => (
+          {/* Social Icons */}
+          <div className="absolute bottom-10 flex justify-start items-center gap-4 pl-8 text-foreground">
             <Link
-              key={i}
-              href={e.path}
-              className={`list-none text-sm text-foreground pl-8 w-full inline-block py-1 ${
-                isActive(e.path) ? "activeMob" : "not_ActiveMob"
-              }`}
-              onClick={() => {
-                setIsMenuVisible(false);
-              }}
+              href="https://www.linkedin.com/"
+              target="_blank"
+              className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
             >
-              {e.label}
+              <FaLinkedin />
             </Link>
-          ))}
-        </div>
-
-        {/* Social Icons */}
-        <div className="absolute bottom-10 flex justify-start items-center gap-4 pl-8 text-foreground">
-          <Link
-            href="https://www.linkedin.com/"
-            target="_blank"
-            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
-          >
-            <FaLinkedin />
-          </Link>
-          <Link
-            href="https://www.facebook.com/"
-            target="_blank"
-            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
-          >
-            <ImFacebook2 />
-          </Link>
-          <Link
-            href="https://www.instagram.com/"
-            target="_blank"
-            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
-          >
-            <FaInstagram />
-          </Link>
-          <Link
-            href="https://www.skype.com/"
-            target="_blank"
-            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
-          >
-            <FaSkype />
-          </Link>
-          <Link
-            href="https://twitter.com/"
-            target="_blank"
-            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500 "
-          >
-            <FaTwitter />
-          </Link>
-          <Link
-            href="https://www.pinterest.com/"
-            target="_blank"
-            className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
-          >
-            <FaPinterest />
-          </Link>
+            <Link
+              href="https://www.facebook.com/"
+              target="_blank"
+              className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
+            >
+              <ImFacebook2 />
+            </Link>
+            <Link
+              href="https://www.instagram.com/"
+              target="_blank"
+              className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
+            >
+              <FaInstagram />
+            </Link>
+            <Link
+              href="https://www.skype.com/"
+              target="_blank"
+              className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
+            >
+              <FaSkype />
+            </Link>
+            <Link
+              href="https://twitter.com/"
+              target="_blank"
+              className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500 "
+            >
+              <FaTwitter />
+            </Link>
+            <Link
+              href="https://www.pinterest.com/"
+              target="_blank"
+              className="text-xl hover:text-chart-3 hover:scale-125 transition-all duration-500"
+            >
+              <FaPinterest />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

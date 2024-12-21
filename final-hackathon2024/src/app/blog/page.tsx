@@ -1,11 +1,13 @@
+"use client";
 import AllProductsLink from "@/components/AllProductsLink";
-import TestButton from "@/components/TestButton";
-import React from "react";
+import { OfferContext } from "@/components/Context";
+import React, { useContext } from "react";
 
 export default function Blog() {
+  const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
   return (
-    <div>
-      <AllProductsLink />
+    <div className={` ${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
+      <AllProductsLink bgColor="bg-[hsl(0,0,97%)]" lineColor="border-none" />
       <div className="flex justify-center items-center flex-col h-[80vh]">
         <h1 className="text-3xl">Blog</h1>
         <p className="text-xs max-w-[400px] text-center ">

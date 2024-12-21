@@ -1,5 +1,15 @@
-import React from "react";
+"use client";
+import AllProductsLink from "@/components/AllProductsLink";
+import { OfferContext } from "@/components/Context";
+import React, { useContext } from "react";
 
 export default function NotFound() {
-  return <div className="h-96 grid place-items-center">not-found</div>;
+  const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
+
+  return (
+    <div className={`${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
+      <AllProductsLink bgColor="bg-white" lineColor="" />
+      <div className="h-[600px] grid place-items-center">Not Found</div>
+    </div>
+  );
 }

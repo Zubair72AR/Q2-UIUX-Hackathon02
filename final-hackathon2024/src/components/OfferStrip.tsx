@@ -2,21 +2,25 @@
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import { OfferContext } from "./Context";
 
 export default function OfferStrip() {
   const pathName = usePathname();
   const { theme } = useTheme();
   const [img01, setImg01] = useState("/DeliveryW.svg");
-  const [isOfferBarVisible, setIsOfferBarVisible] = useState(true);
+
+  const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
 
   useEffect(() => {
     // Update the image source based on theme
     if (theme === "dark") {
       setImg01("/Delivery.svg");
+      setIsOfferVisible(true);
     } else {
       setImg01("/DeliveryW.svg");
+      setIsOfferVisible(true);
     }
   }, [theme]);
 
@@ -29,7 +33,7 @@ export default function OfferStrip() {
   return (
     <div
       className={`flex justify-between items-center gap-6 bg-foreground text-background py-2 px-4 ${
-        isOfferBarVisible ? "block" : " hidden"
+        isOfferVisible ? "block" : " hidden"
       }`}
     >
       <div className="flex flex-1 justify-center items-center gap-2">
@@ -46,7 +50,7 @@ export default function OfferStrip() {
       </div>
       <button
         onClick={() => {
-          setIsOfferBarVisible(false);
+          setIsOfferVisible(false);
         }}
         className="bg-foreground text-background"
       >

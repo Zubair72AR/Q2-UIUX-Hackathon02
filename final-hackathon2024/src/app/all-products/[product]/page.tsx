@@ -9,15 +9,16 @@ import YouMightLike from "@/components/YouMightLike";
 import MakesOurBrand from "@/components/MakesOurBrand";
 import JoinClub from "@/components/JoinClub";
 import AllProductsLink from "@/components/AllProductsLink";
-import { CartContext } from "@/components/Context";
+import { OfferContext } from "@/components/Context";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
   const [addCart, setAddCart] = useState(true);
-  const cartData = useContext(CartContext);
-  const { product } = params;
 
-  console.log(cartData);
+  // Offer Strip Setup for Navbar Scrolling
+  const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
+
+  const { product } = params;
 
   const myProd = products.find(
     (c) => c.path.toLowerCase() === product.toLowerCase()
@@ -37,7 +38,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
   }
 
   return (
-    <div className="mt-[40px]">
+    <div className={` ${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
       <AllProductsLink bgColor="bg-white" lineColor="" />
       <div className="flex flex-col md:flex-row justify-start md:justify-between items-center gap-12">
         <Image
@@ -141,18 +142,6 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
                   Back <TbArrowBackUp />
                 </Button>
               </Link>
-              <button
-                onClick={() =>
-                  cartData.add(
-                    myProd.image,
-                    myProd.name,
-                    myProd.description,
-                    myProd.price
-                  )
-                }
-              >
-                aaa
-              </button>
             </div>
           </div>
         </div>

@@ -1,17 +1,20 @@
 "use client";
 import AllProductsLink from "@/components/AllProductsLink";
 import products from "@/components/ArrayData";
-import { CartContext } from "@/components/Context";
+import { OfferContext } from "@/components/Context";
+// import { CartContext } from "@/components/Context";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useContext, useState } from "react";
 
 export default function page() {
   const [number, setNumber] = useState(1);
-  const cartData = useContext(CartContext);
+
+  // Offer Strip Setup for Navbar Scrolling
+  const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
 
   return (
-    <div>
+    <div className={` ${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
       <AllProductsLink bgColor="bg-white" lineColor="" />
       <div className="space-y-8 py-14 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,20%)]">
         <h2 className="text-3xl md:text-4xl">Your shopping cart</h2>

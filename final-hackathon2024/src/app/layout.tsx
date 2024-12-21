@@ -4,7 +4,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/Theme-Provider";
-import ContextProvider from "@/components/ContextProvider";
+import ContextProvider from "@/components/Context";
 import CustomCursors from "@/components/CustomCursor";
 
 const clashDisplay = localFont({
