@@ -5,12 +5,16 @@ import { Button } from "@/components/ui/button";
 import React, { useContext } from "react";
 
 export default function NotFound() {
-  // Offer Strip Setup for Navbar Scrolling
+  // Offer Strip Margin Top Setup for Navbar Scrolling
   const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
 
   return (
+    // Offer Strip Margin Top Setup for Navbar Scrolling
     <div className={`${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
+      {/* All Products List Navigation */}
       <AllProductsLink bgColor="bg-white" lineColor="" />
+
+      {/* 404 Error Message */}
       <div className="flex justify-center items-center flex-col gap-3 my-48">
         <h1 className="font-bold text-2xl text-red-500 leading-none">
           Error 404

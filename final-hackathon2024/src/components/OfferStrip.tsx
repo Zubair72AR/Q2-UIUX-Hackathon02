@@ -24,6 +24,7 @@ export default function OfferStrip() {
     }
   }, [theme]);
 
+  // Hide the offer strip on specific paths (e.g., homepage)
   const hideOfferStripPaths = ["/"];
 
   if (hideOfferStripPaths.includes(pathName)) {
@@ -31,11 +32,13 @@ export default function OfferStrip() {
   }
 
   return (
+    // Offer strip component with close button
     <div
       className={`flex justify-between items-center gap-6 bg-foreground text-background py-2 px-4 ${
         isOfferVisible ? "block" : " hidden"
       }`}
     >
+      {/* Icon */}
       <div className="flex flex-1 justify-center items-center gap-2">
         <Image
           src={img01}
@@ -44,10 +47,14 @@ export default function OfferStrip() {
           height={50}
           className="w-6 xs:w-5 h-6 xs:h-5"
         />
+
+        {/* Offer Text */}
         <p className="text-xs sm:text-sm">
           Free delivery on all orders over £50 with code easter checkout
         </p>
       </div>
+
+      {/* Hide Button */}
       <button
         onClick={() => {
           setIsOfferVisible(false);

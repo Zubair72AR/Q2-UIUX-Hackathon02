@@ -4,22 +4,29 @@ import React, { useState, useEffect } from "react";
 
 const CustomCursors = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  // Cursor Dot Style 01
   const [cursorVariant, setCursorVariant] = useState<"default" | "hover">(
     "default"
   );
+
+  // Cursor Dot Style 02
   const [cursor2Variant, setCursor2Variant] = useState<"default" | "hover">(
     "default"
   );
 
+  // Cursor Dot Style 01 Default and Hover Over Stylings
   const cursorStyles: Record<string, string> = {
     default: "bg-zinc-300 opacity-40 h-8 w-8",
     hover: "bg-transparent border-[1px] border-zinc-200 h-16 w-16",
   };
+  // Cursor Dot Style 02 Default and Hover Over Stylings
   const cursor2Styles: Record<string, string> = {
     default: "bg-red-500 h-2 w-2",
     hover: "bg-emerald-400 h-[6px] w-[6px]",
   };
 
+  // Cursor Movement Animation
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -37,6 +44,7 @@ const CustomCursors = () => {
 
     window.addEventListener("mousemove", handleMouseMove);
 
+    // Add event listeners for interactive elements
     const interactiveElements = document.querySelectorAll(
       "a, button, .hoverable"
     );

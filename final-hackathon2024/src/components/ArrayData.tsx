@@ -1,3 +1,4 @@
+// All Products Type and Array
 type Product = {
   path: string;
   id: number;

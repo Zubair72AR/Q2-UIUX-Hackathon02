@@ -71,6 +71,7 @@ export default function ProductsPage() {
     };
   });
 
+  // Filter and Sorting for Mobile Devices
   // Hide Sort Button if Filter is Opened
   const filterButton = () => {
     setShowFilterBtn(!showFilterBtn);
@@ -85,6 +86,7 @@ export default function ProductsPage() {
   return (
     <div className="px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       <div className="flex justify-between items-center py-5">
+        {/* Filter Button for Mobile Devices */}
         <Button
           variant={"secondary"}
           onClick={filterButton}
@@ -92,6 +94,7 @@ export default function ProductsPage() {
         >
           Filters <IoMdArrowDropdown className="text-lg" />
         </Button>
+        {/* Sorting Button for Mobile Devices */}
         <Button
           variant={"secondary"}
           onClick={sortButton}
@@ -100,7 +103,7 @@ export default function ProductsPage() {
           Sorting <IoMdArrowDropdown className="text-lg" />
         </Button>
         <div className="hidden md:flex justify-between items-center gap-8">
-          {/* Filter by Category */}
+          {/* Filter by Category for Large Screen */}
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
@@ -111,7 +114,7 @@ export default function ProductsPage() {
             <option value="Decor">Decor</option>
             <option value="Lighting">Lighting</option>
           </select>
-          {/* Filter by Products Type */}
+          {/* Filter by Products Type for Large Screen */}
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
@@ -125,7 +128,7 @@ export default function ProductsPage() {
             <option value="Shelf">Shelf</option>
             <option value="Clock">Clock</option>
           </select>
-          {/* Sort by Price */}
+          {/* Sort by Price for Large Screen */}
           <select
             value={priceSortOption}
             onChange={(e) => setPriceSortOption(e.target.value)}
@@ -135,7 +138,7 @@ export default function ProductsPage() {
             <option value="lowToHigh">High</option>
             <option value="highToLow">Low</option>
           </select>
-          {/* Filter by Brand */}
+          {/* Filter by Brand for Large Screen */}
           <select
             value={brandFilter}
             onChange={(e) => setBrandFilter(e.target.value)}
@@ -148,7 +151,7 @@ export default function ProductsPage() {
             <option value="Brand D">D</option>
           </select>
         </div>
-        {/* Sort by Date/Name */}
+        {/* Sort by Date/Name for Large Screen */}
         <div className="hidden md:flex justify-between items-center gap-2">
           <label>Sorting by:</label>
           <select
@@ -161,6 +164,8 @@ export default function ProductsPage() {
           </select>
         </div>
       </div>
+
+      {/* Sort by Date/Name for Mobile Devices */}
       {showSortBtn && (
         <div className="flex flex-col md:hidden gap-2">
           <label>Sorting by:</label>
@@ -176,7 +181,7 @@ export default function ProductsPage() {
       )}
       {showFilterBtn && (
         <div className="flex flex-col md:hidden gap-2">
-          {/* Filter by Category */}
+          {/* Filter by Category for Mobile Devices */}
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
@@ -187,7 +192,7 @@ export default function ProductsPage() {
             <option value="Decor">Decor</option>
             <option value="Lighting">Lighting</option>
           </select>
-          {/* Filter by Products Type */}
+          {/* Filter by Products Type for Mobile Devices */}
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
@@ -201,7 +206,7 @@ export default function ProductsPage() {
             <option value="Shelf">Shelf</option>
             <option value="Clock">Clock</option>
           </select>
-          {/* Sort by Price */}
+          {/* Sort by Price for Mobile Devices */}
           <select
             value={priceSortOption}
             onChange={(e) => setPriceSortOption(e.target.value)}
@@ -211,7 +216,7 @@ export default function ProductsPage() {
             <option value="lowToHigh">High</option>
             <option value="highToLow">Low</option>
           </select>
-          {/* Filter by Brand */}
+          {/* Filter by Brand for Mobile Devices */}
           <select
             value={brandFilter}
             onChange={(e) => setBrandFilter(e.target.value)}
@@ -228,8 +233,11 @@ export default function ProductsPage() {
 
       {/* Product Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 md:gap-x-3 gap-y-8  cursor-pointer p-4">
+        {/* Products List - By Default 12 Products are Shown */}
         {sortedProducts.slice(0, visibleCount).map((p) => (
+          // Dynamic Routes
           <Link href={`/all-products/${p.path}`}>
+            {/* Image */}
             <div className="overflow-hidden hover:rounded-xl transition-all duration-1000">
               <Image
                 src={p.image}
@@ -239,6 +247,8 @@ export default function ProductsPage() {
                 className={`object-contain bg-cover transition-all duration-500 hover:scale-110`}
               />
             </div>
+
+            {/* Name and Price */}
             <h3 className="text-base md:text-lg lg:text-xl mt-2 md:mt-3">
               {p.name}
             </h3>
@@ -248,6 +258,8 @@ export default function ProductsPage() {
           </Link>
         ))}
       </div>
+
+      {/* Load More Button */}
       <Button
         variant={"secondary"}
         onClick={showMoreItems}

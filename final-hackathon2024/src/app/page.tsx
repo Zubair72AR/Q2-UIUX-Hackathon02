@@ -9,7 +9,10 @@ import PopularProducts from "@/components/PopularProducts";
 export default function Home() {
   return (
     <div className="mt-[74px]">
+      {/* All Products List Navigation */}
       <AllProductsLink bgColor="bg-background" lineColor="" />
+
+      {/* Other Components Data */}
       <HeroSection />
       <MakesOurBrand />
       <NewCeramics />

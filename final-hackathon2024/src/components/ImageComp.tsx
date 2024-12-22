@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
+// Type definitions
 interface ImageCompProps {
   src: string;
   dec: string;
@@ -15,6 +16,7 @@ export default function ImageComp({
 }: ImageCompProps) {
   return (
     <div>
+      {/* Image */}
       <div className="overflow-hidden hover:rounded-xl transition-all duration-1000">
         <Image
           src={src}
@@ -24,6 +26,8 @@ export default function ImageComp({
           className={`object-contain bg-cover transition-all duration-500 hover:scale-110 ${className}`}
         />
       </div>
+
+      {/* Description and Price */}
       <h3 className="text-base md:text-lg lg:text-xl mt-2 md:mt-3">{dec}</h3>
       <p className="text-sm md:text-base lg:text-lg mt-0 md:mt-1">{prices}</p>
     </div>

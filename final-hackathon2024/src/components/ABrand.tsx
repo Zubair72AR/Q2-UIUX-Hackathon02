@@ -11,7 +11,8 @@ export default function ABrand() {
         customer service
       </h1>
 
-      <Link href="/all-products">
+      {/* All Products Button */}
+      <Link href="/all-products" className="block w-full sm:w-auto">
         <Button variant={"secondary"} className="block w-full sm:w-auto">
           View our products
         </Button>

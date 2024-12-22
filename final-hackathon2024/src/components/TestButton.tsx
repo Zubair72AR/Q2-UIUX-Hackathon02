@@ -2,6 +2,8 @@ import { ChevronRight, MailOpen } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
+// Please Ignore This Components
+// Test Button for testing Colors and Themes
 export default function TestButton() {
   return (
     <div className="flex justify-between items-center flex-wrap gap-6 p-12">

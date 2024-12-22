@@ -15,11 +15,11 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
   const [addCart, setAddCart] = useState(true);
 
-  // Offer Strip Setup for Navbar Scrolling
+  // Offer Strip Margin Top Setup for Navbar Scrolling
   const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
 
   const { product } = params;
-
+  // Matching the Selected Product
   const myProd = products.find(
     (c) => c.path.toLowerCase() === product.toLowerCase()
   );
@@ -27,19 +27,32 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
   // If product is not found, return "Page not found"
   if (!myProd) {
     return (
-      <div className="text-center">
-        <h1>Product Not Found</h1>
-        <p>The product you are looking for does not exist.</p>
-        <a href="/" className="text-blue-500 underline">
-          Go back to the homepage
-        </a>
+      <div className={`${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
+        <AllProductsLink bgColor="bg-white" lineColor="" />
+        <div className="flex justify-center items-center flex-col gap-3 my-48">
+          <h1 className="font-bold text-2xl text-red-500 leading-none">
+            Error 404
+          </h1>
+          <div className="flex justify-center items-center flex-col">
+            <p>Oops! This page was not found</p>
+            <p className="text-chart-3">
+              The products listed are not in the list, or you have entered a
+              misspelling.
+            </p>
+          </div>
+          <Button variant={"destructive"}>Back to Home</Button>
+        </div>
       </div>
     );
   }
 
   return (
+    // Offer Strip Margin Top Setup for Navbar Scrolling
     <div className={` ${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
+      {/* All Products List Navigation */}
       <AllProductsLink bgColor="bg-white" lineColor="" />
+
+      {/* Image of Selected Product */}
       <div className="flex flex-col md:flex-row justify-start md:justify-between items-center gap-12">
         <Image
           src={myProd.image}
@@ -48,8 +61,11 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
           height={200}
           className="object-contain hover:bg-cover shadow-md w-full md:w-1/2"
         />
+
+        {/* Product Details */}
         <div className="space-y-10 w-full md:w-1/2 pr-6 sm:pr-8 md:pr-12 lg:pr-20 2xl:pr-36 pl-6 sm:pl-8 md:pl-0">
           <div className="space-y-4">
+            {/* Product Date and Name */}
             <div>
               <p className="text-[10px]">Date Added: {myProd.dateAdded}</p>
               <h3 className="text-3xl">{myProd.name}</h3>
@@ -57,12 +73,14 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
             <p className="text-xl">£{myProd.price}</p>
           </div>
 
+          {/* Product Description */}
           <div className="space-y-4">
             <p>Description</p>
             <p className="text-sm text-zinc-500 dark:text-gray-300">
               {myProd.description}
             </p>
 
+            {/* Product Specifications */}
             <ul className="space-y-1 text-zinc-500 dark:text-gray-300">
               <li className="text-sm list-disc ml-6">
                 {myProd.specification[0]}
@@ -76,6 +94,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
             </ul>
           </div>
 
+          {/* Product Dimensions */}
           <div className="space-y-4">
             <p>Dimensions</p>
             <div className="flex justify-start items-center gap-10">
@@ -102,6 +121,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
 
           <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-3">
             <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-3 md:gap-4 w-full md:w-auto">
+              {/* Quantity Button  */}
               <p>Quantity:</p>
               <div className="flex justify-center items-center gap-6 md:gap-3 px-3 bg-chart-4 text-chart-1 w-full md:w-auto">
                 <button
@@ -125,6 +145,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
             </div>
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-3 w-full md:w-auto">
+              {/* Button for Add to Cart and Remove  */}
               <Button
                 onClick={() => {
                   setAddCart((prev) => !prev);
@@ -146,6 +167,8 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
           </div>
         </div>
       </div>
+
+      {/* Other Components Data */}
       <YouMightLike />
       <MakesOurBrand />
       <JoinClub />

@@ -5,6 +5,7 @@ import Link from "next/link";
 export default function OurService() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden pt-12">
+      {/* Left Portion Image */}
       <Image
         src="/Image-right.png"
         alt="Hero Image"
@@ -13,7 +14,9 @@ export default function OurService() {
         className="object-cover h-full w-full"
       />
       <div className="flex items-center md:items-start justify-between flex-col gap-20 pl-6 sm:pl-8 md:pl-12 lg:pl-20 2xl:pl-36 pr-6 sm:pr-8 md:pr-12 py-12 lg:py-16 text-chart-1 bg-chart-4 min-h-[450px]">
+        {/* Right Portion */}
         <div className="space-y-3 lg:space-y-4">
+          {/* Heading and Paragraphs */}
           <h1 className="text-2xl">
             Our service isn’t just personal, it’s actually hyper personally
             exquisite
@@ -29,7 +32,9 @@ export default function OurService() {
             for the London interior design community.
           </p>
         </div>
-        <Link href="/contact">
+
+        {/* Button */}
+        <Link href="/contact" className="w-full md:w-auto">
           <Button variant={"outline"} className="w-full md:w-auto">
             Get in touch
           </Button>

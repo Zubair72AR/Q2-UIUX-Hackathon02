@@ -14,21 +14,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ToggleButton } from "./ToggleButton";
 import OfferStrip from "./OfferStrip";
-
-const navLinks = [
-  {
-    path: "/about-us",
-    label: "About us",
-  },
-  {
-    path: "/contact",
-    label: "Contact",
-  },
-  {
-    path: "/blog",
-    label: "Blog",
-  },
-];
+import { navLinks, productsLinks } from "@/components/NavLinksArray";
 
 export default function Header() {
   const [navbarVisible, setNavbarVisible] = useState(true);
@@ -128,8 +114,8 @@ export default function Header() {
               ))}
             </div>
 
-            {/* Search Icon */}
             {/* Icon for Large Screen */}
+            {/* Search Input / Icon Large Screen */}
             <div
               className={`hidden md:flex justify-center items-center py-2 px-[10px] rounded-full transition-all duration-1000 ${
                 isSearchVisible
@@ -160,6 +146,7 @@ export default function Header() {
               />
             </div>
             {/* Icon for Mobile Devices */}
+            {/* Search Input / Icon Mobile Devices */}
             <LuSearch
               className={`text-lg block cursor-pointer ${
                 isSearchVisible ? "hidden" : "md:hidden"
@@ -223,7 +210,7 @@ export default function Header() {
         </div>
 
         <div
-          className={`fixed top-0 h-screen pt-24 w-full xs:w-[300px] border-r-2 transition-all duration-1000 ${
+          className={`fixed top-0 flex flex-col justify-between h-screen pt-14 pb-6 pl-8 w-full xs:w-[300px] border-r-2 transition-all duration-1000 ${
             isMenuVisible ? "left-0 shadow-lg" : "-left-full"
           }
           ${
@@ -248,7 +235,24 @@ export default function Header() {
               <Link
                 key={i}
                 href={e.path}
-                className={`list-none text-sm text-foreground pl-8 w-full inline-block py-1 ${
+                className={`list-none text-sm font-medium text-foreground w-full inline-block ${
+                  isActive(e.path) ? "activeMob" : "not_ActiveMob"
+                }`}
+                onClick={() => {
+                  setIsMenuVisible(false);
+                }}
+              >
+                {e.label}
+              </Link>
+            ))}
+          </div>
+          {/* Products Links for Mobile Devices */}
+          <div className="space-y-1">
+            {productsLinks.map((e, i) => (
+              <Link
+                key={i}
+                href={e.path}
+                className={`list-none text-sm text-zinc-500 dark:text-[hsl(241,31%,75%)] w-full inline-block ${
                   isActive(e.path) ? "activeMob" : "not_ActiveMob"
                 }`}
                 onClick={() => {
@@ -261,7 +265,7 @@ export default function Header() {
           </div>
 
           {/* Social Icons */}
-          <div className="absolute bottom-10 flex justify-start items-center gap-4 pl-8 text-foreground">
+          <div className="flex justify-start items-center gap-4 text-foreground">
             <Link
               href="https://www.linkedin.com/"
               target="_blank"
