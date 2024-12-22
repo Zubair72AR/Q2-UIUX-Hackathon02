@@ -20,7 +20,7 @@ export default function AllProductsLink({
 
   return (
     <div
-      className={`hidden md:block relative dark:bg-chart-1 text-foreground px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 ${bgColor}`}
+      className={`hidden md:block relative dark:bg-[hsl(248,34%,20%)] text-foreground px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 ${bgColor}`}
     >
       {/* Horizontal Line for Large Screen Only */}
 

@@ -48,7 +48,11 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
 
   return (
     // Offer Strip Margin Top Setup for Navbar Scrolling
-    <div className={` ${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
+    <div
+      className={` ${
+        isOfferVisible ? "mt-[97px] md:mt-[110px]" : "mt-[61px] md:mt-[74px]"
+      } `}
+    >
       {/* All Products List Navigation */}
       <AllProductsLink bgColor="bg-white" lineColor="" />
 

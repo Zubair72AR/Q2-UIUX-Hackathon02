@@ -17,10 +17,8 @@ export default function OfferStrip() {
     // Update the image source based on theme
     if (theme === "dark") {
       setImg01("/Delivery.svg");
-      setIsOfferVisible(true);
     } else {
       setImg01("/DeliveryW.svg");
-      setIsOfferVisible(true);
     }
   }, [theme]);
 

@@ -9,7 +9,11 @@ export default function Contact() {
 
   return (
     // Offer Strip Margin Top Setup for Navbar Scrolling
-    <div className={` ${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} h-screen`}>
+    <div
+      className={` ${
+        isOfferVisible ? "mt-[97px] md:mt-[110px]" : "mt-[61px] md:mt-[74px]"
+      } h-screen`}
+    >
       {/* All Products List Navigation */}
       <AllProductsLink bgColor="bg-[hsl(0,0,97%)]" lineColor="border-none" />
 

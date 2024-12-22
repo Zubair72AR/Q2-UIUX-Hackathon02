@@ -8,13 +8,17 @@ export default function Blog() {
   const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
   return (
     // Offer Strip Margin Top Setup for Navbar Scrolling
-    <div className={` ${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} h-screen`}>
+    <div
+      className={` ${
+        isOfferVisible ? "mt-[97px] md:mt-[110px]" : "mt-[61px] md:mt-[74px]"
+      } h-screen`}
+    >
       {/* All Products List Navigation */}
       <AllProductsLink bgColor="bg-[hsl(0,0,97%)]" lineColor="border-none" />
 
       {/* Dummy Heading and Paragraph */}
       <div className="flex justify-center items-center gap-2 flex-col">
-        <h1 className="text-center mt-36 text-2xl font-bold">BLog</h1>
+        <h1 className="text-center mt-36 text-2xl font-bold">Bog</h1>
         <p className="max-w-72 text-center">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
           facere voluptatum quibusdam magni iusto possimus minima distinctio?

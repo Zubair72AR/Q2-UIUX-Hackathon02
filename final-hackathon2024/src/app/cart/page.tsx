@@ -15,12 +15,16 @@ export default function page() {
 
   return (
     // Offer Strip Margin Top Setup for Navbar Scrolling
-    <div className={` ${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
+    <div
+      className={` ${
+        isOfferVisible ? "mt-[97px] md:mt-[110px]" : "mt-[61px] md:mt-[74px]"
+      } `}
+    >
       {/* All Products List Navigation */}
       <AllProductsLink bgColor="bg-white" lineColor="" />
 
       {/* Shopping Cart Heading */}
-      <div className="space-y-8 py-14 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 bg-[hsl(0,0,98%)] dark:bg-[hsl(248,34%,20%)]">
+      <div className="space-y-8 py-14 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36 bg-[hsl(0,0,96%)] dark:bg-[hsl(248,34%,20%)]">
         <h2 className="text-3xl md:text-4xl">Your shopping cart</h2>
 
         {/* Shopping Cart Menu Heading */}
