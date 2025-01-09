@@ -112,7 +112,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="h-full px-7 sm:px-8 lg:px-20 xl:px-24">
+    <div className="h-full px-7 sm:px-8 lg:px-12 2xl:px-24">
       {/* Side Menu */}
       <div className="relative flex justify-between items-start lg:items-end overflow-hidden">
         <div
