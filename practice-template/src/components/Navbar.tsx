@@ -131,7 +131,7 @@ export default function Navbar() {
         {/* Nav Icons for Right Side */}
         <div className="flex justify-center items-center gap-3 md:gap-5">
           {/* Search Bar and Icons for Large Screen */}
-          <div className="hidden lg:flex justify-between items-center h-9 px-[10px] rounded-sm w-60 bg-muted">
+          <div className="hidden lg:flex justify-between items-center h-10 px-3 rounded-sm w-60 bg-muted">
             <input
               type="text"
               placeholder="What are you looking for?"
