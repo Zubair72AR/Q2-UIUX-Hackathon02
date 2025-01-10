@@ -171,7 +171,7 @@ export default function Navbar() {
 
         {/* Search Bar Appear for Mobile Devices */}
         <div
-          className={`z-50 absolute bottom-0 left-1/2 translate-y-10 -translate-x-1/2 justify-between items-center h-9 pl-[10px] rounded-md w-[75%] bg-muted shadow-[10px_10px_10px_rgba(0,0,0,0.7)] dark:shadow-[10px_10px_10px_rgba(0,0,0,0.4)] ${
+          className={`z-50 absolute bottom-0 left-1/2 translate-y-12 -translate-x-1/2 justify-between items-center h-9 pl-[10px] rounded-md w-[75%] bg-muted shadow-[10px_10px_10px_rgba(0,0,0,0.5)] dark:shadow-[10px_10px_10px_rgba(0,0,0,0.3)] ${
             isSearchVisible ? "flex" : "hidden"
           }`}
         >
