@@ -1,13 +1,13 @@
 import HeroSection from "@/components/HeroSection";
-import ReverseTimer from "@/components/ReverseTimer";
+import ReverseTimer from "@/components/CountdownTimer";
 import TestButton from "@/components/TestButton";
-import TodayItem from "@/components/TodayItem";
+import FlashSales from "@/components/FlashSales";
 
 export default function Home() {
   return (
     <div>
       <HeroSection />
-      <TodayItem />
+      <FlashSales />
       <TestButton />
     </div>
   );
