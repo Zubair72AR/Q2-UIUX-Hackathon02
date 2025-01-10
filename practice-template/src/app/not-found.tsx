@@ -13,7 +13,7 @@ import {
 
 export default function notFound() {
   return (
-    <div className="py-8 md:py-12 lg:py-16 px-7 sm:px-8 lg:px-12 2xl:px-24">
+    <div className="py-10 md:py-16 lg:py-20 px-7 sm:px-8 lg:px-12 2xl:px-24">
       {/* Bread Crum */}
       <Breadcrumb>
         <BreadcrumbList>
