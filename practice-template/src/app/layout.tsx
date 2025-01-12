@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/Theme-Provider";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { ToggleButton } from "@/components/ToggleButton";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,6 +32,9 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <div className="fixed z-50 bottom-5 right-5 bg-red-500 p-4">
+            <ToggleButton />
+          </div>
           <Footer />
         </ThemeProvider>
       </body>
