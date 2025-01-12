@@ -91,7 +91,7 @@ export default function FlashSalesSlider() {
         {FlashSalesItems.map((item, index) => (
           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
             <div className="space-y-1">
-              <div className="p-8 mb-3 h-[250px] bg-zinc-100 relative rounded-sm">
+              <div className="p-8 mb-3 h-[250px] bg-zinc-200 dark:bg-zinc-700 relative rounded-sm">
                 <p className="top-3 left-3 absolute px-3 py-1 font-medium text-primary-foreground text-[12px] bg-primary rounded-sm">
                   -{item.discount}%
                 </p>

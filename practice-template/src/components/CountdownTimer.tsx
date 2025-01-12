@@ -63,7 +63,7 @@ const Timer = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [launchDate]);
+  }, [1000]);
 
   return (
     <div className="flex justify-start items-end gap-3">
