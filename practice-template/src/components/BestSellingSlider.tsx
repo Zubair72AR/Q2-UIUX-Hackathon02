@@ -79,7 +79,7 @@ const FlashSalesItems = [
   },
 ];
 
-export default function FlashSalesSlider() {
+export default function BestSellingSlider() {
   return (
     <Carousel
       opts={{
@@ -148,8 +148,8 @@ export default function FlashSalesSlider() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="hidden" />
+      <CarouselNext className="hidden" />
     </Carousel>
   );
 }

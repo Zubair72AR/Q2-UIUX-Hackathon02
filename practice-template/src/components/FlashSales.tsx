@@ -1,7 +1,7 @@
 import React from "react";
 import SubHeading from "./SubHeading";
 import CountdownTimer from "./CountdownTimer";
-import FlashSalesSlider from "./FlashSalesSlider";
+import FlashSalesSlider from "./BestSellingSlider";
 import { Button } from "./ui/button";
 
 export default function FlashSales() {
