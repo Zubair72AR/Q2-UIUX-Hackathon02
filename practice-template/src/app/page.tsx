@@ -3,6 +3,7 @@ import TestButton from "@/components/TestButton";
 import FlashSales from "@/components/FlashSales";
 import BrowseByCategory from "@/components/BrowseByCategory";
 import BestSellingProducts from "@/components/BestSellingProducts";
+import EnhanceMusic from "@/components/EnhanceMusic";
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
       <FlashSales />
       <BrowseByCategory />
       <BestSellingProducts />
-      <TestButton />
+      <EnhanceMusic />
+      {/* <TestButton /> */}
     </div>
   );
 }
