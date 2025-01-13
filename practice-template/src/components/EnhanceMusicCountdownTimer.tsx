@@ -67,32 +67,36 @@ const EnhanceMusicTimer = () => {
 
   return (
     <div className="flex justify-start items-end gap-3">
-      <div className="flex flex-col justify-center items-center w-16 h-16 rounded-full bg-background">
-        <span className="font-semibold text-xl leading-none">
+      <div className="flex flex-col justify-center items-center w-16 h-16 rounded-full bg-white">
+        <span className="font-semibold text-xl leading-none text-black">
           {timeLeft.days}
         </span>
-        <p className="font-medium text-[11px] leading-none">Days</p>
+        <p className="font-medium text-[11px] leading-none text-black">Days</p>
       </div>
 
-      <div className="flex flex-col justify-center items-center w-16 h-16 rounded-full bg-background">
-        <span className="font-semibold text-xl leading-none">
+      <div className="flex flex-col justify-center items-center w-16 h-16 rounded-full bg-white">
+        <span className="font-semibold text-xl leading-none text-black">
           {timeLeft.hours}
         </span>
-        <p className="font-medium text-[11px] leading-none">Hours</p>
+        <p className="font-medium text-[11px] leading-none text-black">Hours</p>
       </div>
 
-      <div className="flex flex-col justify-center items-center w-16 h-16 rounded-full bg-background">
-        <span className="font-semibold text-xl leading-none">
+      <div className="flex flex-col justify-center items-center w-16 h-16 rounded-full bg-white">
+        <span className="font-semibold text-xl leading-none text-black">
           {timeLeft.minutes}
         </span>
-        <p className="font-medium text-[11px] leading-none">Minutes</p>
+        <p className="font-medium text-[11px] leading-none text-black">
+          Minutes
+        </p>
       </div>
 
-      <div className="flex flex-col justify-center items-center w-16 h-16 rounded-full bg-background">
-        <span className="font-semibold text-xl leading-none">
+      <div className="flex flex-col justify-center items-center w-16 h-16 rounded-full bg-white">
+        <span className="font-semibold text-xl leading-none text-black">
           {timeLeft.seconds}
         </span>
-        <p className="font-medium text-[11px] leading-none">Seconds</p>
+        <p className="font-medium text-[11px] leading-none text-black">
+          Seconds
+        </p>
       </div>
     </div>
   );
