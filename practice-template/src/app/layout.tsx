@@ -32,7 +32,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
-          <div className="fixed z-50 bottom-5 right-5 bg-red-500 p-4">
+          <div className="fixed z-50 bottom-5 right-5 bg-background p-4 rounded-md">
             <ToggleButton />
           </div>
           <Footer />

@@ -89,7 +89,10 @@ export default function BestSellingSlider() {
     >
       <CarouselContent>
         {FlashSalesItems.map((item, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
+          <CarouselItem
+            key={index}
+            className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+          >
             <div className="space-y-1">
               <div className="p-8 mb-3 h-[250px] bg-zinc-200 dark:bg-zinc-700 relative rounded-sm">
                 <p className="top-3 left-3 absolute px-3 py-1 font-medium text-primary-foreground text-[12px] bg-primary rounded-sm">
@@ -148,8 +151,8 @@ export default function BestSellingSlider() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="hidden" />
-      <CarouselNext className="hidden" />
+      <CarouselPrevious className="-top-14 xs:-top-16 right-10" />
+      <CarouselNext className="-top-14 xs:-top-16 right-0" />
     </Carousel>
   );
 }

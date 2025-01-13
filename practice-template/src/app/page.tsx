@@ -5,6 +5,7 @@ import BrowseByCategory from "@/components/BrowseByCategory";
 import BestSellingProducts from "@/components/BestSellingProducts";
 import EnhanceMusic from "@/components/EnhanceMusic";
 import { ToggleButton } from "@/components/ToggleButton";
+import ExploreOurProducts from "@/components/ExploreOurProducts";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <BrowseByCategory />
       <BestSellingProducts />
       <EnhanceMusic />
+      <ExploreOurProducts />
       {/* <TestButton /> */}
     </div>
   );

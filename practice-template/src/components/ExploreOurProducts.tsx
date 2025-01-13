@@ -4,7 +4,7 @@ import CountdownTimer from "./CountdownTimer";
 import FlashSalesSlider from "./BestSellingSlider";
 import { Button } from "./ui/button";
 
-export default function FlashSales() {
+export default function ExploreOurProducts() {
   return (
     <div className="space-y-6 mt-20 px-7 sm:px-8 lg:px-12 2xl:px-24">
       <SubHeading text="Today’s" />
