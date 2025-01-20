@@ -70,6 +70,13 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Hide the offer strip on specific paths (e.g., homepage)
+  const hideOfferStripPaths = ["/studio"];
+
+  if (pathName.startsWith(hideOfferStripPaths[0])) {
+    return null;
+  }
+
   return (
     <div
       className={`z-[999] fixed w-full transition-all duration-1000 ${
