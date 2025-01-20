@@ -146,7 +146,7 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
+    <div className="px-6 sm:px-8 md:pr-5 appearance-none2 lg:px-20 2xl:px-36">
       <div className="flex justify-between items-center py-5">
         {/* Filter Button for Mobile Devices */}
         <Button
@@ -166,60 +166,75 @@ export default function ProductsPage() {
         </Button>
         <div className="hidden md:flex justify-between items-center gap-8">
           {/* Filter by Category for Large Screen */}
-          <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="All">Category</option>
-            {categories.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none"
+            >
+              <option value="All">Category</option>
+              {categories.map((value) => (
+                <option value={value.name}>{value.name}</option>
+              ))}
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
           {/* Filter by Products Type for Large Screen */}
-          <select
-            value={typeFilter}
-            onChange={(e) => setTypeFilter(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="All">Product type</option>
-            {productTypes.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={typeFilter}
+              onChange={(e) => setTypeFilter(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none"
+            >
+              <option value="All">Product type</option>
+              {productTypes.map((value) => (
+                <option value={value.name}>{value.name}</option>
+              ))}
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
           {/* Sort by Price for Large Screen */}
-          <select
-            value={priceSortOption}
-            onChange={(e) => setPriceSortOption(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="">Price</option>
-            <option value="lowToHigh">High</option>
-            <option value="highToLow">Low</option>
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={priceSortOption}
+              onChange={(e) => setPriceSortOption(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none"
+            >
+              <option value="">Price</option>
+              <option value="lowToHigh">High</option>
+              <option value="highToLow">Low</option>
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
           {/* Filter by Brand for Large Screen */}
-          <select
-            value={brandFilter}
-            onChange={(e) => setBrandFilter(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="All">Brand</option>
-            {brands.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={brandFilter}
+              onChange={(e) => setBrandFilter(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none"
+            >
+              <option value="All">Brand</option>
+              {brands.map((value) => (
+                <option value={value.name}>{value.name}</option>
+              ))}
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
         </div>
         {/* Sort by Date/Name for Large Screen */}
         <div className="hidden md:flex justify-between items-center gap-2">
           <label>Sorting by:</label>
-          <select
-            value={sortOption}
-            onChange={(e) => setSortOption(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="dateAdded">Date added</option>
-            <option value="name">Name</option>
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none"
+            >
+              <option value="dateAdded">Date added</option>
+              <option value="name">Name</option>
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
         </div>
       </div>
 
@@ -227,63 +242,78 @@ export default function ProductsPage() {
       {showSortBtn && (
         <div className="flex flex-col md:hidden gap-2">
           <label>Sorting by:</label>
-          <select
-            value={sortOption}
-            onChange={(e) => setSortOption(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="dateAdded">Date added</option>
-            <option value="name">Name</option>
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none w-full"
+            >
+              <option value="dateAdded">Date added</option>
+              <option value="name">Name</option>
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
         </div>
       )}
       {showFilterBtn && (
         <div className="flex flex-col md:hidden gap-2">
           {/* Filter by Category for Mobile Devices */}
-          <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="All">Category</option>
-            {categories.map((value) => (
-              <option key={value._id} value={value.name}>
-                {value.name}
-              </option>
-            ))}
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none w-full"
+            >
+              <option value="All">Category</option>
+              {categories.map((value) => (
+                <option key={value._id} value={value.name}>
+                  {value.name}
+                </option>
+              ))}
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
           {/* Filter by Products Type for Mobile Devices */}
-          <select
-            value={typeFilter}
-            onChange={(e) => setTypeFilter(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="All">Product type</option>
-            {productTypes.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={typeFilter}
+              onChange={(e) => setTypeFilter(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none w-full"
+            >
+              <option value="All">Product type</option>
+              {productTypes.map((value) => (
+                <option value={value.name}>{value.name}</option>
+              ))}
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
           {/* Sort by Price for Mobile Devices */}
-          <select
-            value={priceSortOption}
-            onChange={(e) => setPriceSortOption(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="">Price</option>
-            <option value="lowToHigh">High</option>
-            <option value="highToLow">Low</option>
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={priceSortOption}
+              onChange={(e) => setPriceSortOption(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none w-full"
+            >
+              <option value="">Price</option>
+              <option value="lowToHigh">High</option>
+              <option value="highToLow">Low</option>
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
           {/* Filter by Brand for Mobile Devices */}
-          <select
-            value={brandFilter}
-            onChange={(e) => setBrandFilter(e.target.value)}
-            className="bg-white dark:bg-chart-1 outline-none px-1"
-          >
-            <option value="All">Brand</option>
-            {brands.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
-          </select>
+          <div className="flex justify-between items-center relative">
+            <select
+              value={brandFilter}
+              onChange={(e) => setBrandFilter(e.target.value)}
+              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none w-full"
+            >
+              <option value="All">Brand</option>
+              {brands.map((value) => (
+                <option value={value.name}>{value.name}</option>
+              ))}
+            </select>
+            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
+          </div>
         </div>
       )}
 
