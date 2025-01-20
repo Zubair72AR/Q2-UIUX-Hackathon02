@@ -70,10 +70,10 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Hide the offer strip on specific paths (e.g., homepage)
-  const hideOfferStripPaths = ["/studio"];
+  // Hide the Navbar on specific paths
+  const hideNavbarPaths = ["/studio"];
 
-  if (pathName.startsWith(hideOfferStripPaths[0])) {
+  if (pathName.startsWith(hideNavbarPaths[0])) {
     return null;
   }
 

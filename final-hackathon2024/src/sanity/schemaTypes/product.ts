@@ -16,6 +16,26 @@ export const product = defineType({
       ],
     }),
     defineField({
+      name: "productType",
+      title: "Product Type",
+      type: "reference",
+      to: [
+        {
+          type: "productType",
+        },
+      ],
+    }),
+    defineField({
+      name: "brandName",
+      title: "Brand Name",
+      type: "reference",
+      to: [
+        {
+          type: "brandName",
+        },
+      ],
+    }),
+    defineField({
       name: "name",
       title: "Title",
       validation: (rule) => rule.required(),
@@ -38,6 +58,13 @@ export const product = defineType({
       type: "number",
       validation: (rule) => rule.required(),
       title: "Price",
+    }),
+
+    defineField({
+      name: "dateAdded",
+      type: "datetime",
+      title: "Date Added",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "quantity",

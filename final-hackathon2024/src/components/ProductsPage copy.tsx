@@ -1,75 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Brands, Category, Product, ProductType } from "../../types/products";
-import { client } from "@/sanity/lib/client";
-import {
-  allProducts,
-  brandName,
-  category,
-  productType,
-} from "@/sanity/lib/queries";
-import Link from "next/link";
+"use client";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import products from "@/components/ArrayData";
 import { Button } from "./ui/button";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { MdOutlineArrowDropDown } from "react-icons/md";
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [brands, setBrands] = useState<Brands[]>([]);
-  const [productTypes, setProductTypes] = useState<ProductType[]>([]);
-
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const fetchedProducts: Product[] = await client.fetch(allProducts);
-        setProducts(fetchedProducts);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    getProducts();
-  }, []);
-
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const fetchedCategories: Category[] = await client.fetch(category);
-        setCategories(fetchedCategories);
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      }
-    };
-
-    getCategories();
-  }, []);
-
-  useEffect(() => {
-    const getBrands = async () => {
-      try {
-        const fetchedBrands: Brands[] = await client.fetch(brandName);
-        setBrands(fetchedBrands);
-      } catch (error) {
-        console.error("Error fetching brands:", error);
-      }
-    };
-    getBrands();
-  }, []);
-
-  useEffect(() => {
-    const getProductsType = async () => {
-      try {
-        const fetchedProductsType: ProductType[] =
-          await client.fetch(productType);
-        setProductTypes(fetchedProductsType);
-      } catch (error) {
-        console.error("Error fetching Product Type:", error);
-      }
-    };
-    getProductsType();
-  }, []);
-
   const [categoryFilter, setCategoryFilter] = useState<string>("All");
   const [typeFilter, setTypeFilter] = useState<string>("All");
   const [brandFilter, setBrandFilter] = useState<string>("All");
@@ -87,11 +25,11 @@ export default function ProductsPage() {
   const filteredProduct = products.filter((p) => {
     // Apply Filters by Category
     const matchCategory =
-      categoryFilter === "All" || p.categoryName === categoryFilter;
+      categoryFilter === "All" || p.category === categoryFilter;
     // Apply Filters by Product Type
-    const matchType = typeFilter === "All" || p.productType === typeFilter;
+    const matchType = typeFilter === "All" || p.type === typeFilter;
     // Apply Filters by Brands
-    const matchBrand = brandFilter === "All" || p.brandName === brandFilter;
+    const matchBrand = brandFilter === "All" || p.brand === brandFilter;
     return matchCategory && matchType && matchBrand;
   });
 
@@ -172,9 +110,9 @@ export default function ProductsPage() {
             className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="All">Category</option>
-            {categories.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
+            <option value="Furniture">Furniture</option>
+            <option value="Decor">Decor</option>
+            <option value="Lighting">Lighting</option>
           </select>
           {/* Filter by Products Type for Large Screen */}
           <select
@@ -183,9 +121,12 @@ export default function ProductsPage() {
             className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="All">Product type</option>
-            {productTypes.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
+            <option value="Chair">Chair</option>
+            <option value="Vase">Vase</option>
+            <option value="Lamp">Lamp</option>
+            <option value="Table">Table</option>
+            <option value="Shelf">Shelf</option>
+            <option value="Clock">Clock</option>
           </select>
           {/* Sort by Price for Large Screen */}
           <select
@@ -204,9 +145,10 @@ export default function ProductsPage() {
             className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="All">Brand</option>
-            {brands.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
+            <option value="Brand A">A</option>
+            <option value="Brand B">B</option>
+            <option value="Brand C">C</option>
+            <option value="Brand D">D</option>
           </select>
         </div>
         {/* Sort by Date/Name for Large Screen */}
@@ -246,11 +188,9 @@ export default function ProductsPage() {
             className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="All">Category</option>
-            {categories.map((value) => (
-              <option key={value._id} value={value.name}>
-                {value.name}
-              </option>
-            ))}
+            <option value="Furniture">Furniture</option>
+            <option value="Decor">Decor</option>
+            <option value="Lighting">Lighting</option>
           </select>
           {/* Filter by Products Type for Mobile Devices */}
           <select
@@ -259,9 +199,12 @@ export default function ProductsPage() {
             className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="All">Product type</option>
-            {productTypes.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
+            <option value="Chair">Chair</option>
+            <option value="Vase">Vase</option>
+            <option value="Lamp">Lamp</option>
+            <option value="Table">Table</option>
+            <option value="Shelf">Shelf</option>
+            <option value="Clock">Clock</option>
           </select>
           {/* Sort by Price for Mobile Devices */}
           <select
@@ -280,30 +223,29 @@ export default function ProductsPage() {
             className="bg-white dark:bg-chart-1 outline-none px-1"
           >
             <option value="All">Brand</option>
-            {brands.map((value) => (
-              <option value={value.name}>{value.name}</option>
-            ))}
+            <option value="Brand A">A</option>
+            <option value="Brand B">B</option>
+            <option value="Brand C">C</option>
+            <option value="Brand D">D</option>
           </select>
         </div>
       )}
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-x-2 md:gap-x-3 gap-y-8 cursor-pointer p-4 max-w-7xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 md:gap-x-3 gap-y-8  cursor-pointer p-4">
         {/* Products List - By Default 12 Products are Shown */}
         {sortedProducts.slice(0, visibleCount).map((p) => (
           // Dynamic Routes
-          <Link href={`/all-products/${p.slug.current}`}>
+          <Link href={`/all-products/${p.path}`}>
             {/* Image */}
             <div className="overflow-hidden hover:rounded-xl transition-all duration-1000">
-              {p.image && (
-                <Image
-                  src={urlFor(p.image).url()}
-                  alt={p.name}
-                  width={500}
-                  height={200}
-                  className="object-contain bg-cover transition-all duration-500 hover:scale-110"
-                />
-              )}
+              <Image
+                src={p.image}
+                alt={p.name}
+                width={500}
+                height={200}
+                className={`object-contain bg-cover transition-all duration-500 hover:scale-110`}
+              />
             </div>
 
             {/* Name and Price */}
@@ -316,6 +258,7 @@ export default function ProductsPage() {
           </Link>
         ))}
       </div>
+
       {/* Load More Button */}
       <Button
         variant={"secondary"}
