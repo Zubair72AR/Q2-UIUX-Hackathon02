@@ -14,41 +14,65 @@ import { Button } from "./ui/button";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 export default function ProductsPage() {
+  // Storing Data in the UseState Hook from Sanity CMS
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [brands, setBrands] = useState<Brands[]>([]);
   const [productTypes, setProductTypes] = useState<ProductType[]>([]);
+  // Use State for Filtering Category, Type and Brands
+  const [categoryFilter, setCategoryFilter] = useState<string>("All");
+  const [typeFilter, setTypeFilter] = useState<string>("All");
+  const [brandFilter, setBrandFilter] = useState<string>("All");
+  // Use State for Sorting by Name and Date
+  const [sortOption, setSortOption] = useState<string>("dateAdded");
+  const [priceSortOption, setPriceSortOption] = useState<string>("");
+  // Use State for Showing only 12 Products by Default
+  const [visibleCount, setVisibleCount] = useState<number>(12);
+  // Use State for Mobile Device for Filtering and Display
+  const [showFilterBtn, setShowFilterBtn] = useState<boolean>(false);
+  // Use State for Mobile Device for Sorting and Display
+  const [showSortBtn, setShowSortBtn] = useState<boolean>(false);
 
+  // Fetch and Store Data from Sanity
+  // All Products Data Fetching from Sanity
   useEffect(() => {
     const getProducts = async () => {
       try {
+        // Fetching Data
         const fetchedProducts: Product[] = await client.fetch(allProducts);
+        // Store Data in the useState
         setProducts(fetchedProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
-
     getProducts();
   }, []);
 
+  // Fetch and Store Data from Sanity
+  // Categories Name Data Fetching from Sanity
   useEffect(() => {
     const getCategories = async () => {
       try {
+        // Fetching Data
         const fetchedCategories: Category[] = await client.fetch(category);
+        // Store Data in the useState
         setCategories(fetchedCategories);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
     };
-
     getCategories();
   }, []);
 
+  // Fetch and Store Data from Sanity
+  // Brands Name Data Fetching from Sanity
   useEffect(() => {
     const getBrands = async () => {
       try {
+        // Fetching Data
         const fetchedBrands: Brands[] = await client.fetch(brandName);
+        // Store Data in the useState
         setBrands(fetchedBrands);
       } catch (error) {
         console.error("Error fetching brands:", error);
@@ -57,11 +81,15 @@ export default function ProductsPage() {
     getBrands();
   }, []);
 
+  // Fetch and Store Data from Sanity
+  // Products Type Data Fetching from Sanity
   useEffect(() => {
     const getProductsType = async () => {
       try {
+        // Fetching Data
         const fetchedProductsType: ProductType[] =
           await client.fetch(productType);
+        // Store Data in the useState
         setProductTypes(fetchedProductsType);
       } catch (error) {
         console.error("Error fetching Product Type:", error);
@@ -70,20 +98,12 @@ export default function ProductsPage() {
     getProductsType();
   }, []);
 
-  const [categoryFilter, setCategoryFilter] = useState<string>("All");
-  const [typeFilter, setTypeFilter] = useState<string>("All");
-  const [brandFilter, setBrandFilter] = useState<string>("All");
-  const [sortOption, setSortOption] = useState<string>("dateAdded");
-  const [priceSortOption, setPriceSortOption] = useState<string>("");
-  const [visibleCount, setVisibleCount] = useState<number>(12);
-  const [showFilterBtn, setShowFilterBtn] = useState<boolean>(false);
-  const [showSortBtn, setShowSortBtn] = useState<boolean>(false);
-
-  // Function to show more items
+  // Button => Function to Show more Products
   const showMoreItems = () => {
     setVisibleCount((prev) => prev + 4);
   };
 
+  // Storing Data in the Variable => After Filter Products by Category, Type and Brand
   const filteredProduct = products.filter((p) => {
     // Apply Filters by Category
     const matchCategory =
@@ -95,16 +115,19 @@ export default function ProductsPage() {
     return matchCategory && matchType && matchBrand;
   });
 
+  // Storing Data in the Variable => After Sorting Products by Name and Date
   const sortedProducts = [...filteredProduct]
     .sort((a, b) => {
-      // Sort by Date or Name
+      // Sort by Name
       if (sortOption === "name") return a.name.localeCompare(b.name);
+      // Sort by Date
       if (sortOption === "dateAdded")
         return (
           new Date(a.dateAdded).getTime() - new Date(b.dateAdded).getTime()
         );
       return 0;
     })
+    // Sort by Price
     .sort((a, b) => {
       // Sort by Price (if selected)
       if (priceSortOption === "lowToHigh") return a.price - b.price;
@@ -134,12 +157,12 @@ export default function ProductsPage() {
   });
 
   // Filter and Sorting for Mobile Devices
-  // Hide Sort Button if Filter is Opened
+  // Hide Sort Button if Filter Button is Opened
   const filterButton = () => {
     setShowFilterBtn(!showFilterBtn);
     setShowSortBtn(false);
   };
-  // Hide Filter Button if Sort is Opened
+  // Hide Filter Button if Sort Button is Opened
   const sortButton = () => {
     setShowSortBtn(!showSortBtn);
     setShowFilterBtn(false);
