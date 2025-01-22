@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
-import products from "@/components/ArrayData";
 import { Button } from "@/components/ui/button";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import { TbArrowBackUp } from "react-icons/tb";
 import YouMightLike from "@/components/YouMightLike";
@@ -10,6 +9,11 @@ import MakesOurBrand from "@/components/MakesOurBrand";
 import JoinClub from "@/components/JoinClub";
 import AllProductsLink from "@/components/AllProductsLink";
 import { OfferContext } from "@/components/Context";
+import { Product } from "../../../../types/products";
+import { client } from "@/sanity/lib/client";
+import { allProducts } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
+import dayjs from "dayjs";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
@@ -18,10 +22,29 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
   // Offer Strip Margin Top Setup for Navbar Scrolling
   const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
 
+  // Storing Data in the UseState Hook from Sanity CMS
+  const [products, setProducts] = useState<Product[]>([]);
+
+  // Fetch and Store Data from Sanity
+  // All Products Data Fetching from Sanity
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        // Fetching Data
+        const fetchedProducts: Product[] = await client.fetch(allProducts);
+        // Store Data in the useState
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    getProducts();
+  }, []);
+
   const { product } = params;
   // Matching the Selected Product
   const myProd = products.find(
-    (c) => c.path.toLowerCase() === product.toLowerCase()
+    (c) => c.slug.current.toLowerCase() === product.toLowerCase()
   );
 
   // If product is not found, return "Page not found"
@@ -46,6 +69,14 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
     );
   }
 
+  // Formatting the date for displaying in the product page
+  const formattedDate = dayjs(myProd.dateAdded).format("MMMM D, YYYY");
+
+  // Check if the product has an image
+  const imageUrl = myProd.image
+    ? urlFor(myProd.image).url()
+    : "/Placeholder.svg";
+
   return (
     // Offer Strip Margin Top Setup for Navbar Scrolling
     <div
@@ -59,7 +90,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
       {/* Image of Selected Product */}
       <div className="flex flex-col md:flex-row justify-start md:justify-between items-center gap-12">
         <Image
-          src={myProd.image}
+          src={imageUrl}
           alt={myProd.name || "Product Image"}
           width={500}
           height={200}
@@ -71,7 +102,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
           <div className="space-y-4">
             {/* Product Date and Name */}
             <div>
-              <p className="text-[10px]">Date Added: {myProd.dateAdded}</p>
+              <p className="text-[10px]">Date Added: {formattedDate}</p>
               <h3 className="text-3xl">{myProd.name}</h3>
             </div>
             <p className="text-xl">£{myProd.price}</p>
@@ -86,15 +117,9 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
 
             {/* Product Specifications */}
             <ul className="space-y-1 text-zinc-500 dark:text-gray-300">
-              <li className="text-sm list-disc ml-6">
-                {myProd.specification[0]}
-              </li>
-              <li className="text-sm list-disc ml-6">
-                {myProd.specification[1]}
-              </li>
-              <li className="text-sm list-disc ml-6">
-                {myProd.specification[2]}
-              </li>
+              <li className="text-sm list-disc ml-6">{myProd.features[0]}</li>
+              <li className="text-sm list-disc ml-6">{myProd.features[1]}</li>
+              <li className="text-sm list-disc ml-6">{myProd.features[2]}</li>
             </ul>
           </div>
 
@@ -105,19 +130,19 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
               <div className="space-y-1">
                 <p className="text-sm ">Height</p>
                 <p className="text-sm text-zinc-500 dark:text-gray-300">
-                  {myProd.Dimensions[0]}
+                  {myProd.dimensions.height}
                 </p>
               </div>
               <div className="space-y-1">
                 <p className="text-sm ">Width</p>
                 <p className="text-sm text-zinc-500 dark:text-gray-300">
-                  {myProd.Dimensions[1]}
+                  {myProd.dimensions.width}
                 </p>
               </div>
               <div className="space-y-1">
                 <p className="text-sm ">Depth</p>
                 <p className="text-sm text-zinc-500 dark:text-gray-300">
-                  {myProd.Dimensions[2]}
+                  {myProd.dimensions.depth}
                 </p>
               </div>
             </div>

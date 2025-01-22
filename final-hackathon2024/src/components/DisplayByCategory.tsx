@@ -14,23 +14,24 @@ import { Button } from "./ui/button";
 import { IoMdArrowDropdown } from "react-icons/io";
 import ImageComp from "./ImageComp";
 
-export default function ProductsPage() {
+interface DisplayDataTypeCategory {
+  categoryType: string;
+}
+export default function DisplayByCategory({
+  categoryType,
+}: DisplayDataTypeCategory) {
   // Storing Data in the UseState Hook from Sanity CMS
   const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
   const [brands, setBrands] = useState<Brands[]>([]);
-  const [productTypes, setProductTypes] = useState<ProductType[]>([]);
   // Use State for Loading Text Display
   const [loading, setLoading] = useState<boolean>(true);
   // Use State for Filtering Category, Type and Brands
-  const [categoryFilter, setCategoryFilter] = useState<string>("All");
-  const [typeFilter, setTypeFilter] = useState<string>("All");
+  const [categoryFilter, setCategoryFilter] = useState<string>(categoryType);
   const [brandFilter, setBrandFilter] = useState<string>("All");
   // Use State for Sorting by Name and Date
   const [sortOption, setSortOption] = useState<string>("dateAdded");
   const [priceSortOption, setPriceSortOption] = useState<string>("");
-  // Use State for Showing only 12 Products by Default
-  const [visibleCount, setVisibleCount] = useState<number>(12);
+
   // Use State for Mobile Device for Filtering and Display
   const [showFilterBtn, setShowFilterBtn] = useState<boolean>(false);
   // Use State for Mobile Device for Sorting and Display
@@ -55,24 +56,6 @@ export default function ProductsPage() {
   }, []);
 
   // Fetch and Store Data from Sanity
-  // Categories Name Data Fetching from Sanity
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        // Fetching Data
-        const fetchedCategories: Category[] = await client.fetch(category);
-        // Store Data in the useState
-        setCategories(fetchedCategories);
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      } finally {
-        setLoading(false); // Stop the loading spinner
-      }
-    };
-    getCategories();
-  }, []);
-
-  // Fetch and Store Data from Sanity
   // Brands Name Data Fetching from Sanity
   useEffect(() => {
     const getBrands = async () => {
@@ -90,40 +73,13 @@ export default function ProductsPage() {
     getBrands();
   }, []);
 
-  // Fetch and Store Data from Sanity
-  // Products Type Data Fetching from Sanity
-  useEffect(() => {
-    const getProductsType = async () => {
-      try {
-        // Fetching Data
-        const fetchedProductsType: ProductType[] =
-          await client.fetch(productType);
-        // Store Data in the useState
-        setProductTypes(fetchedProductsType);
-      } catch (error) {
-        console.error("Error fetching Product Type:", error);
-      } finally {
-        setLoading(false); // Stop the loading spinner
-      }
-    };
-    getProductsType();
-  }, []);
-
-  // Button => Function to Show more Products
-  const showMoreItems = () => {
-    setVisibleCount((prev) => prev + 4);
-  };
-
   // Storing Data in the Variable => After Filter Products by Category, Type and Brand
   const filteredProduct = products.filter((p) => {
     // Apply Filters by Category
-    const matchCategory =
-      categoryFilter === "All" || p.categoryName === categoryFilter;
-    // Apply Filters by Product Type
-    const matchType = typeFilter === "All" || p.productType === typeFilter;
+    const matchCategory = p.categoryName === categoryFilter;
     // Apply Filters by Brands
     const matchBrand = brandFilter === "All" || p.brandName === brandFilter;
-    return matchCategory && matchType && matchBrand;
+    return matchCategory && matchBrand;
   });
 
   // Storing Data in the Variable => After Sorting Products by Name and Date
@@ -215,34 +171,6 @@ export default function ProductsPage() {
           Sorting <IoMdArrowDropdown className="text-lg" />
         </Button>
         <div className="hidden md:flex justify-between items-center gap-8">
-          {/* Filter by Category for Large Screen */}
-          <div className="flex justify-between items-center relative">
-            <select
-              value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none"
-            >
-              <option value="All">Category</option>
-              {categories.map((value) => (
-                <option value={value.name}>{value.name}</option>
-              ))}
-            </select>
-            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
-          </div>
-          {/* Filter by Products Type for Large Screen */}
-          <div className="flex justify-between items-center relative">
-            <select
-              value={typeFilter}
-              onChange={(e) => setTypeFilter(e.target.value)}
-              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none"
-            >
-              <option value="All">Product type</option>
-              {productTypes.map((value) => (
-                <option value={value.name}>{value.name}</option>
-              ))}
-            </select>
-            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
-          </div>
           {/* Sort by Price for Large Screen */}
           <div className="flex justify-between items-center relative">
             <select
@@ -307,36 +235,6 @@ export default function ProductsPage() {
       )}
       {showFilterBtn && (
         <div className="flex flex-col md:hidden gap-2">
-          {/* Filter by Category for Mobile Devices */}
-          <div className="flex justify-between items-center relative">
-            <select
-              value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none w-full"
-            >
-              <option value="All">Category</option>
-              {categories.map((value) => (
-                <option key={value._id} value={value.name}>
-                  {value.name}
-                </option>
-              ))}
-            </select>
-            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
-          </div>
-          {/* Filter by Products Type for Mobile Devices */}
-          <div className="flex justify-between items-center relative">
-            <select
-              value={typeFilter}
-              onChange={(e) => setTypeFilter(e.target.value)}
-              className="bg-transparent dark:bg-chart-1 outline-none pr-5 appearance-none w-full"
-            >
-              <option value="All">Product type</option>
-              {productTypes.map((value) => (
-                <option value={value.name}>{value.name}</option>
-              ))}
-            </select>
-            <IoMdArrowDropdown className="absolute right-0 pointer-events-none text-lg" />
-          </div>
           {/* Sort by Price for Mobile Devices */}
           <div className="flex justify-between items-center relative">
             <select
@@ -370,7 +268,7 @@ export default function ProductsPage() {
       {/* Product Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-x-2 md:gap-x-3 gap-y-8 cursor-pointer p-4 max-w-7xl mx-auto">
         {/* Products List - By Default 12 Products are Shown */}
-        {sortedProducts.slice(0, visibleCount).map((p) => {
+        {sortedProducts.map((p) => {
           // Check if the product has an image
           const imageUrl = p.image ? urlFor(p.image).url() : "/Placeholder.svg";
           return (
@@ -388,14 +286,6 @@ export default function ProductsPage() {
           );
         })}
       </div>
-      {/* Load More Button */}
-      <Button
-        variant={"secondary"}
-        onClick={showMoreItems}
-        className="mx-auto block w-full md:w-auto my-10"
-      >
-        Load More
-      </Button>
     </div>
   );
 }

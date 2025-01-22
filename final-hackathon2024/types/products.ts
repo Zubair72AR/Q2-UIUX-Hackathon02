@@ -6,7 +6,7 @@ export interface Product {
   dateAdded: string;
   quantity: number;
   description: string;
-  tags: string[];
+  tags: string;
   features: string[];
   slug: { current: string };
   productType: string;

@@ -1,10 +1,20 @@
+"use client";
 import Link from "next/link";
 import { FaLinkedin, FaInstagram, FaSkype, FaTwitter } from "react-icons/fa";
 import { ImFacebook2 } from "react-icons/im";
 import { FaPinterest } from "react-icons/fa6";
 import { Button } from "./ui/button";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  // Show Active Link
+  const pathName = usePathname();
+  // Hide the Footer on specific paths
+  const hideFooterPaths = ["/studio"];
+  if (pathName.startsWith(hideFooterPaths[0])) {
+    return null;
+  }
+
   return (
     <div className="bg-foreground  text-background dark:bg-secondary  dark:text-secondary-foreground px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 pb-4 sm:pb-10 pt-10 sm:pt-12">

@@ -6,16 +6,18 @@ interface ImageCompProps {
   src: string;
   dec: string;
   prices: string;
+  tags?: string;
   className?: string;
 }
 export default function ImageComp({
   src,
   dec,
   prices,
+  tags,
   className,
 }: ImageCompProps) {
   return (
-    <div>
+    <div className="relative">
       {/* Image */}
       <div className="overflow-hidden hover:rounded-xl transition-all duration-1000">
         <Image
@@ -30,6 +32,18 @@ export default function ImageComp({
       {/* Description and Price */}
       <h3 className="text-base md:text-lg lg:text-xl mt-2 md:mt-3">{dec}</h3>
       <p className="text-sm md:text-base lg:text-lg mt-0 md:mt-1">{prices}</p>
+
+      <span
+        className={`absolute top-3 left-3 px-2 py-[3px] text-[12px] rounded-sm text-white inline-block
+        ${tags === "New" ? "bg-orange-400" : ""}
+        ${tags === "Best Seller" ? "bg-green-600" : ""}
+        ${tags === "Discount" ? "bg-blue-500" : ""}
+        ${tags === "Limited" ? "bg-purple-600" : ""}
+        ${tags === "Sold" ? "bg-red-600" : ""}
+        `}
+      >
+        <p>{tags}</p>
+      </span>
     </div>
   );
 }

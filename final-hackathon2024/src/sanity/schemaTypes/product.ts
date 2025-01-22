@@ -72,13 +72,14 @@ export const product = defineType({
       type: "number",
       validation: (rule) => rule.min(0),
     }),
+
     defineField({
       name: "tags",
-      type: "array",
       title: "Tags",
-      of: [
+      type: "reference",
+      to: [
         {
-          type: "string",
+          type: "tags",
         },
       ],
     }),

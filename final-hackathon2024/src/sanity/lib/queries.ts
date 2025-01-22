@@ -8,7 +8,7 @@ export const allProducts = groq`*[_type == "product"]{
           dateAdded,
           quantity,
           description,
-          tags,
+          "tags": tags->name,
           features,
           slug,
           "productType": productType->name,
