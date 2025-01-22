@@ -34,7 +34,7 @@ export default function Contact() {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe> */}
         <div className="flex md:flex-row flex-col justify-center items-start gap-6 lg:gap-12 py-12 px-6 sm:px-8 md:px-16 lg:px-24 2xl:px-40 w-full">
-          <div className="space-y-6 mt-12">
+          <div className="space-y-6 md:mt-12">
             <div>
               <h2 className="text-xl font-medium">Get in Touch</h2>
               <p>
