@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Brands, Category, Product, ProductType } from "../../types/products";
+import { Brands, Product } from "../../types/products";
 import { client } from "@/sanity/lib/client";
-import {
-  allProducts,
-  brandName,
-  category,
-  productType,
-} from "@/sanity/lib/queries";
+import { allProducts, brandName } from "@/sanity/lib/queries";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
@@ -26,7 +21,7 @@ export default function DisplayByCategory({
   // Use State for Loading Text Display
   const [loading, setLoading] = useState<boolean>(true);
   // Use State for Filtering Category, Type and Brands
-  const [categoryFilter, setCategoryFilter] = useState<string>(categoryType);
+  const [categoryFilter] = useState<string>(categoryType);
   const [brandFilter, setBrandFilter] = useState<string>("All");
   // Use State for Sorting by Name and Date
   const [sortOption, setSortOption] = useState<string>("dateAdded");

@@ -1,17 +1,38 @@
 "use client";
 import AllProductsLink from "@/components/AllProductsLink";
-import products from "@/components/ArrayData";
 import { OfferContext } from "@/components/Context";
-// import { CartContext } from "@/components/Context";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Product } from "../../../types/products";
+import { client } from "@/sanity/lib/client";
+import { allProducts } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
 
 export default function page() {
   const [number, setNumber] = useState(1);
 
   // Offer Strip Margin Top Setup for Navbar Scrolling
-  const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
+  const { isOfferVisible } = useContext(OfferContext);
+
+  // Storing Data in the UseState Hook from Sanity CMS
+  const [products, setProducts] = useState<Product[]>([]);
+
+  // Fetch and Store Data from Sanity
+  // All Products Data Fetching from Sanity
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        // Fetching Data
+        const fetchedProducts: Product[] = await client.fetch(allProducts);
+        // Store Data in the useState
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    getProducts();
+  }, []);
 
   return (
     // Offer Strip Margin Top Setup for Navbar Scrolling
@@ -38,77 +59,82 @@ export default function page() {
 
           {/* Shopping Cart Products */}
           <div className="mt-6">
-            {products.slice(0, 2).map((val, i) => (
-              <div className="sm:grid grid-cols-4 gap-4 items-center my-4 ">
-                <div
-                  key={i}
-                  className="col-span-2 flex justify-start items-center gap-2 md:gap-4"
-                >
-                  {/* Shopping Cart Product Image */}
-                  <Image
-                    src={val.image}
-                    alt={val.name}
-                    width={100}
-                    height={200}
-                    className="w-[130px] md:w-[115px]"
-                  />
+            {products.slice(0, 2).map((val) => {
+              // Check if the product has an image
+              const imageUrl = val.image
+                ? urlFor(val.image).url()
+                : "/Placeholder.svg";
+              return (
+                <div className="sm:grid grid-cols-4 gap-4 items-center my-4 ">
+                  <div className="col-span-2 flex justify-start items-center gap-2 md:gap-4">
+                    {/* Shopping Cart Product Image */}
+                    <Image
+                      src={imageUrl}
+                      alt={val.name}
+                      width={100}
+                      height={200}
+                      className="w-[130px] md:w-[115px]"
+                    />
 
-                  {/* Shopping Cart Product Details */}
-                  <div>
-                    <h3 className="text-sm md:text-base">{val.name}</h3>
-                    <p className="text-[10px] md:text-xs">{val.description}</p>
-                    <p className="text-sm md:text-base">£{val.price}</p>
+                    {/* Shopping Cart Product Details */}
+                    <div>
+                      <h3 className="text-sm md:text-base">{val.name}</h3>
+                      <p className="text-[10px] md:text-xs">
+                        {val.description}
+                      </p>
+                      <p className="text-sm md:text-base">£{val.price}</p>
 
-                    {/* Shopping Cart Product Add Quantity Button for Mobile Devices */}
-                    <div className="flex sm:hidden justify-center items-center gap-3 px-3 bg-chart-4 text-chart-1 w-[105px]">
-                      <button
-                        onClick={() => {
-                          number >= 2 && setNumber(number - 1);
-                        }}
-                        className="px-3 py-1 text-chart-3 text-lg"
-                      >
-                        -
-                      </button>
-                      {number}
-                      <button
-                        onClick={() => {
-                          setNumber(number + 1);
-                        }}
-                        className="px-3 py-1 text-chart-3 text-lg"
-                      >
-                        +
-                      </button>
+                      {/* Shopping Cart Product Add Quantity Button for Mobile Devices */}
+                      <div className="flex sm:hidden justify-center items-center gap-3 px-3 bg-chart-4 text-chart-1 w-[105px]">
+                        <button
+                          onClick={() => {
+                            number >= 2 && setNumber(number - 1);
+                          }}
+                          className="px-3 py-1 text-chart-3 text-lg"
+                        >
+                          -
+                        </button>
+                        {number}
+                        <button
+                          onClick={() => {
+                            setNumber(number + 1);
+                          }}
+                          className="px-3 py-1 text-chart-3 text-lg"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Shopping Cart Product Add Quantity Button for Large Screen */}
-                <div className="hidden sm:flex justify-center items-center ml-auto gap-3 px-3 bg-chart-4 text-chart-1 w-28">
-                  <button
-                    onClick={() => {
-                      number >= 2 && setNumber(number - 1);
-                    }}
-                    className="px-3 py-[6px] text-chart-3 text-lg"
-                  >
-                    -
-                  </button>
-                  {number}
-                  <button
-                    onClick={() => {
-                      setNumber(number + 1);
-                    }}
-                    className="px-3 py-[6px] text-chart-3 text-lg"
-                  >
-                    +
-                  </button>
-                </div>
+                  {/* Shopping Cart Product Add Quantity Button for Large Screen */}
+                  <div className="hidden sm:flex justify-center items-center ml-auto gap-3 px-3 bg-chart-4 text-chart-1 w-28">
+                    <button
+                      onClick={() => {
+                        number >= 2 && setNumber(number - 1);
+                      }}
+                      className="px-3 py-[6px] text-chart-3 text-lg"
+                    >
+                      -
+                    </button>
+                    {number}
+                    <button
+                      onClick={() => {
+                        setNumber(number + 1);
+                      }}
+                      className="px-3 py-[6px] text-chart-3 text-lg"
+                    >
+                      +
+                    </button>
+                  </div>
 
-                {/* Shopping Cart Product Price */}
-                <p className="hidden sm:block col-span-1 text-end text-sm md:text-base">
-                  £{val.price}
-                </p>
-              </div>
-            ))}
+                  {/* Shopping Cart Product Price */}
+                  <p className="hidden sm:block col-span-1 text-end text-sm md:text-base">
+                    £{val.price}
+                  </p>
+                </div>
+              );
+            })}
           </div>
           <hr className={`dark:border-chart-5 mt-6`} />
         </div>

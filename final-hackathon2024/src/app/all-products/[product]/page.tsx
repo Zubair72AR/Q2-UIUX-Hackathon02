@@ -20,7 +20,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
   const [addCart, setAddCart] = useState(true);
 
   // Offer Strip Margin Top Setup for Navbar Scrolling
-  const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
+  const { isOfferVisible } = useContext(OfferContext);
 
   // Storing Data in the UseState Hook from Sanity CMS
   const [products, setProducts] = useState<Product[]>([]);
@@ -105,7 +105,14 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
               <p className="text-[10px]">Date Added: {formattedDate}</p>
               <h3 className="text-3xl">{myProd.name}</h3>
             </div>
-            <p className="text-xl">£{myProd.price}</p>
+
+            {/* Price and Stock Information */}
+            <div className="flex justify-start items-center gap-12">
+              <p className="text-xl">£{myProd.price}</p>
+              <p className="text-zinc-500 dark:text-gray-300">
+                Stock: {myProd.quantity}
+              </p>
+            </div>
           </div>
 
           {/* Product Description */}

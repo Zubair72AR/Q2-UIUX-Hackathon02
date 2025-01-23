@@ -2,7 +2,6 @@
 import AllProductsLink from "@/components/AllProductsLink";
 import { OfferContext } from "@/components/Context";
 import React, { useContext } from "react";
-import { FiSend } from "react-icons/fi";
 import { LuPhoneCall } from "react-icons/lu";
 import { MdOutlineEmail } from "react-icons/md";
 import { GrLocation } from "react-icons/gr";
@@ -10,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Contact() {
   // Offer Strip Margin Top Setup for Navbar Scrolling
-  const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
+  const { isOfferVisible } = useContext(OfferContext);
 
   return (
     // Offer Strip Margin Top Setup for Navbar Scrolling

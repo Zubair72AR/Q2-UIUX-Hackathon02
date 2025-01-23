@@ -6,7 +6,7 @@ import React, { useContext } from "react";
 
 export default function NotFound() {
   // Offer Strip Margin Top Setup for Navbar Scrolling
-  const { isOfferVisible, setIsOfferVisible } = useContext(OfferContext);
+  const { isOfferVisible } = useContext(OfferContext);
 
   return (
     // Offer Strip Margin Top Setup for Navbar Scrolling
