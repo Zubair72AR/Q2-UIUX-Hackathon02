@@ -26,11 +26,12 @@ export default function DisplayByCategory({
   // Use State for Sorting by Name and Date
   const [sortOption, setSortOption] = useState<string>("dateAdded");
   const [priceSortOption, setPriceSortOption] = useState<string>("");
-
   // Use State for Mobile Device for Filtering and Display
   const [showFilterBtn, setShowFilterBtn] = useState<boolean>(false);
   // Use State for Mobile Device for Sorting and Display
   const [showSortBtn, setShowSortBtn] = useState<boolean>(false);
+  // Use State for Error Handling
+  const [error, setError] = useState<string | null>(null);
 
   // Fetch and Store Data from Sanity
   // All Products Data Fetching from Sanity
@@ -43,6 +44,7 @@ export default function DisplayByCategory({
         setProducts(fetchedProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
+        setError("Failed to load products ❌");
       } finally {
         setLoading(false); // Stop the loading spinner
       }
@@ -61,6 +63,7 @@ export default function DisplayByCategory({
         setBrands(fetchedBrands);
       } catch (error) {
         console.error("Error fetching brands:", error);
+        setError("Failed to load products ❌");
       } finally {
         setLoading(false); // Stop the loading spinner
       }
@@ -259,28 +262,41 @@ export default function DisplayByCategory({
           </div>
         </div>
       )}
-
-      {/* Product Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-x-2 md:gap-x-3 gap-y-8 cursor-pointer p-4 max-w-7xl mx-auto">
-        {/* Products List - By Default 12 Products are Shown */}
-        {sortedProducts.map((p) => {
-          // Check if the product has an image
-          const imageUrl = p.image ? urlFor(p.image).url() : "/Placeholder.svg";
-          return (
-            // Dynamic Routes
-            <Link href={`/all-products/${p.slug.current}`} key={p.slug.current}>
-              {/* Dynamic Image Component for Product Image */}
-              <ImageComp
-                src={imageUrl}
-                dec={p.name}
-                prices={`£${p.price}`}
-                tags={p.tags}
-                className="bg-gray-200"
-              />
-            </Link>
-          );
-        })}
-      </div>
+      {error ? (
+        <p className="font-bold text-2xl text-red-700 grid place-items-center h-32">
+          {error}
+        </p>
+      ) : (
+        <>
+          {/* Product Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-x-2 md:gap-x-3 gap-y-8 cursor-pointer p-4 max-w-7xl mx-auto">
+            {/* Products List - By Default 12 Products are Shown */}
+            {sortedProducts.map((p) => {
+              // Check if the product has an image
+              const imageUrl = p.image
+                ? urlFor(p.image).url()
+                : "/Placeholder.svg";
+              return (
+                // Dynamic Routes
+                <Link
+                  href={`/all-products/${p.slug.current}`}
+                  key={p.slug.current}
+                >
+                  {/* Dynamic Image Component for Product Image */}
+                  <ImageComp
+                    src={imageUrl}
+                    dec={p.name}
+                    prices={`£${p.price}`}
+                    tags={p.tags}
+                    qty={p.quantity}
+                    className="bg-gray-200"
+                  />
+                </Link>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 }

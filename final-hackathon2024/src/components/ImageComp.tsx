@@ -7,6 +7,7 @@ interface ImageCompProps {
   dec: string;
   prices: string;
   tags?: string;
+  qty?: number;
   className?: string;
 }
 export default function ImageComp({
@@ -14,6 +15,7 @@ export default function ImageComp({
   dec,
   prices,
   tags,
+  qty,
   className,
 }: ImageCompProps) {
   return (
@@ -21,8 +23,8 @@ export default function ImageComp({
       {/* Image */}
       <div className="overflow-hidden hover:rounded-xl transition-all duration-1000">
         <Image
-          src={src}
-          alt={dec}
+          src={src || "/Placeholder.svg"}
+          alt={dec || "Image Not Available"}
           width={500}
           height={200}
           className={`object-contain bg-cover transition-all duration-500 hover:scale-110 ${className}`}
@@ -30,8 +32,12 @@ export default function ImageComp({
       </div>
 
       {/* Description and Price */}
-      <h3 className="text-base md:text-lg lg:text-xl mt-2 md:mt-3">{dec}</h3>
-      <p className="text-sm md:text-base lg:text-lg mt-0 md:mt-1">{prices}</p>
+      <h3 className="text-base md:text-lg lg:text-xl mt-2 md:mt-3">
+        {dec || "Not Found"}
+      </h3>
+      <p className="text-sm md:text-base lg:text-lg mt-0 md:mt-1">
+        {prices || "£0.00"}
+      </p>
 
       <span
         className={`absolute top-3 left-3 px-2 py-[3px] text-[12px] rounded-sm text-white inline-block
@@ -44,6 +50,11 @@ export default function ImageComp({
       >
         <p>{tags}</p>
       </span>
+      {qty && (
+        <span className="absolute top-3 right-3 px-2 py-[3px] text-[12px] rounded-sm bg-background inline-block text-foreground">
+          <p>Qty: {qty}</p>
+        </span>
+      )}
     </div>
   );
 }

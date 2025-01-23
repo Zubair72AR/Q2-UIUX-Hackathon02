@@ -35,6 +35,8 @@ export default function ProductsPage() {
   const [showFilterBtn, setShowFilterBtn] = useState<boolean>(false);
   // Use State for Mobile Device for Sorting and Display
   const [showSortBtn, setShowSortBtn] = useState<boolean>(false);
+  // Use State for Error Handling
+  const [error, setError] = useState<string | null>(null);
 
   // Fetch and Store Data from Sanity
   // All Products Data Fetching from Sanity
@@ -47,6 +49,7 @@ export default function ProductsPage() {
         setProducts(fetchedProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
+        setError("Failed to load products ❌");
       } finally {
         setLoading(false); // Stop the loading spinner
       }
@@ -65,6 +68,7 @@ export default function ProductsPage() {
         setCategories(fetchedCategories);
       } catch (error) {
         console.error("Error fetching categories:", error);
+        setError("Failed to load products ❌");
       } finally {
         setLoading(false); // Stop the loading spinner
       }
@@ -83,6 +87,7 @@ export default function ProductsPage() {
         setBrands(fetchedBrands);
       } catch (error) {
         console.error("Error fetching brands:", error);
+        setError("Failed to load products ❌");
       } finally {
         setLoading(false); // Stop the loading spinner
       }
@@ -102,6 +107,7 @@ export default function ProductsPage() {
         setProductTypes(fetchedProductsType);
       } catch (error) {
         console.error("Error fetching Product Type:", error);
+        setError("Failed to load products ❌");
       } finally {
         setLoading(false); // Stop the loading spinner
       }
@@ -305,6 +311,7 @@ export default function ProductsPage() {
           </div>
         </div>
       )}
+
       {showFilterBtn && (
         <div className="flex flex-col md:hidden gap-2">
           {/* Filter by Category for Mobile Devices */}
@@ -367,27 +374,41 @@ export default function ProductsPage() {
         </div>
       )}
 
-      {/* Product Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-x-2 md:gap-x-3 gap-y-8 cursor-pointer p-4 max-w-7xl mx-auto">
-        {/* Products List - By Default 12 Products are Shown */}
-        {sortedProducts.slice(0, visibleCount).map((p) => {
-          // Check if the product has an image
-          const imageUrl = p.image ? urlFor(p.image).url() : "/Placeholder.svg";
-          return (
-            // Dynamic Routes
-            <Link href={`/all-products/${p.slug.current}`} key={p.slug.current}>
-              {/* Dynamic Image Component for Product Image */}
-              <ImageComp
-                src={imageUrl}
-                dec={p.name}
-                prices={`£${p.price}`}
-                tags={p.tags}
-                className="bg-gray-200"
-              />
-            </Link>
-          );
-        })}
-      </div>
+      {error ? (
+        <p className="font-bold text-2xl text-red-700 grid place-items-center h-32">
+          {error}
+        </p>
+      ) : (
+        <>
+          {/* Product Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-x-2 md:gap-x-3 gap-y-8 cursor-pointer p-4 max-w-7xl mx-auto">
+            {/* Products List - By Default 12 Products are Shown */}
+            {sortedProducts.slice(0, visibleCount).map((p) => {
+              // Check if the product has an image
+              const imageUrl = p.image
+                ? urlFor(p.image).url()
+                : "/Placeholder.svg";
+              return (
+                // Dynamic Routes
+                <Link
+                  href={`/all-products/${p.slug.current}`}
+                  key={p.slug.current}
+                >
+                  {/* Dynamic Image Component for Product Image */}
+                  <ImageComp
+                    src={imageUrl}
+                    dec={p.name}
+                    prices={`£${p.price}`}
+                    tags={p.tags}
+                    qty={p.quantity}
+                    className="bg-gray-200"
+                  />
+                </Link>
+              );
+            })}
+          </div>
+        </>
+      )}
       {/* Load More Button */}
       <Button
         variant={"secondary"}

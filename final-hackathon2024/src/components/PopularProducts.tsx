@@ -12,6 +12,10 @@ import { urlFor } from "@/sanity/lib/image";
 export default function PopularProducts() {
   // Storing Data in the UseState Hook from Sanity CMS
   const [products, setProducts] = useState<Product[]>([]);
+  // Use State for Error Handling
+  const [error, setError] = useState<string | null>(null);
+  // Use State for Loading Text Display
+  const [loading, setLoading] = useState<boolean>(true);
 
   // Fetch and Store Data from Sanity
   // All Products Data Fetching from Sanity
@@ -24,6 +28,9 @@ export default function PopularProducts() {
         setProducts(fetchedProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
+        setError("Failed to load products ❌");
+      } finally {
+        setLoading(false); // Stop the loading spinner
       }
     };
     getProducts();
@@ -33,6 +40,22 @@ export default function PopularProducts() {
   const filteredProductsByCategory = products.filter(
     (val) => val.categoryName === "Chairs"
   );
+
+  if (loading)
+    return (
+      // Show Loading State
+      <div className="w-full grid place-items-center my-10 gap-y-6">
+        {/* Loading Image */}
+        <Image
+          src="/Loading.svg"
+          alt="Loading Icon"
+          width={200}
+          height={200}
+          className="rotate-clock w-12 h-12 md:w-16 md:h-16 dark:opacity-50"
+        />
+        <p className="font-semibold md:text-xl">Loading products . . .</p>
+      </div>
+    );
 
   return (
     <div className="space-y-8 py-14 px-6 sm:px-8 md:px-12 lg:px-20 2xl:px-36">
@@ -56,24 +79,37 @@ export default function PopularProducts() {
           <p className="text-sm md:text-base lg:text-lg -mt-1 md:mt-1">£980</p>
         </Link>
 
-        {/* Product Image by Component */}
-        {filteredProductsByCategory.slice(0, 2).map((p) => {
-          // Check if the product has an image
-          const imageUrl = p.image ? urlFor(p.image).url() : "/Placeholder.svg";
-          return (
-            // Dynamic Routes
-            <Link href={`/all-products/${p.slug.current}`} key={p.slug.current}>
-              {/* Dynamic Image Component for Product Image */}
-              <ImageComp
-                src={imageUrl}
-                dec={p.name}
-                prices={`£${p.price}`}
-                tags={p.tags}
-                className="bg-gray-200"
-              />
-            </Link>
-          );
-        })}
+        {error ? (
+          <p className="font-bold text-2xl text-red-700 grid place-items-center h-32 col-span-2">
+            {error}
+          </p>
+        ) : (
+          <>
+            {/* Product Image by Component */}
+            {filteredProductsByCategory.slice(0, 2).map((p) => {
+              // Check if the product has an image
+              const imageUrl = p.image
+                ? urlFor(p.image).url()
+                : "/Placeholder.svg";
+              return (
+                // Dynamic Routes
+                <Link
+                  href={`/all-products/${p.slug.current}`}
+                  key={p.slug.current}
+                >
+                  {/* Dynamic Image Component for Product Image */}
+                  <ImageComp
+                    src={imageUrl}
+                    dec={p.name}
+                    prices={`£${p.price}`}
+                    tags={p.tags}
+                    className="bg-gray-200"
+                  />
+                </Link>
+              );
+            })}
+          </>
+        )}
       </div>
 
       <Link href="/all-products">
