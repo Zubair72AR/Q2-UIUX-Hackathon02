@@ -3,11 +3,9 @@ import AllProductsLink from "@/components/AllProductsLink";
 import { OfferContext } from "@/components/Context";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
-import { Product } from "../../../types/products";
-import { client } from "@/sanity/lib/client";
-import { allProducts } from "@/sanity/lib/queries";
+import { useContext, useState } from "react";
 import { urlFor } from "@/sanity/lib/image";
+import { useAppSelector } from "../hooks";
 
 export default function page() {
   const [number, setNumber] = useState(1);
@@ -15,24 +13,8 @@ export default function page() {
   // Offer Strip Margin Top Setup for Navbar Scrolling
   const { isOfferVisible } = useContext(OfferContext);
 
-  // Storing Data in the UseState Hook from Sanity CMS
-  const [products, setProducts] = useState<Product[]>([]);
-
-  // Fetch and Store Data from Sanity
-  // All Products Data Fetching from Sanity
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        // Fetching Data
-        const fetchedProducts: Product[] = await client.fetch(allProducts);
-        // Store Data in the useState
-        setProducts(fetchedProducts);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-    getProducts();
-  }, []);
+  // Cart Array State from Redux Store
+  const addedProducts = useAppSelector((state) => state.cartArray);
 
   return (
     // Offer Strip Margin Top Setup for Navbar Scrolling
@@ -59,7 +41,7 @@ export default function page() {
 
           {/* Shopping Cart Products */}
           <div className="mt-6">
-            {products.slice(0, 2).map((val) => {
+            {addedProducts.map((val) => {
               // Check if the product has an image
               const imageUrl = val.image
                 ? urlFor(val.image).url()

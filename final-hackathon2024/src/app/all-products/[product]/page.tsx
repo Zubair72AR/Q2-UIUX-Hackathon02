@@ -14,6 +14,8 @@ import { client } from "@/sanity/lib/client";
 import { allProducts } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import dayjs from "dayjs";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { addToCart } from "@/app/store/slices/cartSlice";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
@@ -24,6 +26,9 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
 
   // Storing Data in the UseState Hook from Sanity CMS
   const [products, setProducts] = useState<Product[]>([]);
+
+  // Dispatch Action to Update the Number of Selected Product
+  const dispatch = useAppDispatch();
 
   // Fetch and Store Data from Sanity
   // All Products Data Fetching from Sanity
@@ -183,9 +188,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
             <div className="flex flex-col md:flex-row justify-center items-center gap-3 w-full md:w-auto">
               {/* Button for Add to Cart and Remove  */}
               <Button
-                onClick={() => {
-                  setAddCart((prev) => !prev);
-                }}
+                onClick={() => dispatch(addToCart({ prod: myProd }))}
                 className="mx-auto w-full md:w-auto"
               >
                 {addCart ? "Add to cart" : "Remove to cart"}

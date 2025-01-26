@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/Theme-Provider";
 import ContextProvider from "@/components/Context";
 import CustomCursors from "@/components/CustomCursor";
+import Providers from "./providers";
 
 // Font 01 Settings
 const clashDisplay = localFont({
@@ -103,16 +104,19 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* Context Provider Import */}
-          <ContextProvider>
-            {/* Custom Cursors Import */}
-            <CustomCursors />
-            {/* Header and Offer Strip */}
-            <Header />
-            {children}
-            {/* Footer */}
-            <Footer />
-          </ContextProvider>
+          {/* Cart Provider */}
+          <Providers>
+            {/* Context Provider Import */}
+            <ContextProvider>
+              {/* Custom Cursors Import */}
+              <CustomCursors />
+              {/* Header and Offer Strip */}
+              <Header />
+              {children}
+              {/* Footer */}
+              <Footer />
+            </ContextProvider>
+          </Providers>
         </ThemeProvider>
       </body>
     </html>
