@@ -14,7 +14,7 @@ import { client } from "@/sanity/lib/client";
 import { allProducts } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import dayjs from "dayjs";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { useAppDispatch } from "@/app/hooks";
 import { addToCart } from "@/app/store/slices/cartSlice";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
@@ -164,7 +164,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
             <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-3 md:gap-4 w-full md:w-auto">
               {/* Quantity Button  */}
               <p>Quantity:</p>
-              <div className="flex justify-center items-center gap-6 md:gap-3 px-3 bg-chart-4 text-chart-1 w-full md:w-auto">
+              <div className="flex justify-between items-center gap-6 md:gap-3 px-3 bg-chart-4 text-chart-1 w-full md:w-36 h-12">
                 <button
                   onClick={() => {
                     number >= 2 && setNumber(number - 1);
@@ -188,7 +188,9 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
             <div className="flex flex-col md:flex-row justify-center items-center gap-3 w-full md:w-auto">
               {/* Button for Add to Cart and Remove  */}
               <Button
-                onClick={() => dispatch(addToCart({ prod: myProd }))}
+                onClick={() =>
+                  dispatch(addToCart({ prod: myProd, Qty: number }))
+                }
                 className="mx-auto w-full md:w-auto"
               >
                 {addCart ? "Add to cart" : "Remove to cart"}
