@@ -29,6 +29,7 @@ export default function Header() {
 
   // Cart Array State from Redux Store
   const addedProducts = useAppSelector((state) => state.cartArray);
+  const [hydrated, setHydrated] = useState(false);
 
   // Show and hide Navbar According to Media Size
   useEffect(() => {
@@ -41,6 +42,9 @@ export default function Header() {
     // Add Event Listener on Window Resize
     window.addEventListener("resize", handleResize);
 
+    // Set hydrated to true after the client has mounted
+    setHydrated(true);
+
     // Call HandleResize on Initial Render
     handleResize();
 
@@ -48,7 +52,7 @@ export default function Header() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -211,7 +215,7 @@ export default function Header() {
             <Link href="/cart" className="relative">
               <MdOutlineShoppingCart className="text-lg cursor-pointer" />
               <span className="absolute -top-[11px] -right-[11px] flex justify-center items-center bg-red-500 text-[11px] font-medium w-[18px] h-[18px] rounded-full text-white">
-                {addedProducts.length}
+                {hydrated ? addedProducts.length : 0}
               </span>
             </Link>
             <CgProfile className="text-lg cursor-pointer" />

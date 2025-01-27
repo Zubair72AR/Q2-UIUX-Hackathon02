@@ -55,7 +55,7 @@ export default function page() {
             <h4 className="text-sm col-span-1 text-end">Total</h4>
           </div>
         )}
-        <hr className="hidden sm:block dark:border-chart-5" />
+        <hr className="dark:border-chart-5" />
         {addedProducts.length === 0 ? (
           <div className="grid place-items-center text-center">
             {/* Empty Cart Image */}
@@ -147,7 +147,7 @@ export default function page() {
                     </div>
                   </div>
 
-                  {/* Quantity Controls */}
+                  {/* Quantity Controls for Large Screen */}
                   <div className="hidden sm:flex justify-center items-center ml-auto gap-3 px-3 bg-chart-4 text-chart-1 w-28">
                     <button
                       onClick={() => {
