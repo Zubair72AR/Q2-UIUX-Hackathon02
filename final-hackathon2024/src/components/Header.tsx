@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { ToggleButton } from "./ToggleButton";
 import OfferStrip from "./OfferStrip";
 import { navLinks, productsLinks } from "@/components/NavLinksArray";
+import { useAppSelector } from "@/app/hooks";
 
 export default function Header() {
   const [navbarVisible, setNavbarVisible] = useState(true);
@@ -25,6 +26,9 @@ export default function Header() {
   // Show Active Nav Link
   const pathName = usePathname();
   const isActive = (path: string) => path == pathName;
+
+  // Cart Array State from Redux Store
+  const addedProducts = useAppSelector((state) => state.cartArray);
 
   // Show and hide Navbar According to Media Size
   useEffect(() => {
@@ -206,8 +210,8 @@ export default function Header() {
             {/* Shopping Cart, Profile Icon, Light and Dark Toggle Button */}
             <Link href="/cart" className="relative">
               <MdOutlineShoppingCart className="text-lg cursor-pointer" />
-              <span className="absolute -top-[11px] -right-[11px] flex justify-center items-center bg-red-500 text-[9px] font-medium w-[18px] h-[18px] rounded-full text-white">
-                0
+              <span className="absolute -top-[11px] -right-[11px] flex justify-center items-center bg-red-500 text-[11px] font-medium w-[18px] h-[18px] rounded-full text-white">
+                {addedProducts.length}
               </span>
             </Link>
             <CgProfile className="text-lg cursor-pointer" />

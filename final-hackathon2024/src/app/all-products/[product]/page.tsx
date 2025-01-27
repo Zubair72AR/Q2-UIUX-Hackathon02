@@ -189,7 +189,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
               {/* Button for Add to Cart and Remove  */}
               <Button
                 onClick={() =>
-                  dispatch(addToCart({ prod: myProd, Qty: number }))
+                  dispatch(addToCart({ prod: myProd, orderQty: number }))
                 }
                 className="mx-auto w-full md:w-auto"
               >
