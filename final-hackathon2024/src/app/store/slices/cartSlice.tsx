@@ -2,28 +2,37 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Product } from "../../../../types/products";
 
 interface CartItem extends Product {
-  orderQty: number; // Added property for ordered quantity
+  orderQty: number; // Ordered quantity
 }
 
-const initialState: CartItem[] = [];
+// Load initial state lazily to avoid issues with SSR
+const getInitialState = (): CartItem[] => {
+  if (typeof window !== "undefined") {
+    return JSON.parse(localStorage.getItem("cart") || "[]");
+  }
+  return [];
+};
+
+const initialState: CartItem[] = getInitialState();
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addToCart(state, { payload }) {
-      console.log("Payload received:", payload);
-      const { prod } = payload;
-      console.log("Product to add:", prod);
+      const { prod, orderQty = 1 } = payload;
 
       const existingItem = state.find((item) => item._id === prod._id);
       if (existingItem) {
-        // If the product already exists, increment its orderQty
-        existingItem.orderQty += 1;
+        // Increment the quantity of the existing item
+        existingItem.orderQty += orderQty;
       } else {
-        // Add new product to the cart with default orderQty of 1
-        state.push({ ...prod, orderQty: 1 });
+        // Add new product to the cart with specified or default orderQty
+        state.push({ ...prod, orderQty });
       }
+
+      // Save updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(state));
     },
 
     removeFromCart(state, { payload }) {
@@ -39,10 +48,14 @@ const cartSlice = createSlice({
           state.splice(existingItemIndex, 1);
         }
       }
+
+      // Save updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(state));
     },
 
     clearCart() {
-      // Reset the cart to an empty array
+      // Clear cart and remove it from localStorage
+      localStorage.removeItem("cart");
       return [];
     },
   },

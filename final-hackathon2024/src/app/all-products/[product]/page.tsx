@@ -19,7 +19,6 @@ import { addToCart } from "@/app/store/slices/cartSlice";
 
 const ProductPage = ({ params }: { params: { product: string } }) => {
   const [number, setNumber] = useState(1);
-  const [addCart, setAddCart] = useState(true);
 
   // Offer Strip Margin Top Setup for Navbar Scrolling
   const { isOfferVisible } = useContext(OfferContext);
@@ -57,6 +56,8 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
     return (
       <div className={`${isOfferVisible ? "mt-[110px]" : "mt-[74px]"} `}>
         <AllProductsLink bgColor="bg-white" lineColor="" />
+
+        {/* Error Page Content */}
         <div className="flex justify-center items-center flex-col gap-3 my-48">
           <h1 className="font-bold text-2xl text-red-500 leading-none">
             Error 404
@@ -193,7 +194,7 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
                 }
                 className="mx-auto w-full md:w-auto"
               >
-                {addCart ? "Add to cart" : "Remove to cart"}
+                Add to cart
               </Button>
 
               <Link href="/all-products" className="mx-auto w-full md:w-auto">
