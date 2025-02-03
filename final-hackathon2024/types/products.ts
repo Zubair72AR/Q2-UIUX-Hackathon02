@@ -44,3 +44,20 @@ export interface ProductType {
   name: string;
   slug: { current: string };
 }
+
+export interface BlogType {
+  _id: string;
+  heading: string;
+  slug: { current: string };
+  image?: {
+    asset: {
+      _ref: string;
+      _type: "image";
+    };
+  };
+  description: string;
+  date: string;
+  tags: string[];
+  author: string;
+  summary: string;
+}

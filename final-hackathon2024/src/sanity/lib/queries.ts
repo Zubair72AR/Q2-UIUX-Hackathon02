@@ -28,8 +28,20 @@ export const brandName = groq`*[_type == "brandName"]{
     _id,
     slug
 }`;
+
 export const productType = groq`*[_type == "productType"]{
   name,
     _id,
     slug
+}`;
+
+export const blogType = groq`*[_type == "blog"] {
+  heading,
+  slug,
+  "image": image.asset,
+  description,
+  date,
+  tags,
+  author,
+  summary
 }`;
