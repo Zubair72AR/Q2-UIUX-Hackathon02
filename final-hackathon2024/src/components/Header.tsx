@@ -16,12 +16,23 @@ import { ToggleButton } from "./ToggleButton";
 import OfferStrip from "./OfferStrip";
 import { navLinks, productsLinks } from "@/components/NavLinksArray";
 import { useAppSelector } from "@/app/hooks";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
+  // State for Navbar Visibility while Scrolling
   const [navbarVisible, setNavbarVisible] = useState(true);
+
+  // State for Navbar Background Color while Scrolling
   const [navbarBgColor, setNavbarBgColor] = useState(true);
+
+  // State for Side Menu Visibility
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  // State for Search Bar Visibility on Mobile Devices
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+
+  // State for Search Query
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Show Active Nav Link
   const pathName = usePathname();
@@ -54,19 +65,25 @@ export default function Header() {
     };
   }, []);
 
+  // State while Scrolling
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 30) {
         setIsMenuVisible(false);
         setIsSearchVisible(false);
+        setSearchQuery("");
       }
 
+      // hide Navbar when scrolling
       if (window.scrollY > 151 && window.scrollY < 450) {
         setNavbarVisible(false);
+
+        // Show Navbar when scrolling
       } else if (window.scrollY < 150 || window.scrollY > 451) {
         setNavbarVisible(true);
       }
 
+      // Change Navbar Background Color while scrolling
       if (window.scrollY < 150) {
         setNavbarBgColor(true);
       } else if (window.scrollY > 151) {
@@ -142,13 +159,18 @@ export default function Header() {
                 className={`block md:grid place-content-center h-6 w-6 rounded-full text-background bg-foreground hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 animate-pulse ${
                   isSearchVisible ? "scale-100" : "scale-0"
                 }`}
-                onClick={() => setIsSearchVisible(false)}
+                onClick={() => {
+                  setIsSearchVisible(false);
+                  setSearchQuery("");
+                }}
               >
                 <AiOutlineClose />
               </button>
               <input
                 type="text"
                 placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className={`bg-transparent text-sm font-light outline-none transition-all duration-1000 ${
                   isSearchVisible
                     ? "w-52 lg:w-64 px-2 text-chart-5 dark:text-chart-3"
@@ -176,7 +198,7 @@ export default function Header() {
               }}
             />
             <div
-              className={`absolute top-full left-1/2 -translate-x-1/2 flex justify-center items-center gap-1 w-[90%] transition-all duration-1000 mt-2 ${
+              className={`absolute z-50 top-full left-1/2 -translate-x-1/2 flex justify-center items-center gap-1 w-[90%] transition-all duration-1000 mt-2 ${
                 isSearchVisible ? "flex md:hidden" : "hidden"
               }`}
             >
@@ -184,13 +206,18 @@ export default function Header() {
                 <input
                   type="text"
                   placeholder="Search..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="bg-transparent text-sm font-light outline-none transition-all duration-1000 w-full px-2 text-chart-5 dark:text-chart-3"
                 />
                 <LuSearch className="text-lg cursor-pointer" />
               </div>
               <button
                 className="grid place-content-center h-8 w-8 border-2 border-chart-2 dark:border-chart-4 rounded-full text-background bg-foreground hover:text-white hover:bg-red-500 transition-all duration-1000 hover:rotate-180 shadow-lg animate-pulse"
-                onClick={() => setIsSearchVisible((prev) => !prev)}
+                onClick={() => {
+                  setIsSearchVisible((prev) => !prev);
+                  setSearchQuery("");
+                }}
               >
                 <AiOutlineClose />
               </button>
@@ -326,6 +353,15 @@ export default function Header() {
           </div>
         </div>
       </div>
+      {isSearchVisible && (
+        <div className="flex justify-center">
+          <SearchBar
+            searchQuery={searchQuery}
+            onClose={() => setIsSearchVisible(false)}
+            className=""
+          />
+        </div>
+      )}
     </div>
   );
 }
